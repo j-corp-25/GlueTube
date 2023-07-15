@@ -99,7 +99,9 @@ div.right-nav > input {
 
 
 
+.master-page {
 
+}
 
 body {
     background-color: rgba(15, 15, 15, 1);
@@ -107,11 +109,13 @@ body {
 
 .top-nav-bar {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 20px;
 }
 
 .home-button {
+    padding-left: 20px;
+    margin-left: 30px;
     height: min-content;
     height: inherit;
 }
@@ -122,8 +126,23 @@ body {
     max-width: 600px;
 }
 
+.search-bar img {
+    width: 35px;
+    height: 31px;
+    padding-right: 1px;
+    padding-top: 1px;
+    /* position: static;x */
+}
+
+.search-bar img:hover {
+    cursor: pointer
+
+    /* position: static;x */
+}
+
 .main-nav-search {
     margin-top: -5px;
+    padding-right: 5px;
     width: 100%;
     border-radius: 100px;
     max-height: max-content;
@@ -132,26 +151,49 @@ body {
     border: 1px rgb(40, 40, 40) solid;
     color: darkgray;
     padding-left: 20px;
-    font-size: 18px;
+    font-size: 20px;
     border: 1px solid grey;
 }
 
 .search-companion-nav {
-    margin-top: -2.5px;
-    font-size: 15px;
+    margin-top: -3px;
+    font-size: 20px;
     position: absolute;
     right: 1px;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     top: 50%;
     transform: translateY(-50%);
-    padding: 1px;
+    padding: 0px;
     height: inherit;
     overflow-wrap:normal;
     background-color: rgb(40, 40, 40);
     color:darkgray;
+}
 
 
+/* .search-companion-nav input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+} */
+
+/* .search-companion-nav , input[type="reset"]{
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline: inherit;
+} */
+
+.thumb-nail-info {
+    color: white;
+    /* position: relative; */
+    padding-left: inherit;
+    margin-top: -20px;
 }
 
 div.right-nav {
@@ -169,22 +211,140 @@ div.right-nav > input {
     outline: .5px solid rgba(27, 98, 185, 1) /* Changes the outline to a 2px solid red line */
 }
 
-@media (max-width: 768px) { /* Adjust this breakpoint as needed */
+.videoThumbnail {
+    padding-left: 0px;
+    border-radius: 20px;
+    width: 350px;
+    height: 200px;
+    margin-bottom: 20px;
+
+}
+
+.thumb-nail-info {
+    color: white;
+    position: relative;
+    padding-left: 30px;
+    margin-top: -20px;
+}
+
+.search-bar img:hover {
+    cursor: pointer
+
+    /* position: static;x */
+}
+
+.main-video-content{
+    margin-left: 125px;
+    margin-right: 30px;
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: row;
+    width: 85vw; ;
+    height: 85vh;
+    max-height: 1000px;
+    max-width: 100vmax;
+    right: 25px;
+    margin-top: 100px;
+}
+.main-video-content > * {
+    flex: 44 425px;
+}
+
+
+.main-video-content > * {
+    flex: 300px;
+}
+.videoThumbnail {
+    padding-left: 16px;
+    border-radius: 36px;
+    /* width: 350px; */
+    /* height: 200px; */
+    margin-bottom: 20px;
+
+}
+
+.videoThumbnail img:hover {
+    cursor: pointer
+
+    /* position: static;x */
+}
+img.videoThumbnail {
+    border-radius: 8px;
+    padding-left: 2px;
+}
+
+
+.thumb-nail-info {
+    color: white;
+    position: relative;
+    padding-left: inherit;
+    margin-top: -20px;
+}
+@media (max-width: 768px) {
   .top-nav-bar {
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center elements */
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
   }
 
+  .search-companion-nav {
+    margin-right: 40px;
+    margin-top: 0px;
+
+  }
+
+
   .main-nav-search {
-    width: 90%; /* Adjust the width of the search bar on small screens */
-    margin: 10px 0; /* Add some vertical margin */
+      width: 90%;
+    margin: 10px 0;
   }
 
   div.right-nav {
-    flex-direction: column; /* Stack buttons vertically */
+    position:fixed;
+    bottom: 25px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 
   div.right-nav > input {
     margin: 10px 0; /* Add some vertical margin */
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* video classes below */
+
+
+/* .main-video-content{
+   display: flex;
+   width: 120vw;
+   height: 120vh;
+   max-height: 1200px;
+   max-width: 1200px;
+   right: 50px;
+   margin-top: 100px;
+   position: fixed;
+
+
+}
+/*  */

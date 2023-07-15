@@ -1,5 +1,6 @@
 import React from "react";
 import buttonImage from "../assets/button.svg";
+import searchImage from "../assets/zoom (1).png";
 
 const NavBar = () => {
   return (
@@ -8,14 +9,14 @@ const NavBar = () => {
         <a href="">
           <img className="home-button" src={buttonImage} alt="Button" />
         </a>
-        <div className="search-bar">
+        <form className="search-bar">
           <input
             className="main-nav-search"
             type="text"
             placeholder="Search"
           ></input>
-          <input className="search-companion-nav" type="submit" value="Search"></input>
-        </div>
+          <img className="search-companion-nav" src={searchImage} alt="Button" />
+        </form>
 
         <div className="right-nav">
           <input type="button" value="Upload"></input>
