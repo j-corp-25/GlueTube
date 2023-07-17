@@ -1,4 +1,5 @@
-/* TODO Add site wide styles */
+
+
 
 *,
 *::before,
@@ -11,6 +12,8 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  color: #333; /* default text color */
+  background-color: #fff; /* default background color */
 }
 img,
 picture,
@@ -59,7 +62,16 @@ button[disabled],
 input[disabled] {
   cursor: default;
 }
-
+:focus {
+  outline: none;
+}
+ul, ol {
+  list-style: none;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
 * {
-    font-family: 'Gluten', regular;
-   }
+  font-family: 'Gluten', regular;
+}
