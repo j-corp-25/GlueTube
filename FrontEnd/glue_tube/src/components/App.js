@@ -1,4 +1,5 @@
-import GlueTube from "./glueTube";
+import React from 'react';
+import GlueTube from './GlueTube/GlueTube';
 
 function App() {
   return (
