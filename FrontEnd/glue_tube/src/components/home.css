@@ -114,9 +114,9 @@ body {
 }
 
 .home-button {
-    padding-left: 20px;
-    margin-left: 30px;
-    height: min-content;
+    margin-left: 100%;
+    padding-left: 0px;
+    height: max-content;
     height: inherit;
 }
 
@@ -280,6 +280,23 @@ img.videoThumbnail {
     padding-left: inherit;
     margin-top: -20px;
 }
+
+.sandwich-nav{
+    position: fixed;
+    border: 2px yellow solid;
+    width: 25px;
+    height: 40px
+
+}
+
+
+
+
+
+
+
+
+
 @media (max-width: 768px) {
   .top-nav-bar {
     flex-direction: column;

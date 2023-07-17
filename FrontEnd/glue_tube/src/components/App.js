@@ -1,4 +1,4 @@
-import GlueTube from "./components/glueTube";
+import GlueTube from "./glueTube";
 
 function App() {
   return (

@@ -6,6 +6,7 @@ const NavBar = () => {
   return (
     <>
       <nav className="top-nav-bar normal-color">
+        <a className="sandwich-nav" href=""></a>
         <a href="">
           <img className="home-button" src={buttonImage} alt="Button" />
         </a>
