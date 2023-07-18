@@ -114,6 +114,48 @@ const VideoList = () => {
           <h5>Description: </h5>
         </div>
       </div>
+      <div className="video-container">
+        <img className="videoThumbnail" src={videoImg3} alt="thumbnail"></img>
+        <div className="thumb-nail-info">
+          <h4>Title:</h4>
+          <h5>Description: </h5>
+        </div>
+      </div>
+      <div className="video-container">
+        <img className="videoThumbnail" src={videoImg3} alt="thumbnail"></img>
+        <div className="thumb-nail-info">
+          <h4>Title:</h4>
+          <h5>Description: </h5>
+        </div>
+      </div>
+      <div className="video-container">
+        <img className="videoThumbnail" src={videoImg3} alt="thumbnail"></img>
+        <div className="thumb-nail-info">
+          <h4>Title:</h4>
+          <h5>Description: </h5>
+        </div>
+      </div>
+      <div className="video-container">
+        <img className="videoThumbnail" src={videoImg3} alt="thumbnail"></img>
+        <div className="thumb-nail-info">
+          <h4>Title:</h4>
+          <h5>Description: </h5>
+        </div>
+      </div>
+      <div className="video-container">
+        <img className="videoThumbnail" src={videoImg3} alt="thumbnail"></img>
+        <div className="thumb-nail-info">
+          <h4>Title:</h4>
+          <h5>Description: </h5>
+        </div>
+      </div>
+      <div className="video-container">
+        <img className="videoThumbnail" src={videoImg3} alt="thumbnail"></img>
+        <div className="thumb-nail-info">
+          <h4>Title:</h4>
+          <h5>Description: </h5>
+        </div>
+      </div>
     </section>
   );
 };

@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_action :snake_case_params
+
   def current_user
     @current_user ||= User.find_by(session_token: session[:session_token])
   end
@@ -25,5 +27,10 @@ class ApplicationController < ActionController::Base
     current_user.reset_session_token!
     session[:session_token] = nil
     @current_user = nil
+  end
+  private
+
+  def snake_case_params
+    params.deep_transform_keys!(&:underscore)
   end
 end
