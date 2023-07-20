@@ -18,10 +18,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_185053) do
     t.string "username", null: false
     t.string "session_token", null: false
     t.string "password_digest", null: false
+    t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
+    t.index ["email"], name: "index_users_on_email"
     t.index ["session_token"], name: "index_users_on_session_token"
     t.index ["username"], name: "index_users_on_username"
   end
