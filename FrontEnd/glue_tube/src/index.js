@@ -17,23 +17,41 @@ if (process.env.NODE_ENV !== 'production') {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-function initialyzeApp() {
-
+const renderApp = () => {
+  root.render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </React.StrictMode>
+  );
 }
-root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>
-);
 
 if (sessionStorage.getItem("X-CSRF-Token") === null) {
-  restoreCSRF().then(renderApplication);
+  restoreCSRF().then(renderApp);
 } else {
-  renderApplication();
+  renderApp();
 }
+
+
+// function initialyzeApp() {
+
+// }
+// if (
+//   sessionStorage.getItem("currentUser") === null ||
+//   sessionStorage.getItem("X-CSRF-Token") === null
+// ) {
+//   store.dispatch(sessionActions.restoreSession()).then(root);
+// } else {
+//   root();
+// }
+
+// if (sessionStorage.getItem("X-CSRF-Token") === null) {
+//   restoreCSRF().then(root);
+// } else {
+//   root();
+// }
 
 // restoreSession().then(initialyzeApp);
