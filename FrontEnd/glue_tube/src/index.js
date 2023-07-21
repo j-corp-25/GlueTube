@@ -1,16 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import "./styles/reset.css";
-import { Provider } from "react-redux";
 import App from "./components/App";
-import configureStore from "./store";
+import configureStore from "./store/index";
 import { BrowserRouter } from "react-router-dom";
-import { restoreSession } from './store/csrf';
+import csrfFetch, { restoreCSRF } from './store/csrf';
+
 
 const store = configureStore();
 
 if (process.env.NODE_ENV !== 'production') {
   window.store = store;
+  window.csrfFetch = csrfFetch;
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -27,5 +29,11 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
+
+if (sessionStorage.getItem("X-CSRF-Token") === null) {
+  restoreCSRF().then(renderApplication);
+} else {
+  renderApplication();
+}
 
 // restoreSession().then(initialyzeApp);
