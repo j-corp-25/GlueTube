@@ -13,21 +13,27 @@
 #  last_name       :string           not null
 #
 class User < ApplicationRecord
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :email, presence: true, uniqueness: true
-  validates :username, presence: true, uniqueness: true
-  validates :password, length: { minimum: 8 }, allow_nil: true
+  validates :username,
+    uniqueness: true,
+    length: { in: 3..30 },
+    format: { without: URI::MailTo::EMAIL_REGEXP, message:  "can't be an email" }
+  validates :email,
+    uniqueness: true,
+    length: { in: 3..255 },
+    format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :session_token, presence: true, uniqueness: true
+  validates :password, length: { in: 6..255 }, allow_nil: true
+  validates :first_name, presence: true, length: { in: 2..50 }
+  validates :last_name, presence: true, length: { in: 2..50 }
+
   before_validation :ensure_session_token
   has_secure_password
 
-  def self.find_by_credentials(username, password)
-    user = User.find_by(username: username)
-    if user&.authenticate(password)
-      return user
-    else
-      nil
-    end
+  def self.find_by_credentials(identifier, password)
+    user = User.find_by(username: identifier)
+    user ||= User.find_by(email: identifier)
+    return nil unless user && user.authenticate(password)
+    user
   end
 
   def ensure_session_token
