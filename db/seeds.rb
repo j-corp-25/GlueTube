@@ -12,12 +12,19 @@ ActiveRecord::Base.transaction do
 
   puts "Creating users..."
 
-  michasel = User.create!(username: "bigPapimario", password: "password")
-  paul = User.create!(username: "imchillin", password: "password")
-  christian = User.create!(username: "PopeyeLifeHacks", password: "password")
-  maggie = User.create!(username: "Mrbeast", password: "password")
-  darwin = User.create!(username: "darude", password: "password")
-  dieseltruck = User.create!(username: "dididexter", password: "password")
-  tylor = User.create!(username: "TheRobinsonFamily", password: "password")
-  dismae = User.create!(username: "dizzzzzznutbar", password: "password")
+  michael = User.create!(
+    username: "bigPapimario",
+    password: "password",
+    first_name: "Michael",
+    last_name: "Mario",
+    email: "michael.mario@example.com"
+  )
+
+  paul = User.create!(
+    username: "imchillin",
+    password: "password",
+    first_name: "Paul",
+    last_name: "Chill",
+    email: "paul.chill@example.com"
+  )
 end
