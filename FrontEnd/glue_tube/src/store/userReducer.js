@@ -2,13 +2,13 @@ const RECEIVE_USER = 'users/RECEIVE_USER';
 const REMOVE_USER = 'users/REMOVE_USER';
 
 
-const receive = (user) => ({
+export const receive = (user) => ({
     type: RECEIVE_USER,
     user
 
 })
 
-const remove = (id) => ({
+export const remove = (id) => ({
     type: REMOVE_USER,
     id
 })

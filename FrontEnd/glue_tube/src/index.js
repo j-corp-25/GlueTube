@@ -9,17 +9,23 @@ import { restoreSession } from './store/csrf';
 
 const store = configureStore();
 
+if (process.env.NODE_ENV !== 'production') {
+  window.store = store;
+}
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function initialyzeApp() {
 
-  root.render(
-    <React.StrictMode>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </React.StrictMode>
-  );
 }
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
+);
 
-restoreSession().then(initialyzeApp);
+// restoreSession().then(initialyzeApp);
