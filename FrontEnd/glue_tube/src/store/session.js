@@ -27,16 +27,10 @@ export const login = ({ credential, password }) => async dispatch => {
     method: "POST",
     body: JSON.stringify({ credential, password })
   });
-
-  if (response.ok) {
-    const data = await response.json();
-    storeCurrentUser(data.user);
-    dispatch(setCurrentUser(data.user));
-    return response;
-  } else {
-    const data = await response.json();
-    throw new Error(data.error || "Failed to log in.");
-  }
+  const data = await response.json();
+  storeCurrentUser(data.user);
+  dispatch(setCurrentUser(data.user));
+  return response;
 };
 
 export const restoreSession = () => async dispatch => {

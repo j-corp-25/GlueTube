@@ -3,14 +3,13 @@ import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useState } from "react";
-
-
+import "./LoginFormPage.css";
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
-  const [credential, setCredential] = useState('');
-  const [password, setPassword] = useState('');
+  const sessionUser = useSelector((state) => state.session.user);
+  const [credential, setCredential] = useState("");
+  const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) {
@@ -20,20 +19,23 @@ const LoginFormPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    dispatch(sessionActions.login({ credential, password }))
-      .catch(err => {
-        setErrors([...errors, err.message]);
-      });
-  }
+    dispatch(sessionActions.login({ credential, password })).catch((err) => {
+      if (err && err.errors) {
+        setErrors(err.errors);
+      } else {
+        setErrors(["Failed to log in."]);
+      }
+    });
+  };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
+        <ul>
+          {errors.map((error, idx) => (
+            <li className="err-message"key={idx}>{error}</li>
+          ))}
+        </ul>
         <input
           type="text"
           value={credential}
@@ -50,7 +52,6 @@ const LoginFormPage = () => {
         />
         <button type="submit">Login</button>
       </form>
-      {errors && <div>{errors}</div>}
     </div>
   );
 };
