@@ -71,6 +71,12 @@ div.right-nav > input {
     margin-right: 10px;
 }
 
+input[type="button"] {
+    padding: 10px;
+}
+
+
+
 .main-nav-search:focus {
     border: .5px solid rgba(27, 98, 185, 1);
     outline: .5px solid rgba(27, 98, 185, 1) /* Changes the outline to a 2px solid red line */

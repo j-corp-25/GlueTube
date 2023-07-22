@@ -1,11 +1,10 @@
 class Api::SessionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  before_action :verify_authenticity_token
 
   def show
-
     if current_user
       @user = current_user
-      render 'api/users/show'
+      render "api/users/show"
     else
       render json: { user: nil }
     end
@@ -16,15 +15,15 @@ class Api::SessionsController < ApplicationController
 
     if @user
       login(@user)
-      render 'api/users/show'
+      render "api/users/show"
     else
-      render json: { errors: ['The provided credentials were invalid.'] },
+      render json: { errors: ["The provided credentials were invalid."] },
         status: :unauthorized
     end
   end
 
   def destroy
     logout
-    render json: { message: 'success' }
+    render json: { message: "success" }
   end
 end

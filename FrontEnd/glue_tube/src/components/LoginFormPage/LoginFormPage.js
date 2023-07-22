@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useState } from "react";
 import "./LoginFormPage.css";
+import googleLogo from "../../assets/GlooGle2.svg";
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ const LoginFormPage = () => {
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [showPassword, setShowPassword] = useState(false);
 
   if (sessionUser) {
     return <Redirect to="/" />;
@@ -29,29 +31,64 @@ const LoginFormPage = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li className="err-message"key={idx}>{error}</li>
-          ))}
-        </ul>
-        <input
-          type="text"
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-          placeholder="Username or Email"
-          required
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div className="page-container">
+      <div className="signin-container">
+        <figure className="logo-container">
+          <img className="gloogle-logo" src={googleLogo} />
+        </figure>
+        <h2 className="signin-header">Sign in</h2>
+        <p className="signin-subheader"> to continue to GlutTube</p>
+        <form className="signin-form" onSubmit={handleSubmit}>
+          <ul>
+            {errors.map((error, idx) => (
+              <li className="err-message" key={idx}>
+                {error}
+              </li>
+            ))}
+          </ul>
+          {!showPassword ? (
+            <>
+              <input
+                className="signin-input email-input"
+                type="text"
+                value={credential}
+                onChange={(e) => setCredential(e.target.value)}
+                placeholder="Username or Email"
+                required
+              />
+              <button
+                className="next-button"
+                type="button"
+                onClick={() => setShowPassword(true)}
+
+              >
+                Next
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                className="back-button"
+                type="button"
+                onClick={() => setShowPassword(false)}
+              >
+                Back
+              </button>
+              <input
+                className="signin-input password-input"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                required
+              />
+              <button className="signin-button" type="submit">
+                Sign In
+              </button>
+            </>
+          )}
+        </form>
+      </div>
     </div>
   );
 };
