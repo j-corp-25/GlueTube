@@ -1,13 +1,13 @@
 import React from "react";
-import buttonImage from "../../assets/button.svg"
+import buttonImage from "../../assets/button.svg";
 import searchImage from "../../assets/zoom (1).png";
 import "./NavBar.css";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
     <>
       <nav className="top-nav-bar normal-color">
-
         <a href="">
           <img className="home-button" src={buttonImage} alt="Button" />
         </a>
@@ -17,13 +17,20 @@ const NavBar = () => {
             type="text"
             placeholder="Search"
           ></input>
-          <img className="search-companion-nav" src={searchImage} alt="Button" />
+          <img
+            className="search-companion-nav"
+            src={searchImage}
+            alt="Button"
+          />
         </form>
 
         <div className="right-nav">
           <input type="button" value="Upload"></input>
           <input type="button" value="settings"></input>
           <input type="button" value="Profile"></input>
+          <Link to="/login">
+            <input type="button" value="Sign In"></input>
+          </Link>
         </div>
       </nav>
     </>

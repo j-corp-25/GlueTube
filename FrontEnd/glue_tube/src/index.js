@@ -8,6 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import csrfFetch, { restoreCSRF } from './store/csrf';
 import * as sessionActions from './store/session';
 import { login } from './store/session';
+import { logout } from './store/session';
 
 
 const store = configureStore();
@@ -17,6 +18,8 @@ if (process.env.NODE_ENV !== 'production') {
   window.csrfFetch = csrfFetch;
   window.sessionActions = sessionActions;
   window.login = login;
+  window.logout = logout;
+
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
