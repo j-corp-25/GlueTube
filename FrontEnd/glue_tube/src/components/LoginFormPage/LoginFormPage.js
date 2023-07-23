@@ -37,8 +37,8 @@ const LoginFormPage = () => {
         <figure className="logo-container">
           <img className="gloogle-logo" src={googleLogo} />
         </figure>
-        <h2 className="signup-header">Sign in</h2>
-        <p className="signup-subheader"> to continue to GluetTube</p>
+        <h2 className="signin-header">Sign in</h2>
+        <p className="signin-subheader"> to continue to GluetTube</p>
         <form className="signin-form" onSubmit={handleSubmit}>
           <ul>
             {errors.map((error, idx) => (

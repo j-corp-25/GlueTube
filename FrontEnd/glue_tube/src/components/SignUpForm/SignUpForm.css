@@ -1,4 +1,5 @@
-.signup-container {
+
+.signup-container-full{
   width: 450px;
   min-height: 500px;
   padding: 48px 40px 36px;
@@ -15,6 +16,7 @@
 }
 .signup-header ~ .signup-subheader {
   text-align: center;
+  margin-top: 5px;
 }
 
 .signup-form > button {
@@ -27,7 +29,16 @@
 
 .signup-input {
     width: 100%;
-    padding: 10px;
+    padding: 12px 14px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 2px;
+    color: rgba(32,33,36, 1);
+    height: 60px;
+}
+
+.first-name {
+    margin-top: 38px;;
+    margin-bottom: 20px;
 }

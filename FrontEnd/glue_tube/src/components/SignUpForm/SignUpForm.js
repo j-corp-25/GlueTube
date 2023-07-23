@@ -23,16 +23,16 @@ const SignUpForm = () => {
   };
   return (
     <div className="page-container">
-      <div className="signup-container">
+      <div className="signup-container-full">
         <figure className="logo-container">
           <img className="gloogle-logo" src={googleLogo} />
         </figure>
-        <h2 className="signin-header">Create a GlueTube account</h2>
-        <p className="signin-subheader"> Enter your name</p>
+        <h2 className="signup-header">Create a GlueTube account</h2>
+        <p className="signup-subheader"> Enter your name</p>
         <form className="signup-form" onSubmit={handleSubmit}>
         <>
         <input
-        className="signup-input first-name"
+        className="signup-input first-name "
         type="text"
         placeholder="First Name"
         value={firstName}
@@ -43,14 +43,10 @@ const SignUpForm = () => {
         className="signup-input last-name"
         type="text"
         placeholder="Last Name"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
+        value={lastName}
+        onChange={(e) => setLastName(e.target.value)}
         required
         />
-
-
-
-
         </>
         </form>
       </div>
