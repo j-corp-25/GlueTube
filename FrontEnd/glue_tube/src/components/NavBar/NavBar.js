@@ -65,9 +65,9 @@ const NavBar = () => {
           />
         </form>
         <div className="right-nav">
-          <input type="button" value="Upload"></input>
+          {/* <input type="button" value="Upload"></input> */}
           <input type="button" value="settings"></input>
-          <input type="button" value="Profile"></input>
+          {/* <input type="button" value="Profile"></input> */}
           <Link to="/login">
             <input type="button" value="Sign In"></input>
           </Link>
