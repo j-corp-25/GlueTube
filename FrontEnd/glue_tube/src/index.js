@@ -19,6 +19,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.sessionActions = sessionActions;
   window.login = login;
   window.logout = logout;
+  window.signup = sessionActions.signup;
 
 }
 
