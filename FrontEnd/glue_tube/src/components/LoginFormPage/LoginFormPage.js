@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { useState } from "react";
 import "./LoginFormPage.css";
 import googleLogo from "../../assets/GlooGle2.svg";
+import { Link } from "react-router-dom";
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const LoginFormPage = () => {
           <img className="gloogle-logo" src={googleLogo} />
         </figure>
         <h2 className="signin-header">Sign in</h2>
-        <p className="signin-subheader"> to continue to GlutTube</p>
+        <p className="signin-subheader"> to continue to GluetTube</p>
         <form className="signin-form" onSubmit={handleSubmit}>
           <ul>
             {errors.map((error, idx) => (
@@ -56,14 +57,20 @@ const LoginFormPage = () => {
                 placeholder="Username or Email"
                 required
               />
+
+
               <button
                 className="next-button"
                 type="button"
                 onClick={() => setShowPassword(true)}
-
               >
                 Next
               </button>
+              <div className="signup-container">
+                <Link to="/signup" className="signup-link">
+                  Create account
+                </Link>
+              </div>
             </>
           ) : (
             <>

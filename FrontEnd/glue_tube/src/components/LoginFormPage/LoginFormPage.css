@@ -40,6 +40,7 @@
 }
 .signin-subheader {
   display: inherit;
+  padding-top: 15px;
 }
 
 .signin-input {
@@ -49,6 +50,9 @@
   border-radius: 5px;
 }
 
+.signin-input:focus {
+  border: 1px solid blue;
+}
 input.signin-input.email-input {
   margin-top: 25%;
 }
@@ -80,6 +84,30 @@ button.back-button {
   border-radius: 5px;
   width: 80px;
 }
+
+.signup-container {
+  width: fit-content;
+  position: absolute;
+  top: bottom;
+  bottom: 45px;
+  border-radius: 6px;
+}
+
+.signup-container :hover {
+  background-color: rgba(232, 240, 254, 0.2);
+  color: rgba(76, 77, 164, 1);
+  /* rgba (232, 240,254, 1) */
+}
+
+.signup-link {
+  color: rgba(25, 115, 232, 1);
+  padding: 10px;
+  border-radius: 5px;
+}
+.signup-link :hover {
+  color: rgba(76, 77, 164, 1);
+}
+
 /* .signin-button {
   background-color: #4285f4;
   color: white;
@@ -111,6 +139,7 @@ button.back-button {
   border: none;
   cursor: pointer;
 }
+
 /* .page-container {
   width: 300px;
   margin: 0 auto;
