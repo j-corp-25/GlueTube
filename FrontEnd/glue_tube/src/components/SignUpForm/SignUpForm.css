@@ -1,0 +1,33 @@
+.signup-container {
+  width: 450px;
+  min-height: 500px;
+  padding: 48px 40px 36px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.signup-header {
+  text-align: center;
+}
+.signup-header ~ .signup-subheader {
+  text-align: center;
+}
+
+.signup-form > button {
+  background-color: #4285f4;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.signup-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
