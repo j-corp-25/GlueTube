@@ -21,7 +21,7 @@ const LoginFormPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors([]);
+    setErrors({});
     dispatch(sessionActions.login({ credential, password })).catch((err) => {
       if (err && err.errors) {
         setErrors(err.errors);
@@ -30,6 +30,26 @@ const LoginFormPage = () => {
       }
     });
   };
+
+  const handleNext = (e) => {
+    e.preventDefault();
+    console.log("handleNext was called");
+
+    let newErrors = {};
+    if (!credential) {
+      newErrors.credential = ("Username or Email is required.");
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      setShowPassword(true);
+    }
+    return setErrors(newErrors);
+    // return{
+    //   setErrors([newErrors])}
+    // }
+  }
 
   return (
     <div className="page-container">
@@ -40,28 +60,37 @@ const LoginFormPage = () => {
         <h2 className="signin-header">Sign in</h2>
         <p className="signin-subheader"> to continue to GluetTube</p>
         <form className="signin-form" onSubmit={handleSubmit}>
-          <ul>
+          {/* <ul>
             {errors.map((error, idx) => (
-              <li className="err-message" key={idx}>
+              <li className="err-message-sign-in" key={idx}>
                 {error}
               </li>
             ))}
-          </ul>
+          </ul> */}
           {!showPassword ? (
             <>
+
+          {errors.credential && (
+                <div className="err-message-sign-in">{errors.credential}</div>
+              )}
               <input
                 className="signin-input email-input"
                 type="text"
                 value={credential}
-                onChange={(e) => setCredential(e.target.value)}
+                onChange={(e) => {
+                  setCredential(e.target.value);
+                  const newErrors = { ...errors};
+                  delete newErrors.credential;
+                  setErrors(newErrors);
+                }}
                 placeholder="Username or Email"
                 required
               />
-
+          
               <button
                 className="next-button"
                 type="submit"
-                onClick={() => setShowPassword(true)}
+                onClick={handleNext}
               >
                 Next
               </button>

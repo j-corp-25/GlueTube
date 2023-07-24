@@ -71,7 +71,31 @@
     padding: 10px;
 }
 
+.settings-container {
 
+}
+
+.settings-button {
+
+}
+
+.settings-container {
+    /* align-items: end; */
+    padding: 10px;
+    /* font-size: 10px; */
+    width: fit-content;
+}
+
+.settings-container {
+    /* align-items: end; */
+    padding: 8px;
+    /* font-size: 10px; */
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-right: 12px;
+    padding-right: 20px;
+    cursor: pointer;
+}
 
 
 
@@ -80,6 +104,9 @@
     outline: .5px solid rgba(27, 98, 185, 1) /* Changes the outline to a 2px solid red line */
 }
 
+img.settings-button {
+    width: 12px;
+}
 /* .sandwich-nav{
     position: fixed;
     border: 2px yellow solid;

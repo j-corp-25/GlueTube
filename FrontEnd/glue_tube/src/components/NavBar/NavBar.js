@@ -2,6 +2,7 @@ import React from "react";
 import buttonImage from "../../assets/button.svg";
 import searchImage from "../../assets/zoom (1).png";
 import signinIMG from "../../assets/SignImage.svg";
+import settingimg from "../../assets/ProfileSettings.svg";
 
 import "./NavBar.css";
 import { Link } from "react-router-dom";
@@ -68,16 +69,20 @@ const NavBar = () => {
         </form>
         <div className="right-nav">
           {/* <input type="button" value="Upload"></input> */}
-          <input type="button" value="settings"></input>
-          {/* <input type="button" value="Profile"></input> */}
-              <Link to="/login">
-          <div className="home-sign-in">
-            <figure>
-              <span>Sign In</span>
+          <div className="settings-container">
+            <figure className="settings-subcontainer">
+              <img className="settings-button" src={settingimg} alt="Button"                             />
             </figure>
-                <img src={signinIMG} alt="Button" />
           </div>
-              </Link>
+          {/* <input type="button" value="Profile"></input> */}
+          <Link to="/login">
+            <div className="home-sign-in">
+              <figure>
+                <span>Sign In</span>
+              </figure>
+              <img src={signinIMG} alt="Button" />
+            </div>
+          </Link>
         </div>
       </nav>
     </>
