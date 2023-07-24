@@ -197,9 +197,9 @@ const SignUpForm = () => {
 
               <ul>
                 {Object.keys(errors).map((key) => {
-                  if ( key !== "password") {
+                  if ( key !== "password" && key!== "username" ) {
                     // Exclude email errors
-                    return <div className="error-message-sign-up-user" key={key}>{errors[key]}</div>;
+                    return <div className="error-message-sign-up-email" key={key}>{errors[key]}</div>;
                   }
                   return null;
                 })}
@@ -220,11 +220,6 @@ const SignUpForm = () => {
               {errors.username && (
                 <div className="error-message-sign-up-user">
                   {errors.username}
-                </div>
-              )}
-              {errors.server && (
-                <div className="error-message-sign-up-server">
-                  {errors.server}
                 </div>
               )}
               <input
