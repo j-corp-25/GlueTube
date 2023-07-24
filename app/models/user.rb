@@ -13,6 +13,7 @@
 #  last_name       :string           not null
 #
 class User < ApplicationRecord
+  has_secure_password
   validates :username,
     uniqueness: true,
     length: { in: 3..30 },
@@ -27,7 +28,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: { in: 2..50 }
 
   before_validation :ensure_session_token
-  has_secure_password
 
   def self.find_by_credentials(identifier, password)
     user = User.find_by(username: identifier)
@@ -41,9 +41,8 @@ class User < ApplicationRecord
   end
 
   def reset_session_token!
-    self.session_token = generate_unique_session_token
-    save!
-    session_token
+    self.update!(session_token: generate_unique_session_token)
+    self.session_token
   end
 
   private

@@ -20,10 +20,11 @@ const SignUpForm = () => {
   if (sessionUser) {
     return <Redirect to="/" />;
   }
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     let newErrors = {};
+    setErrors({});
 
     if (!email) {
       newErrors.email = "Email is required";
@@ -37,8 +38,8 @@ const SignUpForm = () => {
       newErrors.password = "Password is required";
     }
 
-    if (password.length < 8) {
-      newErrors.password = "Password must be at least 8 characters";
+    if (password.length < 9) {
+      newErrors.password = "Password must be at least 9 characters";
     }
 
     if (!username) {
@@ -48,26 +49,51 @@ const SignUpForm = () => {
     }
 
     setErrors(newErrors);
-    
+
+    //   if (newErrors.email) {
+    //   delete newErrors.email;
+    // }
+    // if (newErrors.password) {
+    //   delete newErrors.password;
+    // }
+    // if (newErrors.username) {
+    //   delete newErrors.username;
+    // }
+
     if (Object.keys(newErrors).length === 0) {
-      try {
-        await dispatch(
-          sessionActions.signup({
-            username,
-            email,
-            password,
-            first_name: firstName,
-            last_name: lastName,
-          })
-        );
-      } catch (res) {
-        const data = await res.json();
-        if (data && data.errors) {
-          setErrors(data.errors);
+      return dispatch(
+        sessionActions.signup({
+          username,
+          email,
+          password,
+          first_name: firstName,
+          last_name: lastName,
+        })
+      ).catch(async (res) => {
+        let data;
+        try {
+          // .clone() essentially allows you to read the response body twice
+          data = await res.clone().json();
+        } catch {
+          data = await res.text(); // Will hit this case if, e.g., server is down
         }
-      }
+        if (data?.errors) setErrors(data.errors);
+        else if (data) setErrors([data]);
+        else setErrors([res.statusText]);
+      });
     }
+    return setErrors(newErrors);
   };
+  // if (!response.ok) {
+  //   let errors;
+  //   if (response.status === 422) {
+  //     const data = await response.json();
+  //     errors = data.errors; // This is now a list of strings
+  //   } else {
+  //     errors = ["An unknown error occurred. Please try again."];
+  //   }
+  //   setErrors({ ...newErrors, server: errors.join(" ") });
+  // }
 
   const handleNext = (e) => {
     e.preventDefault();
@@ -158,11 +184,27 @@ const SignUpForm = () => {
               >
                 Back
               </button>
-              {errors.email && (
+              {/* {errors.email && (
                 <div className="error-message-sign-up-email">
                   {errors.email}
                 </div>
-              )}
+              )} */}
+              {/* {errors.server && (
+                <div className="error-message-sign-up-server">
+                  {errors.server}
+                </div>
+              )} */}
+
+              <ul>
+                {Object.keys(errors).map((key) => {
+                  if (key !== "username" && key !== "password") {
+                    // Exclude email errors
+                    return <div className="error-message-sign-up-user" key={key}>{errors[key]}</div>;
+                  }
+                  return null;
+                })}
+              </ul>
+
               <input
                 className="signup-input email-input-signup"
                 type="text"
@@ -178,6 +220,11 @@ const SignUpForm = () => {
               {errors.username && (
                 <div className="error-message-sign-up-user">
                   {errors.username}
+                </div>
+              )}
+              {errors.server && (
+                <div className="error-message-sign-up-server">
+                  {errors.server}
                 </div>
               )}
               <input
