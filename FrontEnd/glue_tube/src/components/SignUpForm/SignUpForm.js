@@ -20,7 +20,7 @@ const SignUpForm = () => {
   if (sessionUser) {
     return <Redirect to="/" />;
   }
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     let newErrors = {};
@@ -42,23 +42,30 @@ const SignUpForm = () => {
     }
 
     if (!username) {
-      newErrors.username = "Username is required";}
-    else if (username.length < 3) {
+      newErrors.username = "Username is required";
+    } else if (username.length < 3) {
       newErrors.username = "Username must be at least 3 characters";
     }
 
     setErrors(newErrors);
-
+    
     if (Object.keys(newErrors).length === 0) {
-      dispatch(
-        sessionActions.signup({
-          username,
-          email,
-          password,
-          first_name: firstName,
-          last_name: lastName,
-        })
-      );
+      try {
+        await dispatch(
+          sessionActions.signup({
+            username,
+            email,
+            password,
+            first_name: firstName,
+            last_name: lastName,
+          })
+        );
+      } catch (res) {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      }
     }
   };
 
@@ -82,7 +89,6 @@ const SignUpForm = () => {
     if (Object.keys(newErrors).length === 0) {
       setShowBasicInfo(true);
     }
-    console.log(errors);
   };
 
   return (
@@ -153,7 +159,9 @@ const SignUpForm = () => {
                 Back
               </button>
               {errors.email && (
-                <div className="error-message-sign-up-email">{errors.email}</div>
+                <div className="error-message-sign-up-email">
+                  {errors.email}
+                </div>
               )}
               <input
                 className="signup-input email-input-signup"
@@ -168,7 +176,9 @@ const SignUpForm = () => {
                 placeholder="Email address"
               />
               {errors.username && (
-                <div className="error-message-sign-up-user">{errors.username}</div>
+                <div className="error-message-sign-up-user">
+                  {errors.username}
+                </div>
               )}
               <input
                 className="signup-input username-input-signup"
@@ -181,10 +191,11 @@ const SignUpForm = () => {
                   setErrors(newErrors);
                 }}
                 placeholder="Username"
-
               />
               {errors.password && (
-                <div className="error-message-sign-up-pass">{errors.password}</div>
+                <div className="error-message-sign-up-pass">
+                  {errors.password}
+                </div>
               )}
               <input
                 className="signup-input password-input-signup"
