@@ -21,14 +21,31 @@ const LoginFormPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let newErrors = {};
     setErrors({});
-    dispatch(sessionActions.login({ credential, password })).catch((err) => {
-      if (err && err.errors) {
-        setErrors(err.errors);
-      } else {
-        setErrors(["Failed to log in."]);
-      }
-    });
+
+    if (!password) {
+      newErrors.password = "Password is required to sign in.";
+    }
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      return dispatch(sessionActions.login({ credential, password })).catch(
+        async (res) => {
+          let data;
+          try {
+            // .clone() essentially allows you to read the response body twice
+            data = await res.clone().json();
+          } catch {
+            data = await res.text(); // Will hit this case if, e.g., server is down
+          }
+          if (data?.errors) setErrors(data.errors);
+          else if (data) setErrors([data]);
+          else setErrors([res.statusText]);
+        }
+      );
+    }
+    return setErrors(newErrors);
   };
 
   const handleNext = (e) => {
@@ -37,7 +54,7 @@ const LoginFormPage = () => {
 
     let newErrors = {};
     if (!credential) {
-      newErrors.credential = ("Username or Email is required.");
+      newErrors.credential = "Username or Email is required.";
     }
 
     setErrors(newErrors);
@@ -45,11 +62,11 @@ const LoginFormPage = () => {
     if (Object.keys(newErrors).length === 0) {
       setShowPassword(true);
     }
-    return setErrors(newErrors);
+
     // return{
     //   setErrors([newErrors])}
     // }
-  }
+  };
 
   return (
     <div className="page-container">
@@ -69,8 +86,7 @@ const LoginFormPage = () => {
           </ul> */}
           {!showPassword ? (
             <>
-
-          {errors.credential && (
+              {errors.credential && (
                 <div className="err-message-sign-in">{errors.credential}</div>
               )}
               <input
@@ -79,14 +95,13 @@ const LoginFormPage = () => {
                 value={credential}
                 onChange={(e) => {
                   setCredential(e.target.value);
-                  const newErrors = { ...errors};
+                  const newErrors = { ...errors };
                   delete newErrors.credential;
                   setErrors(newErrors);
                 }}
                 placeholder="Username or Email"
-                required
               />
-          
+
               <button
                 className="next-button"
                 type="submit"
@@ -109,13 +124,23 @@ const LoginFormPage = () => {
               >
                 Back
               </button>
+
+              {errors.password && (
+                <div className="err-message-sign-in-pass">
+                  {errors.password}
+                </div>
+              )}
               <input
                 className="signin-input password-input"
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  const newErrors = { ...errors };
+                  delete newErrors.password;
+                  setErrors(newErrors);
+                }}
                 placeholder="Password"
-                required
               />
               <button className="signin-button" type="submit">
                 Sign In

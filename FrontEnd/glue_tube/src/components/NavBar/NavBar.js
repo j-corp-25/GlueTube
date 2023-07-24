@@ -61,17 +61,19 @@ const NavBar = () => {
             type="text"
             placeholder="Search"
           ></input>
-          <img
-            className="search-companion-nav"
-            src={searchImage}
-            alt="Button"
-          />
+          <button type="submit" >
+          </button>
+            <img
+              className="search-companion-nav"
+              src={searchImage}
+              alt="submit"
+            />
         </form>
         <div className="right-nav">
           {/* <input type="button" value="Upload"></input> */}
           <div className="settings-container">
             <figure className="settings-subcontainer">
-              <img className="settings-button" src={settingimg} alt="Button"                             />
+              <img className="settings-button" src={settingimg} alt="Button" />
             </figure>
           </div>
           {/* <input type="button" value="Profile"></input> */}

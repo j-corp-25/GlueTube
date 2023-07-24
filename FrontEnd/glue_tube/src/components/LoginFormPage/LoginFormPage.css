@@ -150,6 +150,13 @@ button.back-button {
   bottom: 250px;
 }
 
+.err-message-sign-in-pass {
+  width: fit-content;
+  position: absolute;
+  font-size: 12px;
+  color: red;
+  bottom: 250px
+}
 
 /* .page-container {
   width: 300px;
