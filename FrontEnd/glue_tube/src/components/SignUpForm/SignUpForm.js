@@ -27,7 +27,7 @@ const SignUpForm = () => {
 
     if (!email) {
       newErrors.email = "Email is required";
-    } else if (!email.includes("@")) {
+    } else if (!email.includes("@") || !email.includes(".")) {
       newErrors.email = "Email is invalid";
     }
 
@@ -35,21 +35,23 @@ const SignUpForm = () => {
       newErrors.password = "Password is required";
     }
 
-    if (password.length < 6) {
+    if (password.length < 8) {
       newErrors.password = "Password must be at least 6 characters";
     }
 
     setErrors(newErrors);
 
-    dispatch(
-      sessionActions.signup({
-        username,
-        email,
-        password,
-        first_name: firstName,
-        last_name: lastName,
-      })
-    );
+    if (Object.keys(newErrors).length === 0) {
+      dispatch(
+        sessionActions.signup({
+          username,
+          email,
+          password,
+          first_name: firstName,
+          last_name: lastName,
+        })
+      );
+    }
   };
 
   const handleNext = (e) => {
@@ -142,26 +144,50 @@ const SignUpForm = () => {
               >
                 Back
               </button>
+              {errors.email && (
+                <div className="error-message-sign-up">{errors.email}</div>
+              )}
               <input
                 className="signup-input email-input-signup"
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  const newErrors = { ...errors };
+                  delete newErrors.email;
+                  setErrors(newErrors);
+                }}
                 placeholder="Email address"
               />
+              {errors.username && (
+                <div className="error-message-sign-up">{errors.username}</div>
+              )}
               <input
                 className="signup-input username-input-signup"
                 type="text"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                  const newErrors = { ...errors };
+                  delete newErrors.username;
+                  setErrors(newErrors);
+                }}
                 placeholder="Username"
                 required
               />
+              {errors.password && (
+                <div className="error-message-sign-up">{errors.password}</div>
+              )}
               <input
                 className="signup-input password-input-signup"
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  const newErrors = { ...errors };
+                  delete newErrors.password;
+                  setErrors(newErrors);
+                }}
                 placeholder="Password"
               />
 
