@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: glue_tube_production
-  username: glue_tube
-  password: <%= ENV["GLUE_TUBE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
