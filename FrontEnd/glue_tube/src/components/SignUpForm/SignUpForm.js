@@ -27,8 +27,10 @@ const SignUpForm = () => {
 
     if (!email) {
       newErrors.email = "Email is required";
-    } else if (!email.includes("@") || !email.includes(".")) {
-      newErrors.email = "Email is invalid";
+    } else if (!email.includes("@")) {
+      newErrors.email = "Not a valid email address missing @";
+    } else if (!email.includes(".")) {
+      newErrors.email = "Not a valid email address missing a period ";
     }
 
     if (!password) {
@@ -36,7 +38,13 @@ const SignUpForm = () => {
     }
 
     if (password.length < 8) {
-      newErrors.password = "Password must be at least 6 characters";
+      newErrors.password = "Password must be at least 8 characters";
+    }
+
+    if (!username) {
+      newErrors.username = "Username is required";}
+    else if (username.length < 3) {
+      newErrors.username = "Username must be at least 3 characters";
     }
 
     setErrors(newErrors);
@@ -145,11 +153,11 @@ const SignUpForm = () => {
                 Back
               </button>
               {errors.email && (
-                <div className="error-message-sign-up">{errors.email}</div>
+                <div className="error-message-sign-up-email">{errors.email}</div>
               )}
               <input
                 className="signup-input email-input-signup"
-                type="email"
+                type="text"
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -160,7 +168,7 @@ const SignUpForm = () => {
                 placeholder="Email address"
               />
               {errors.username && (
-                <div className="error-message-sign-up">{errors.username}</div>
+                <div className="error-message-sign-up-user">{errors.username}</div>
               )}
               <input
                 className="signup-input username-input-signup"
@@ -173,10 +181,10 @@ const SignUpForm = () => {
                   setErrors(newErrors);
                 }}
                 placeholder="Username"
-                required
+
               />
               {errors.password && (
-                <div className="error-message-sign-up">{errors.password}</div>
+                <div className="error-message-sign-up-pass">{errors.password}</div>
               )}
               <input
                 className="signup-input password-input-signup"

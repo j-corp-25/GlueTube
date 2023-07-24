@@ -85,5 +85,14 @@ button.back-button-signup {
 }
 
 .password-input-signup {
-  
+
+}
+
+
+.error-message-sign-up-email, .error-message-sign-up-pass, .error-message-sign-up-user {
+  color: red;
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+  position: absolute;
 }
