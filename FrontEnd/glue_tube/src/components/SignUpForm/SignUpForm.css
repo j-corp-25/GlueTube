@@ -70,3 +70,20 @@ button.back-button-signup {
 .email-input-signup, .username-input-signup, .password-input-signup {
     margin-top: 16px;
 }
+
+.error-message-sign-up {
+  color: red;
+  font-size: 12px;
+}
+
+.error-message-sign-up-fn {
+  color: red;
+  font-size: 12px;
+  width: fit-content;
+  position: absolute;
+  bottom: 315px;
+}
+
+.password-input-signup {
+  
+}

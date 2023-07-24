@@ -1,6 +1,8 @@
 import React from "react";
 import buttonImage from "../../assets/button.svg";
 import searchImage from "../../assets/zoom (1).png";
+import signinIMG from "../../assets/SignImage.svg";
+
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,11 +12,10 @@ import * as sessionActions from "../../store/session";
 const NavBar = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [showLogin, setShowLogin] = useState(false);
 
   const handleClick = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.logout())
+    dispatch(sessionActions.logout());
   };
 
   if (sessionUser) {
@@ -40,7 +41,8 @@ const NavBar = () => {
             <input type="button" value="Upload"></input>
             <input type="button" value="settings"></input>
             <input type="button" value="Profile"></input>
-              <input type="button" value="Sign Out" onClick={handleClick}></input>
+            <div> </div>
+            <input type="button" value="Sign Out" onClick={handleClick}></input>
           </div>
         </nav>
       </>
@@ -68,9 +70,14 @@ const NavBar = () => {
           {/* <input type="button" value="Upload"></input> */}
           <input type="button" value="settings"></input>
           {/* <input type="button" value="Profile"></input> */}
-          <Link to="/login">
-            <input type="button" value="Sign In"></input>
-          </Link>
+              <Link to="/login">
+          <div className="home-sign-in">
+            <figure>
+              <span>Sign In</span>
+            </figure>
+                <img src={signinIMG} alt="Button" />
+          </div>
+              </Link>
         </div>
       </nav>
     </>

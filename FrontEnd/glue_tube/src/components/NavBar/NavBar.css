@@ -88,6 +88,25 @@
 } */
 
 
+
+.home-sign-in {
+    border: 1px rgba(74, 74,74, 1) solid;
+    display: flex;
+    width: -moz-fit-content;
+    width: fit-content;
+    border-radius: 20px;
+    width: 100px;
+    color: rgba(63, 166, 255, 1);
+    justify-content: space-around;
+    padding: 5px;
+    flex-flow: row-reverse;
+}
+
+.home-sign-in:hover {
+    background-color: rgba(74, 74, 74, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
 @media (max-width: 768px) {
     .top-nav-bar {
       flex-direction: column;
