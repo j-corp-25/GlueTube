@@ -3,6 +3,7 @@
   justify-content: space-between;
   margin-top: 20px;
   position: sticky;
+  z-index: 1000;
 }
 
 .home-button {

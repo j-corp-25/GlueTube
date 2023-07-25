@@ -14,6 +14,14 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
+  const demoLogin = () => {
+    const demoUser = {
+      credential: "demouser",
+      password: "12345678",
+    };
+    dispatch(sessionActions.login(demoUser));
+  };
+
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
@@ -23,6 +31,15 @@ const NavBar = () => {
     return (
       <>
         <nav className="top-nav-bar normal-color">
+          <div className="left-nav-side-container">
+            <figure>
+              <img
+                className="settings-button-side"
+                src={settingimg}
+                alt="Button"
+              />
+            </figure>
+          </div>
           <Link to="/">
             <img className="home-button" src={buttonImage} alt="Button" />
           </Link>
@@ -55,18 +72,16 @@ const NavBar = () => {
       <nav className="top-nav-bar normal-color">
         <div className="left-nav-side-container">
           <figure>
-            <span>
-              <img
-                className="settings-button-side"
-                src={settingimg}
-                alt="Button"
-              />
-            </span>
+            <img
+              className="settings-button-side"
+              src={settingimg}
+              alt="Button"
+            />
           </figure>
         </div>
-        <a href="">
-          <img className="home-button" src={buttonImage} alt="Button" />
-        </a>
+        <Link to="/">
+            <img className="home-button" src={buttonImage} alt="Button" />
+          </Link>
         <form className="search-bar">
           <input
             className="main-nav-search"
@@ -85,6 +100,7 @@ const NavBar = () => {
           </div>
         </form>
         <div className="right-nav">
+          <input onClick={demoLogin} type="button" value="Demouser"></input>
           {/* <input type="button" value="Upload"></input> */}
           <div className="settings-container">
             <figure className="settings-subcontainer">
