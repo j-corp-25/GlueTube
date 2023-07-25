@@ -13,6 +13,16 @@
 #  last_name       :string           not null
 #
 class User < ApplicationRecord
+  has_many :videos,
+  foreign_key: :author_id,
+  class_name: 'Video'
+
+
+
+
+
+
+
   has_secure_password
   validates :username,
     uniqueness: true,
