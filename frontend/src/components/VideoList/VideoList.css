@@ -36,12 +36,13 @@
     margin-top: 100px;
 }
 .main-video-content > * {
-    flex: 44 425px;
+    flex: 45 425px;
 }
 
 
 .main-video-content > * {
-    flex: 300px;
+    flex: 325px 2 2;
+
 }
 .videoThumbnail {
     padding-left: 16px;
@@ -69,6 +70,3 @@ img.videoThumbnail {
     padding-left: inherit;
     margin-top: -20px;
 }
-
-
-
