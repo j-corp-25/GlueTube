@@ -347,9 +347,37 @@ input.search-companion-nav {
   font-size: 23px;
   border: 1px solid grey;
   border-width: 1px;
-  width: 442px;
+  width: 519px;
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
+}
+
+.left-nav-side-container {
+  display: flex;
+  border: 5px solid yellow;
+}
+
+.left-nav-side-container {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  padding: 5px;
+  border:0;
+}
+
+div.left-nav-side-container:hover {
+  background-color: rgba(74, 74, 74, 1);
+}
+
+.settings-button-side {
+  width: 20px;
 }
 
 @media (max-width: 768px) {

@@ -23,9 +23,10 @@ const NavBar = () => {
     return (
       <>
         <nav className="top-nav-bar normal-color">
-          <a href="">
+          <Link to="/">
             <img className="home-button" src={buttonImage} alt="Button" />
-          </a>
+          </Link>
+
           <form className="search-bar">
             <input
               className="main-nav-search"
@@ -52,6 +53,17 @@ const NavBar = () => {
   return (
     <>
       <nav className="top-nav-bar normal-color">
+        <div className="left-nav-side-container">
+          <figure>
+            <span>
+              <img
+                className="settings-button-side"
+                src={settingimg}
+                alt="Button"
+              />
+            </span>
+          </figure>
+        </div>
         <a href="">
           <img className="home-button" src={buttonImage} alt="Button" />
         </a>

@@ -45,7 +45,6 @@ const LoginFormPage = () => {
         }
       );
     }
-    return setErrors(newErrors);
   };
 
   const handleNext = (e) => {
@@ -63,9 +62,8 @@ const LoginFormPage = () => {
       setShowPassword(true);
     }
 
-    // return{
-    //   setErrors([newErrors])}
-    // }
+    return setErrors(newErrors)
+
   };
 
   return (
@@ -77,13 +75,15 @@ const LoginFormPage = () => {
         <h2 className="signin-header">Sign in</h2>
         <p className="signin-subheader"> to continue to GluetTube</p>
         <form className="signin-form" onSubmit={handleSubmit}>
-          {/* <ul>
-            {errors.map((error, idx) => (
-              <li className="err-message-sign-in" key={idx}>
-                {error}
-              </li>
-            ))}
-          </ul> */}
+        <ul>
+                {Object.keys(errors).map((key) => {
+                  if ( key !== "password" && key !== "username" ) {
+                    // Exclude email errors
+                    return <div className="err-message-sign-in" key={key}>{errors[key]}</div>;
+                  }
+                  return null;
+                })}
+              </ul>
           {!showPassword ? (
             <>
               {errors.credential && (
