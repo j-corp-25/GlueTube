@@ -4,8 +4,7 @@ import session from './session'
 import videos from './videos'
 
 const rootReducer = combineReducers({
-  session,
-  videos
+  session
 });
 let enhancer;
 

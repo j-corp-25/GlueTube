@@ -14,7 +14,8 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
-  const demoLogin = () => {
+  const demoLogin = (e) => {
+    e.preventDefault();
     const demoUser = {
       credential: "demouser",
       password: "12345678",
@@ -59,6 +60,11 @@ const NavBar = () => {
           <div className="right-nav">
             <input type="button" value="Upload"></input>
             <input type="button" value="settings"></input>
+            <Link to="/upload">
+              <figure>
+                <input type="button" value="Upload"></input>
+              </figure>
+            </Link>
             <input type="button" value="Profile"></input>
             <div> </div>
             <input type="button" value="Sign Out" onClick={handleClick}></input>

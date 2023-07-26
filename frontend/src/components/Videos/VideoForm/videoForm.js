@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getVideo, fetchVideo, createVideo, updateVideo } from '../store/videos';
+import { getVideo, fetchVideo, createVideo, updateVideo } from '../../../store/videos'
 
 export default function VideoForm(){
     const dispatch = useDispatch();

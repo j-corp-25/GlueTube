@@ -112,6 +112,27 @@ button.back-button {
   color: red;
 
 }
+.signin-form > button {
+  background-color: #4285f4;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.err-message-sign-in {
+  width: fit-content;
+  position: absolute;
+  bottom: 250px;
+}
+
+.err-message-sign-in-pass {
+  width: fit-content;
+  position: absolute;
+  font-size: 12px;
+  color: red;
+  bottom: 250px
+}
 /* .signin-button {
   background-color: #4285f4;
   color: white;
@@ -136,27 +157,6 @@ button.back-button {
   border: none;
   cursor: pointer;
 } */
-.signin-form > button {
-  background-color: #4285f4;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-}
-
-.err-message-sign-in {
-  width: fit-content;
-  position: absolute;
-  bottom: 250px;
-}
-
-.err-message-sign-in-pass {
-  width: fit-content;
-  position: absolute;
-  font-size: 12px;
-  color: red;
-  bottom: 250px
-}
 
 /* .page-container {
   width: 300px;
