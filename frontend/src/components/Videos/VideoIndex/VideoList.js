@@ -21,22 +21,9 @@ const VideoList = () => {
 
   return (
     <section className="main-video-content">
-      <div className="video-container">
-        <img className="videoThumbnail" src={videoImg1} alt="thumbnail"></img>
-        <div className="thumb-nail-info">
-          <h4>Title:</h4>
-          <h5>Description: </h5>
-        </div>
-      </div>
-
-      <>
-        <ul>
-          {videos.map((video) => (
-            <VideoShowItem video={video} />
-          ))}
-        </ul>
-      </>
+        {videos.map(video => <VideoShowItem key={video.id} video={video} />)}
     </section>
+
   );
 };
 

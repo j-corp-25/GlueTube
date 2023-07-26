@@ -7,7 +7,6 @@ export default async function csrfFetch(url, options = {}) {
   // if the options.method is not 'GET', then set the "Content-Type" header to
   // "application/json" and the "X-CSRF-Token" header to the value of the
   // "X-CSRF-Token" cookie
-  debugger
   if (options.method.toUpperCase() !== "GET") {
     options.headers["Content-Type"] =
       options.headers["Content-Type"] || "application/json";
@@ -34,6 +33,5 @@ export function storeCSRFToken(response) {
 export async function restoreCSRF() {
   const response = await csrfFetch("/api/session");
   storeCSRFToken(response);
-  debugger 
   return response;
 }
