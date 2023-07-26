@@ -16,8 +16,8 @@ const NavBar = () => {
 
   const demoLogin = () => {
     const demoUser = {
-      credential: "demouser",
-      password: "12345678",
+      credential: "demo@user.io",
+      password: "password",
     };
     dispatch(sessionActions.login(demoUser));
   };
@@ -59,6 +59,11 @@ const NavBar = () => {
           <div className="right-nav">
             <input type="button" value="Upload"></input>
             <input type="button" value="settings"></input>
+            <Link to="/upload">
+              <figure>
+                <input type="button" value="Upload"></input>
+              </figure>
+            </Link>
             <input type="button" value="Profile"></input>
             <div> </div>
             <input type="button" value="Sign Out" onClick={handleClick}></input>

@@ -36,7 +36,7 @@ module GlueTube
     # Skip views, helpers and assets when generating a new resource.
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore,
-    key: '_gluetube_session',
+    key: '_GlueTube_session',
     same_site: :lax,
     secure: Rails.env.production?
 
