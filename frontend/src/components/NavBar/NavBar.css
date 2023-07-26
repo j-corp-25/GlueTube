@@ -72,7 +72,6 @@
   padding: 10px;
 }
 
-
 .settings-container {
   /* align-items: end; */
   padding: 10px;
@@ -127,11 +126,11 @@ img.settings-button {
   width: 12px;
 }
 /* .sandwich-nav{
-    position: fixed;
-    border: 2px yellow solid;
-    width: 25px;
-    height: 40px
-} */
+      position: fixed;
+      border: 2px yellow solid;
+      width: 25px;
+      height: 40px
+  } */
 
 .home-sign-in {
   border: 1px rgba(74, 74, 74, 1) solid;
@@ -365,7 +364,7 @@ input.search-companion-nav {
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   padding: 5px;
-  border:0;
+  border: 0;
 }
 
 div.left-nav-side-container:hover {
@@ -381,6 +380,8 @@ div.left-nav-side-container:hover {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    z-index: 100;
   }
 
   .search-companion-nav {
