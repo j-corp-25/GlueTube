@@ -9,14 +9,16 @@ ActiveRecord::Base.transaction do
   puts "Destroying tables..."
 
   User.destroy_all
+  Video.destroy_all
 
   puts "Resetting primary keys..."
 
   ActiveRecord::Base.connection.reset_pk_sequence!("users")
+  ActiveRecord::Base.connection.reset_pk_sequence!("videos")
 
   puts "Creating users..."
 
-  User.create!(
+  demo_user = User.create!(
     username: 'Demo-lition',
     email: 'demo@user.io',
     password: 'password',
@@ -24,16 +26,38 @@ ActiveRecord::Base.transaction do
     last_name: 'User'
   )
 
+  # Create videos for demo user
+  3.times do
+    Video.create!({
+      title: Faker::Book.title,
+      description: Faker::Lorem.paragraph,
+      author_id: demo_user.id
+      # Assuming `title` and `description` are attributes of Video
+      # and the video file is handled separately
+    })
+  end
+
   # More users
   10.times do
-    User.create!({
+    user = User.create!({
       username: Faker::Internet.unique.username(specifier: 3),
       email: Faker::Internet.unique.email,
       password: 'password',
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name
     })
+
+    # Create videos for each user
+    3.times do
+      Video.create!({
+        title: Faker::Book.title,
+        description: Faker::Lorem.paragraph,
+        author_id: user.id
+        # Assuming `title` and `description` are attributes of Video
+        # and the video file is handled separately
+      })
+    end
   end
-  
+
   puts "Done!"
 end

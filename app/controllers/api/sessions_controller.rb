@@ -1,5 +1,5 @@
 class Api::SessionsController < ApplicationController
-  before_action :verify_authenticity_token
+  # before_action :verify_authenticity_token
 
   def show
     if current_user
