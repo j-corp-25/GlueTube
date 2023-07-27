@@ -35,9 +35,6 @@ const VideoShow = () => {
     e.preventDefault();
     dispatch(deleteVideo(video.id));
     history.push("/");
-
-
-
   }
 
   if (!video) {
@@ -71,8 +68,10 @@ const VideoShow = () => {
             </div>
           </div>
           <div className="side-bar-container">
-            <div className="side-bar">
+            <div className="side-bar-title-container">
               <p className="side-bar-title">Latest Videos</p>
+            </div>
+            <div className="side-bar">
               {limitedVideos.map((video) => (
                 <VideoShowItem key={video.id} video={video} />
               ))}
@@ -101,7 +100,9 @@ const VideoShow = () => {
         </div>
         <div className="side-bar-container">
           <div className="side-bar">
-            <p className="side-bar-title">Latest Videos</p>
+            <div className="side-bar-title-container">
+              <p className="side-bar-title">Latest Videos</p>
+            </div>
             {limitedVideos.map((video) => (
               <VideoShowItem key={video.id} video={video} />
             ))}
