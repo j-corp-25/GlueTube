@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::API
-  # include ActionController::RequestForgeryProtection
+  include ActionController::RequestForgeryProtection
 
   rescue_from StandardError, with: :unhandled_error
-  # rescue_from ActionController::InvalidAuthenticityToken,
-    # with: :invalid_authenticity_token
+  rescue_from ActionController::InvalidAuthenticityToken,
+    with: :invalid_authenticity_token
 
-  # protect_from_forgery with: :exception
+  protect_from_forgery with: :exception
   before_action :snake_case_params, :attach_authenticity_token
 
 
@@ -59,7 +59,7 @@ class ApplicationController < ActionController::API
 
   private
   def attach_authenticity_token
-    # headers['X-CSRF-Token'] = masked_authenticity_token(session)
+    headers['X-CSRF-Token'] = masked_authenticity_token(session)
   end
 
   def snake_case_params
