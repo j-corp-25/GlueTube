@@ -24,6 +24,8 @@ export default function VideoForm() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
+    console.log(video);
+
     if (videoId) {
       dispatch(fetchVideo(videoId));
       if (video) {
@@ -31,7 +33,9 @@ export default function VideoForm() {
         setDescription(video.description);
       }
     }
-  }, [videoId, video]);
+  }, [videoId]);
+
+  console.log(useDispatch());
 
   async function handleSubmit(e) {
     e.preventDefault();
