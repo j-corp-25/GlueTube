@@ -34,3 +34,21 @@
   width: 100%;
   height: inherit;
 }
+
+.side-bar-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  margin-top: 20px;
+}
+
+p.side-bar-title {
+  color: white;
+  font-size: 3vw;
+}

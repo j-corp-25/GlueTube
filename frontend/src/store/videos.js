@@ -80,7 +80,7 @@ export const createVideo = (video) => async (dispatch) => {
   };
 
 export const deleteVideo = (videoId) => async (dispatch) => {
-    await fetch(`/api/videos/${videoId}`, {
+    await csrfFetch(`/api/videos/${videoId}`, {
         method: "DELETE",
         headers: {"Content-Type": "application/json"}
     });
@@ -94,7 +94,7 @@ export const deleteVideo = (videoId) => async (dispatch) => {
 const videosReducer = (state = {}, action) => {
     switch(action.type){
         case RECEIVE_VIDEO:
-    
+
             return { ...state, [action.video.id]: action.video };
 
         case RECEIVE_VIDEOS:

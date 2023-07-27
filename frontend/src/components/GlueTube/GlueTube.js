@@ -11,7 +11,7 @@ const GlueTube = () => {
   return (
     <div className="master-page">
       <NavBar/>
-      <VideoList/>
+      <VideoList />
     </div>
   );
 };
