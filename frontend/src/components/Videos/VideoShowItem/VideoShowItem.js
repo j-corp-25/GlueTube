@@ -27,7 +27,7 @@ function VideoShowItem({ video }) {
           </figure>
         </div>
         <div className="thumb-nail-info">
-          <h4>Title: {video.title}</h4>
+          <h4>{video.title}</h4>
           {/* <h5>Description: {video.description}</h5> */}
           <Link to={`/videos/${video.id}`}>View Video</Link>
         </div>

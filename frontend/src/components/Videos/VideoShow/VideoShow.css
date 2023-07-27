@@ -1,0 +1,36 @@
+.video-container-show {
+    border: 1px solid yellow;
+    width: 85vw;
+    height: 80vh;
+    margin-left: 10vw;
+    display: flex;
+    justify-content: space-between;
+}
+.main-show-page {
+  height: 100vh;
+}
+
+.side-bar-container {
+  width: 400px;
+  height: 70vh;
+  border: 1px solid yellow;
+}
+.video-player {
+  border: red 1px solid;
+  padding: 0vh;
+}
+.video-player {
+  width: -webkit-fill-available;
+}
+
+.side-bar-container {
+  width: 30vw;
+  height: 135vh;
+  border: 1px solid yellow;
+  overflow-y: auto;
+}
+
+.show-image {
+  width: 100%;
+  height: inherit;
+}

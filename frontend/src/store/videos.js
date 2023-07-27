@@ -25,6 +25,7 @@ export const getVideos = (state) => {
 export const fetchVideos = () => async (dispatch) => {
     const response = await csrfFetch('/api/videos');
     const data = await response.json();
+    console.log(data);
 
     dispatch({
         type: RECEIVE_VIDEOS,
@@ -74,7 +75,7 @@ export const createVideo = (video) => async (dispatch) => {
         video: data,
       });
     }
-    
+
     return response;
   };
 
@@ -91,19 +92,23 @@ export const deleteVideo = (videoId) => async (dispatch) => {
 }
 
 const videosReducer = (state = {}, action) => {
-    let newState = {...state};
     switch(action.type){
         case RECEIVE_VIDEO:
-            newState = {...newState, [action.video.id]: action.video}
-            return newState;
+    
+            return { ...state, [action.video.id]: action.video };
 
         case RECEIVE_VIDEOS:
-            newState = {...newState, ...action.videos}
+
+            const newState = {};
+            for (let video of action.videos) {
+                newState[video.id] = video;
+            }
             return newState;
 
         case REMOVE_VIDEO:
-            delete newState[action.videoId]
-            return newState;
+            const { [action.videoId]: removedVideo, ...remainingState } = state;
+            return remainingState;
+
         default:
             return state;
     }
