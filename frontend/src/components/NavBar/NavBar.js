@@ -32,33 +32,52 @@ const NavBar = () => {
       <>
         <nav className="top-nav-bar normal-color">
           <div className="left-nav-side-container">
-            <figure>
-              <img
-                className="settings-button-side"
-                src={settingimg}
-                alt="Button"
-              />
-            </figure>
+            <div className="home-logo-container">
+              <figure>
+                <img
+                  className="settings-button-side"
+                  src={settingimg}
+                  alt="Button"
+                />
+              </figure>
+            </div>
+            <div className="home-button-container">
+              <Link to="/">
+                <img className="home-button" src={buttonImage} alt="Button" />
+              </Link>
+            </div>
           </div>
-          <Link to="/">
-            <img className="home-button" src={buttonImage} alt="Button" />
-          </Link>
 
-          <form className="search-bar">
-            <input
-              className="main-nav-search"
-              type="text"
-              placeholder="Search"
-            ></input>
-            <img
-              className="search-companion-nav"
-              src={searchImage}
-              alt="Button"
-            />
-          </form>
+          <div className="nav-search-bar-container">
+            <form className="search-bar">
+              <input
+                className="main-nav-search"
+                type="text"
+                placeholder="Search"
+              ></input>
+              <div>
+                <input
+                  className="search-companion-nav"
+                  type="image"
+                  src={searchImage}
+                  alt="search-button"
+                  name="submit"
+                ></input>
+              </div>
+            </form>
+          </div>
           <div className="right-nav">
             <div className="profile-icon">
-            <Avatar name={sessionUser.username} size="35" round={true} color={Avatar.getRandomColor('sitebase', ['red', 'green', 'blue'])} />
+              <Avatar
+                name={sessionUser.username}
+                size="35"
+                round={true}
+                color={Avatar.getRandomColor("sitebase", [
+                  "red",
+                  "green",
+                  "blue",
+                ])}
+              />
             </div>
             <input type="button" value="settings"></input>
             <Link to="/upload">
