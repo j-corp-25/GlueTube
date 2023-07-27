@@ -3,7 +3,7 @@ import buttonImage from "../../assets/button.svg";
 import searchImage from "../../assets/zoom (1).png";
 import signinIMG from "../../assets/SignImage.svg";
 import settingimg from "../../assets/ProfileSettings.svg";
-
+import Avatar from "react-avatar";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -57,7 +57,9 @@ const NavBar = () => {
             />
           </form>
           <div className="right-nav">
-            <input type="button" value="Upload"></input>
+            <div className="profile-icon">
+            <Avatar name={sessionUser.username} size="35" round={true} color={Avatar.getRandomColor('sitebase', ['red', 'green', 'blue'])} />
+            </div>
             <input type="button" value="settings"></input>
             <Link to="/upload">
               <figure>
@@ -85,8 +87,8 @@ const NavBar = () => {
           </figure>
         </div>
         <Link to="/">
-            <img className="home-button" src={buttonImage} alt="Button" />
-          </Link>
+          <img className="home-button" src={buttonImage} alt="Button" />
+        </Link>
         <form className="search-bar">
           <input
             className="main-nav-search"

@@ -11,6 +11,7 @@ import { getVideos, fetchVideos } from "../../../store/videos";
 import * as sessionActions from "../../../store/session";
 import { Link } from "react-router-dom";
 
+
 import { useHistory } from "react-router-dom";
 
 const VideoShow = () => {
@@ -21,7 +22,7 @@ const VideoShow = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
 
-  const limitedVideos = videos.slice(0, 8);
+  const limitedVideos = videos.slice(0, 15);
 
   useEffect(() => {
     dispatch(fetchVideo(videoId));

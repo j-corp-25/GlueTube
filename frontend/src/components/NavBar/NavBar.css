@@ -375,7 +375,14 @@ div.left-nav-side-container:hover {
 .settings-button-side {
   width: 20px;
 }
+.profile-icon {
+  padding-right: 30px;
 
+}
+
+.sb-avatar__text div span span {
+  font-size: 20px;
+}
 @media (max-width: 768px) {
   .top-nav-bar {
     flex-direction: column;
