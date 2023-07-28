@@ -1,10 +1,16 @@
+require "open-uri"
 # This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+## This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+## This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
-#
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'open-uri'
+
 ActiveRecord::Base.transaction do
   puts "Destroying tables..."
 
@@ -27,18 +33,20 @@ ActiveRecord::Base.transaction do
   )
 
   # Create videos for demo user
-  3.times do
-    Video.create!({
+  3.times do |i|
+    video = Video.create!({
       title: Faker::Book.title,
       description: Faker::Lorem.paragraph,
       author_id: demo_user.id
-      # Assuming `title` and `description` are attributes of Video
-      # and the video file is handled separately
     })
+    video.video.attach(
+      io: URI.parse("https://my-gluetube-seeds.s3.amazonaws.com/video_#{i + 1}.mp4").open,
+      filename: "video_#{i + 1}.mp4"
+    )
   end
 
   # More users
-  10.times do
+  3.times do
     user = User.create!({
       username: Faker::Internet.unique.username(specifier: 3),
       email: Faker::Internet.unique.email,
@@ -48,14 +56,16 @@ ActiveRecord::Base.transaction do
     })
 
     # Create videos for each user
-    3.times do
-      Video.create!({
+    2.times do |i|
+      video = Video.create!({
         title: Faker::Book.title,
         description: Faker::Lorem.paragraph,
         author_id: user.id
-        # Assuming `title` and `description` are attributes of Video
-        # and the video file is handled separately
       })
+      video.video.attach(
+        io: URI.parse("https://my-gluetube-seeds.s3.amazonaws.com/video_#{i + 1}.mp4").open,
+        filename: "video_#{i + 1}.mp4"
+      )
     end
   end
 
