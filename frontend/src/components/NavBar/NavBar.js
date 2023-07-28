@@ -49,22 +49,24 @@ const NavBar = () => {
           </div>
 
           <div className="nav-search-bar-container">
-            <form className="search-bar">
-              <input
-                className="main-nav-search"
-                type="text"
-                placeholder="Search"
-              ></input>
-              <div>
+            <div className="search-bar-sub-container">
+              <form className="search-bar">
                 <input
-                  className="search-companion-nav"
-                  type="image"
-                  src={searchImage}
-                  alt="search-button"
-                  name="submit"
+                  className="main-nav-search"
+                  type="text"
+                  placeholder="Search"
                 ></input>
-              </div>
-            </form>
+                <div className="search-container">
+                  <input
+                    className="search-companion-nav"
+                    type="image"
+                    src={searchImage}
+                    alt="search-button"
+                    name="submit"
+                  ></input>
+                </div>
+              </form>
+            </div>
           </div>
           <div className="right-nav">
             <div className="profile-icon">
