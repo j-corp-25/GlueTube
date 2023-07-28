@@ -98,35 +98,43 @@ const NavBar = () => {
   return (
     <>
       <nav className="top-nav-bar normal-color">
-        <div className="left-nav-side-container">
-          <figure>
-            <img
-              className="settings-button-side"
-              src={settingimg}
-              alt="Button"
-            />
-          </figure>
-        </div>
-        <Link to="/">
-          <img className="home-button" src={buttonImage} alt="Button" />
-        </Link>
-        <form className="search-bar">
-          <input
-            className="main-nav-search"
-            type="text"
-            placeholder="Search"
-          ></input>
-
-          <div>
-            <input
-              className="search-companion-nav"
-              type="image"
-              src={searchImage}
-              alt="search-button"
-              name="submit"
-            ></input>
+          <div className="left-nav-side-container">
+            <div className="home-logo-container">
+              <figure>
+                <img
+                  className="settings-button-side"
+                  src={settingimg}
+                  alt="Button"
+                />
+              </figure>
+            </div>
+            <div className="home-button-container">
+              <Link to="/">
+                <img className="home-button" src={buttonImage} alt="Button" />
+              </Link>
+            </div>
           </div>
-        </form>
+
+          <div className="nav-search-bar-container">
+            <div className="search-bar-sub-container">
+              <form className="search-bar">
+                <input
+                  className="main-nav-search"
+                  type="text"
+                  placeholder="Search"
+                ></input>
+                <div className="search-container">
+                  <input
+                    className="search-companion-nav"
+                    type="image"
+                    src={searchImage}
+                    alt="search-button"
+                    name="submit"
+                  ></input>
+                </div>
+              </form>
+            </div>
+          </div>
         <div className="right-nav">
           <input onClick={demoLogin} type="button" value="Demouser"></input>
           {/* <input type="button" value="Upload"></input> */}
