@@ -19,12 +19,12 @@
   z-index: 101;
   align-items: center;
   height: 10vh;
-  border: 1px yellow solid;
+  /* border: 1px yellow solid; */
   padding: 10px;
 }
 /* ----------------------------------------- */
 .left-nav-side-container {
-  border: 1px yellow solid;
+  /* border: 1px yellow solid; */
   display: flex;
   width: 15vw;
   justify-content: space-evenly;
@@ -33,18 +33,18 @@
   align-items: center;
 }
 .home-logo-container {
-  border: 1px yellow solid;
+  /* border: 1px yellow solid; */
   padding: 1vh;
 }
 .home-button-container {
-  border: 1px yellow solid;
+  /* border: 1px yellow solid; */
   padding: 1vh;
 }
 
 /* ------------------------------------------ */
 
 .nav-search-bar-container {
-  border: 1px yellow solid;
+  /* border: 1px yellow solid; */
   padding: 1vh;
   width: 50vw;
   display: flex;
@@ -52,7 +52,7 @@
   height: -webkit-fill-available;
 }
 .search-bar-sub-container {
-  border: 1px solid yellow;
+  /* border: 1px solid yellow; */
   width: 45vw;
   display: flex;
   justify-content: center;
@@ -92,7 +92,7 @@
 
 .right-nav {
   display: flex;
-  border: 1px yellow solid;
+  /* border: 1px yellow solid; */
   height: -webkit-fill-available;
   min-width: 30vw;
   align-items: center;
@@ -113,7 +113,7 @@ div.home-sign-in span {
 }
 
 header {
-  border: 1px yellow solid;
+  /* border: 1px yellow solid; */
   height: 115px;
   position: sticky;
   top: 0;

@@ -6,6 +6,7 @@ import videoImg2 from "../../../assets/Video_Img_2.jpeg";
 import videoImg3 from "../../../assets/Video_Img_3.jpeg";
 import Avatar from "react-avatar";
 import { useSelector } from "react-redux";
+import ReactPlayer from "react-player";
 function VideoShowItem({ video }) {
   const users = useSelector((state) => state.users);
   console.log("Video:", video);
@@ -15,19 +16,19 @@ function VideoShowItem({ video }) {
   console.log("Author ID:", video.authorId);
   console.log("Users:", users);
 
-
-
   // Continue with rendering...
 
   return (
     <div className="video-container">
       <div className="video-thumbnail" href="#">
-        <img src={videoImg3} alt="Video thumbnail" />
+        <Link to={`/videos/${video.id}`}>
+          <ReactPlayer url={video.url} />
+        </Link>
       </div>
       <div className="video-details">
         <div className="video-channel">
           <Avatar
-            name={author ? author.username : ''}
+            name={author ? author.username : ""}
             size="35"
             round={true}
             color={Avatar.getRandomColor("sitebase", ["red", "green", "blue"])}

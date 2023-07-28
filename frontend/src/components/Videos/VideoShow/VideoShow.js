@@ -10,7 +10,7 @@ import VideoShowItem from "../VideoShowItem/VideoShowItem";
 import { getVideos, fetchVideos } from "../../../store/videos";
 import * as sessionActions from "../../../store/session";
 import { Link } from "react-router-dom";
-
+import ReactPlayer from "react-player";
 
 import { useHistory } from "react-router-dom";
 
@@ -42,14 +42,14 @@ const VideoShow = () => {
     return <div>Loading...</div>; // show a loading state
   }
 
-  console.log(sessionUser?.id);
-  console.log(video.authorId);
+  // console.log(sessionUser?.id);
+  // console.log(video.authorId);
 
   if (sessionUser?.id === video.authorId) {
     return (
       <div className="main-show-page">
         <NavBar />
-        <div className="video-container-show">
+        <div className="video-page-container-show">
           <div className="video-player-container">
             <button>
               <Link to={`/videos/${video.id}/edit`}>Edit</Link>
@@ -57,10 +57,11 @@ const VideoShow = () => {
 
             <button onClick={handleDelete}>Delete</button>
             <div className="video-player">
-              <img
-                className="show-image"
-                src={videoImg34}
-                alt="Video Placeholder"
+              <ReactPlayer
+                width="100%"
+                height="100%"
+                controls={true}
+                url={video.url}
               />
             </div>
             <div className="video-information">
@@ -85,13 +86,14 @@ const VideoShow = () => {
   return (
     <div className="main-show-page">
       <NavBar />
-      <div className="video-container-show">
+      <div className="video-page-container-show">
         <div className="video-player-container">
           <div className="video-player">
-            <img
-              className="show-image"
-              src={videoImg34}
-              alt="Video Placeholder"
+            <ReactPlayer
+              width="100%"
+              height="100%"
+              controls={true}
+              url={video.url}
             />
           </div>
           <div className="video-information">
@@ -100,13 +102,14 @@ const VideoShow = () => {
           </div>
         </div>
         <div className="side-bar-container">
+          <div className="side-bar-title-container">
+            <p className="side-bar-title">Latest Videos</p>
+          </div>
           <div className="side-bar">
-            <div className="side-bar-title-container">
-              <p className="side-bar-title">Latest Videos</p>
-            </div>
             {limitedVideos.map((video) => (
               <VideoShowItem key={video.id} video={video} />
             ))}
+
           </div>
         </div>
       </div>

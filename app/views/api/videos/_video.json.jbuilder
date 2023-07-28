@@ -1,1 +1,6 @@
+
+
 json.extract! video, :id, :title, :description, :author_id
+
+
+json.url video.video.attached? ? Rails.application.routes.url_helpers.rails_blob_url(video.video, host: 'localhost:3000') : nil

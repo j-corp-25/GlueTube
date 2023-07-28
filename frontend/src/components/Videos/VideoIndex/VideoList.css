@@ -145,7 +145,7 @@ img.videoThumbnail {
     color: #999;
   } */
 .video-grid {
-  border: 1px yellow solid;
+  /* border: 1px yellow solid; */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(314px, 1fr));
   grid-gap: 10px;
