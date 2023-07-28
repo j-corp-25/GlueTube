@@ -1,7 +1,7 @@
 
 .thumb-nail-info {
     color: white;
-    /* position: relative; */
+
     padding-left: inherit;
     margin-top: -20px;
 }
@@ -34,8 +34,7 @@
 .videoThumbnail {
     padding-left: 16px;
     border-radius: 36px;
-    /* width: 350px; */
-    /* height: 200px; */
+
     margin-bottom: 20px;
 
 }
@@ -43,7 +42,7 @@
 .videoThumbnail img:hover {
     cursor: pointer
 
-    /* position: static;x */
+
 }
 img.videoThumbnail {
     border-radius: 8px;
@@ -56,4 +55,12 @@ img.videoThumbnail {
     position: relative;
     padding-left: inherit;
     margin-top: -20px;
+}
+
+.main-video-content-grid {
+    display: grid;
+    border: 1px yellow solid;
+    margin: 30px;
+    margin-left: 150px;
+    grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
 }

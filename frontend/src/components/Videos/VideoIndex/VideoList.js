@@ -20,7 +20,7 @@ const VideoList = () => {
   }, [dispatch])
 
   return (
-    <section className="main-video-content">
+    <section className="main-video-content-grid">
         {videos.map(video => <VideoShowItem key={video.id} video={video} />)}
     </section>
 
