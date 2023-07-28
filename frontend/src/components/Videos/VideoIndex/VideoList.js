@@ -10,6 +10,7 @@ import VideoShowItem from '../VideoShowItem/VideoShowItem';
 import { getVideos, fetchVideos } from '../../../store/videos';
 
 
+
 const VideoList = () => {
 
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const VideoList = () => {
   }, [dispatch])
 
   return (
-    <section className="main-video-content-grid">
+    <section className="video-grid">
         {videos.map(video => <VideoShowItem key={video.id} video={video} />)}
     </section>
 

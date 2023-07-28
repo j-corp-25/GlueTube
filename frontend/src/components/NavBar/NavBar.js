@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import * as sessionActions from "../../store/session";
 
+
 const NavBar = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -30,6 +31,8 @@ const NavBar = () => {
   if (sessionUser) {
     return (
       <>
+    <header>
+
         <nav className="top-nav-bar normal-color">
           <div className="left-nav-side-container">
             <div className="home-logo-container">
@@ -92,11 +95,14 @@ const NavBar = () => {
             <input type="button" value="Sign Out" onClick={handleClick}></input>
           </div>
         </nav>
+    </header>
       </>
     );
   }
   return (
     <>
+    <header>
+
       <nav className="top-nav-bar normal-color">
           <div className="left-nav-side-container">
             <div className="home-logo-container">
@@ -154,6 +160,7 @@ const NavBar = () => {
           </Link>
         </div>
       </nav>
+    </header>
     </>
   );
 };

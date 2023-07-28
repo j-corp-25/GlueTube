@@ -112,6 +112,15 @@ div.home-sign-in span {
   padding-right: 5px;
 }
 
+header {
+  border: 1px yellow solid;
+  height: 115px;
+  position: sticky;
+  top: 0;
+
+  background: black;
+}
+
 @media (max-width: 768px) {
   .top-nav-bar {
     flex-direction: column;
