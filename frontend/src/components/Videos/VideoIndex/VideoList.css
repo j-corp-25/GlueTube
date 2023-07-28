@@ -177,31 +177,36 @@ img.videoThumbnail {
   object-fit: contain;
 }
 
-.video-title {
-  position: relative;
-  top: 10px;
-  left: 10px;
-  font-size: 16px;
-  color: #333;
+.video-details {
+  align-items: flex-start;
+  /* cursor: pointer; */
+  flex: auto;
+  display: flex;
+  /* flex-direction: row; */
+  width: 313.98px;
+  height: 100px;
+  /* display: flex; */
+  justify-content: normal;
 }
 
 .video-channel {
   position: relative;
-  top: 30px;
-  left: 10px;
-  font-size: 14px;
+  top: 10px;
+  /* left: 0px; */
+  font-size: 0px;
   color: #999;
+  padding-right: 0px;
 }
 
-.video-details {
-    position: relative;
-    cursor: pointer;
-    margin: 0;
-    flex: auto;
-    display: flexbox;
-    display: flex;
-    flex-direction: row;
-    width: 313.98px;
-    height: 100px;
-
+.video-title {
+  overflow-x: hidden;
+  padding-right: 24px;
+  color: white;
+  height: -moz-fit-content;
+  /* margin-top: 15px; */
+  line-height: 15px;
+  /* top: 10px; */
+  position: initial;
+  margin-top: 15px;
+  margin-left: 10px;
 }

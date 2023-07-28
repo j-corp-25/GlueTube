@@ -117,10 +117,9 @@ header {
   height: 115px;
   position: sticky;
   top: 0;
-
   background: black;
+  z-index: 102;
 }
-
 @media (max-width: 768px) {
   .top-nav-bar {
     flex-direction: column;

@@ -7,31 +7,34 @@ import videoImg3 from "../../../assets/Video_Img_3.jpeg";
 import Avatar from "react-avatar";
 import { useSelector } from "react-redux";
 function VideoShowItem({ video }) {
-  const sessionUser = useSelector((state) => state.session.user);
+  const users = useSelector((state) => state.users);
+  console.log("Video:", video);
+  console.log("Users:", users);
+  const author = users[video.authorId];
 
+  console.log("Author ID:", video.authorId);
+  console.log("Users:", users);
+
+
+
+  // Continue with rendering...
 
   return (
-    // <li>
-    //   <h2>{video.title}</h2>
-    //   <Link to={`/videos/${video.id}`}>
-    //     View Video
-    //   </Link>
-    // </li>
     <div className="video-container">
       <div className="video-thumbnail" href="#">
         <img src={videoImg3} alt="Video thumbnail" />
       </div>
       <div className="video-details">
         <div className="video-channel">
-          {/* <Avatar
-            name={sessionUser.username}
+          <Avatar
+            name={author ? author.username : ''}
             size="35"
             round={true}
             color={Avatar.getRandomColor("sitebase", ["red", "green", "blue"])}
-          /> */}
+          />
         </div>
         <h3 className="video-title">
-          <span>Video title</span>
+          <span>{video.title}</span>
         </h3>
       </div>
     </div>
