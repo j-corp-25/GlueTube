@@ -14,18 +14,23 @@ import { getVideos, fetchVideos } from '../../../store/videos';
 const VideoList = () => {
 
   const dispatch = useDispatch();
-  const videos = useSelector(getVideos);
+  // const videos = useSelector(getVideos);
+  const videos = useSelector(state => getVideos(state));
 
   // useEffect(() => {
   //     dispatch(fetchVideos());
   // }, [dispatch])
 
+  // useEffect(() => {
+  //   if (!videos.length) {
+  //     dispatch(fetchVideos()); // Here you fetch the videos
+  //   }
+  // }, [dispatch, videos]);
   useEffect(() => {
-    if (!videos.length) {
-      dispatch(getVideos());  //uncomment this line if you are going to reload because it will crash everything.
-    }
-  }, [dispatch, videos]);
+    dispatch(fetchVideos());
+  }, [dispatch]);
 
+  //uncomment this line if you are going to reload because it will crash everything.
   return (
     <section className="video-grid">
         {videos.map(video => <VideoShowItem key={video.id} video={video} />)}

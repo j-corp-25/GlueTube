@@ -9,4 +9,4 @@
 
 json.extract! @video, :id, :title, :description, :author_id
 json.set! :author, @video.author.slice(:id, :username)
-json.videoUrl @video.video.attached? ? url_for(@video.video) : ni
+json.videoUrl @video.video.attached? ? url_for(@video.video) : nil

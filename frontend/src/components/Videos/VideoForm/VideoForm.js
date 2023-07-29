@@ -23,19 +23,31 @@ export default function VideoForm() {
   const formType = videoId ? "Update" : "Upload";
   const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    console.log(video);
+  // useEffect(() => {
+  //   console.log(video);
 
+  //   if (videoId) {
+  //     dispatch(fetchVideo(videoId));
+  //     if (video) {
+  //       setTitle(video.title);
+  //       setDescription(video.description);
+  //     }
+  //   }
+  // }, [videoId]);
+
+  // console.log(useDispatch());
+  useEffect(() => {
     if (videoId) {
       dispatch(fetchVideo(videoId));
-      if (video) {
-        setTitle(video.title);
-        setDescription(video.description);
-      }
     }
-  }, [videoId]);
+  }, [videoId, dispatch]);
 
-  console.log(useDispatch());
+  useEffect(() => {
+    if (video) {
+      setTitle(video.title);
+      setDescription(video.description);
+    }
+  }, [video]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -45,7 +57,7 @@ export default function VideoForm() {
       setTitleError("Title is a required field.");
       errors = true;
     } else if (title.trim().length > 50) {
-      setTitleError("Title must be less than 20 characters.");
+      setTitleError("Title must be less than 50 characters.");
       errors = true;
     } else {
       setTitleError(null);
@@ -72,7 +84,6 @@ export default function VideoForm() {
         setMessage(`${formType} Successful!`);
         setTitle("");
         setDescription("");
-
       } catch (err) {
         setMessage(`${formType} Failed!`);
       }
@@ -115,6 +126,8 @@ export default function VideoForm() {
             )}
             <div>{message}</div>
           </label>
+
+          <input type="file" />
           <input type="submit" value={`${formType} Video`} />
         </form>
       </div>
