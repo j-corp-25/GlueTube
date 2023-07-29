@@ -9,7 +9,7 @@ require "open-uri"
 # Examples:
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-require 'open-uri'
+
 
 ActiveRecord::Base.transaction do
   puts "Destroying tables..."
@@ -24,6 +24,9 @@ ActiveRecord::Base.transaction do
 
   puts "Creating users..."
 
+  # Create videos for demo user
+  puts "creating video for demo user..."
+
   demo_user = User.create!(
     username: 'Demo-lition',
     email: 'demo@user.io',
@@ -32,21 +35,23 @@ ActiveRecord::Base.transaction do
     last_name: 'User'
   )
 
-  # Create videos for demo user
-  3.times do |i|
-    video = Video.create!({
-      title: Faker::Book.title,
-      description: Faker::Lorem.paragraph,
-      author_id: demo_user.id
-    })
-    video.video.attach(
-      io: URI.parse("https://my-gluetube-seeds.s3.amazonaws.com/video_#{i + 1}.mp4").open,
-      filename: "video_#{i + 1}.mp4"
-    )
-  end
+  video = Video.create!({
+    title: Faker::Book.title,
+    description: Faker::Lorem.paragraph,
+    author_id: demo_user.id
+  })
+  video.video.attach(
+    io: URI.parse("https://my-gluetube-seeds.s3.amazonaws.com/video_1.mp4").open,
+    filename: "video_1.mp4"
+  )
 
   # More users
-  3.times do
+  puts "Creating more users and videos..."
+
+  # Set a video index counter
+  video_index = 10
+
+  4.times do |i|  # This will create 5 more users after the demo user, for a total of 6 users
     user = User.create!({
       username: Faker::Internet.unique.username(specifier: 3),
       email: Faker::Internet.unique.email,
@@ -56,17 +61,16 @@ ActiveRecord::Base.transaction do
     })
 
     # Create videos for each user
-    2.times do |i|
-      video = Video.create!({
-        title: Faker::Book.title,
-        description: Faker::Lorem.paragraph,
-        author_id: user.id
-      })
-      video.video.attach(
-        io: URI.parse("https://my-gluetube-seeds.s3.amazonaws.com/video_#{i + 1}.mp4").open,
-        filename: "video_#{i + 1}.mp4"
-      )
-    end
+    video = Video.create!({
+      title: Faker::Book.title,
+      description: Faker::Lorem.paragraph,
+      author_id: user.id
+    })
+    video.video.attach(
+      io: URI.parse("https://my-gluetube-seeds.s3.amazonaws.com/video_#{video_index}.mp4").open,
+      filename: "video_#{video_index}.mp4"
+    )
+    video_index += 1  # Increase the video index by 1 after attaching a video
   end
 
   puts "Done!"

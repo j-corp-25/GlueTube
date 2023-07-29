@@ -1,14 +1,23 @@
 class Api::VideosController < ApplicationController
   before_action :require_login, only: [:create, :update, :destroy]
 
+  # def index
+  #   @videos = Video.includes(:author).all
+  #   render :index
+  # end
+
   def index
-    @videos = Video.includes(:author).all
+    @videos = Video.all.sort { |a,b| b.created_at <=> a.created_at }
     render :index
   end
 
 
+  # def show
+  #   @video = Video.includes(:author).find(params[:id])
+  #   render :show
+  # end
   def show
-    @video = Video.includes(:author).find(params[:id])
+    @video = Video.find(params[:id])
     render :show
   end
 

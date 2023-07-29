@@ -32,6 +32,18 @@ const VideoShow = () => {
     dispatch(fetchVideos());
   }, [dispatch]);
 
+  // useEffect(() => {
+  //   if (!video) {
+  //     dispatch(fetchVideo(videoId));
+  //   }
+  // }, [dispatch, videoId, video]);
+
+  // useEffect(() => {
+  //   if (!videos.length) {
+  //     dispatch(getVideos());
+  //   }
+  // }, [dispatch, videos]);
+
   function handleDelete(e) {
     e.preventDefault();
     dispatch(deleteVideo(video.id));
@@ -61,7 +73,7 @@ const VideoShow = () => {
                 width="100%"
                 height="100%"
                 controls={true}
-                url={video.url}
+                url={video.videoUrl}
               />
             </div>
             <div className="video-information">
@@ -93,7 +105,7 @@ const VideoShow = () => {
               width="100%"
               height="100%"
               controls={true}
-              url={video.url}
+              url={video.videoUrl}
             />
           </div>
           <div className="video-information">

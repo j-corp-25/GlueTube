@@ -199,7 +199,7 @@ img.videoThumbnail {
 }
 
 .video-title {
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   padding-right: 24px;
   color: white;
   height: -moz-fit-content;

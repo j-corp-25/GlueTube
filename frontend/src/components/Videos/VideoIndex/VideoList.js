@@ -20,6 +20,12 @@ const VideoList = () => {
       dispatch(fetchVideos());
   }, [dispatch])
 
+  // useEffect(() => {
+  //   if (!videos.length) {
+  //     dispatch(getVideos());
+  //   }
+  // }, [dispatch, videos]);
+
   return (
     <section className="video-grid">
         {videos.map(video => <VideoShowItem key={video.id} video={video} />)}

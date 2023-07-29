@@ -22,7 +22,7 @@ function VideoShowItem({ video }) {
     <div className="video-container">
       <div className="video-thumbnail" href="#">
         <Link to={`/videos/${video.id}`}>
-          <ReactPlayer url={video.url} />
+          <ReactPlayer url={video.videoUrl} />
         </Link>
       </div>
       <div className="video-details">
