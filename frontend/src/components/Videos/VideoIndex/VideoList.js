@@ -16,15 +16,15 @@ const VideoList = () => {
   const dispatch = useDispatch();
   const videos = useSelector(getVideos);
 
-  useEffect(() => {
-      dispatch(fetchVideos());
-  }, [dispatch])
-
   // useEffect(() => {
-  //   if (!videos.length) {
-  //     dispatch(getVideos());
-  //   }
-  // }, [dispatch, videos]);
+  //     dispatch(fetchVideos());
+  // }, [dispatch])
+
+  useEffect(() => {
+    if (!videos.length) {
+      dispatch(getVideos());  //uncomment this line if you are going to reload because it will crash everything.
+    }
+  }, [dispatch, videos]);
 
   return (
     <section className="video-grid">

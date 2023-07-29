@@ -24,25 +24,25 @@ const VideoShow = () => {
 
   const limitedVideos = videos.slice(0, 15);
 
-  useEffect(() => {
-    dispatch(fetchVideo(videoId));
-  }, [dispatch, videoId]);
-
-  useEffect(() => {
-    dispatch(fetchVideos());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchVideo(videoId));
+  // }, [dispatch, videoId]);
 
   // useEffect(() => {
-  //   if (!video) {
-  //     dispatch(fetchVideo(videoId));
-  //   }
-  // }, [dispatch, videoId, video]);
+  //   dispatch(fetchVideos());
+  // }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (!videos.length) {
-  //     dispatch(getVideos());
-  //   }
-  // }, [dispatch, videos]);
+  useEffect(() => {
+    if (!video) {
+      dispatch(fetchVideo(videoId));    //this will stop constantly fetching the videos for the index page when the page loads, but you need  uncomment the functions above to do this if you want to fetch the videos for the index page when the page loads
+    }
+  }, [dispatch, videoId, video]);
+
+  useEffect(() => {
+    if (!videos.length) {
+      dispatch(getVideos());
+    }
+  }, [dispatch, videos]);
 
   function handleDelete(e) {
     e.preventDefault();
