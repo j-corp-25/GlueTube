@@ -181,6 +181,7 @@ GEM
       zeitwerk (~> 2.5)
     rake (13.0.6)
     rouge (4.1.2)
+    rufo (0.16.2)
     thor (1.2.2)
     timeout (0.4.0)
     tzinfo (2.0.6)
@@ -208,6 +209,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 5.0)
   rails (~> 7.0.6)
+  rufo
   tzinfo-data
 
 RUBY VERSION
