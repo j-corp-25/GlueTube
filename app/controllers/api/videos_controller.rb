@@ -1,4 +1,5 @@
 class Api::VideosController < ApplicationController
+  wrap_parameters include: Video.attribute_names + [:video]
   before_action :require_login, only: [:create, :update, :destroy]
 
   # def index
@@ -7,10 +8,9 @@ class Api::VideosController < ApplicationController
   # end
 
   def index
-    @videos = Video.all.sort { |a,b| b.created_at <=> a.created_at }
+    @videos = Video.all.sort { |b, a| b.created_at <=> a.created_at }
     render :index
   end
-
 
   # def show
   #   @video = Video.includes(:author).find(params[:id])
@@ -51,6 +51,6 @@ class Api::VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:title, :description)
+    params.require(:video).permit(:title, :description, :video)
   end
 end

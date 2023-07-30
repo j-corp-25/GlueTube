@@ -43,11 +43,10 @@ export const fetchVideo = (videoId) => async (dispatch) => {
     })
 }
 
-export const createVideo = (video) => async (dispatch) => {
+export const createVideo = (formData) => async (dispatch) => {
     const response = await csrfFetch("/api/videos", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(video),
+      body: formData,
     });
     if (parseInt(response.headers.get("Content-Length")) > 0) {
       const data = await response.json();
@@ -60,11 +59,10 @@ export const createVideo = (video) => async (dispatch) => {
     return response;
   };
 
-  export const updateVideo = (video) => async (dispatch) => {
-    const response = await csrfFetch(`/api/videos/${video.id}`, {
+  export const updateVideo = (formData) => async (dispatch) => {
+    const response = await csrfFetch(`/api/videos/${formData.get("video[id]")}`, {
       method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(video),
+      body: formData,
     });
 
     if (parseInt(response.headers.get("Content-Length")) > 0) {

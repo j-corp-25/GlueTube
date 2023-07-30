@@ -22,6 +22,7 @@ export default function VideoForm() {
   const [descriptionError, setDescriptionError] = useState(null);
   const formType = videoId ? "Update" : "Upload";
   const [message, setMessage] = useState("");
+  const [videoFile, setVideoFile] = useState(null);
 
   // useEffect(() => {
   //   console.log(video);
@@ -51,6 +52,7 @@ export default function VideoForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
     let errors = false;
 
     if (title.trim() === "") {
@@ -62,6 +64,11 @@ export default function VideoForm() {
     } else {
       setTitleError(null);
     }
+    
+    if (videoFile === null) {
+      setMessage("Please select a video file.");
+      errors = true;
+    }
 
     if (description.trim() === "") {
       setDescriptionError("Description is required.");
@@ -71,15 +78,17 @@ export default function VideoForm() {
     }
 
     if (!errors) {
+      const formData = new FormData();
+      formData.append("video[title]", title);
+      formData.append("video[description]", description);
+      formData.append("video[video]", videoFile);
+
       try {
         if (formType === "Update") {
-          await dispatch(
-            updateVideo({ id: videoId, title: title, description: description })
-          );
+          formData.append("video[id]", videoId);
+          await dispatch(updateVideo(formData));
         } else {
-          await dispatch(
-            createVideo({ title: title, description: description })
-          );
+          await dispatch(createVideo(formData));
         }
         setMessage(`${formType} Successful!`);
         setTitle("");
@@ -89,7 +98,6 @@ export default function VideoForm() {
       }
     }
   }
-
   return (
     <div className="video-page-form-container">
       <div className="video-form-container">
@@ -127,7 +135,10 @@ export default function VideoForm() {
             <div>{message}</div>
           </label>
 
-          <input type="file" />
+          <input
+            type="file"
+            onChange={(e) => setVideoFile(e.target.files[0])}
+          />
           <input type="submit" value={`${formType} Video`} />
         </form>
       </div>

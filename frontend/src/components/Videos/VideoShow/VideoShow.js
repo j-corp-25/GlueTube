@@ -34,7 +34,8 @@ const VideoShow = () => {
 
   useEffect(() => {
     if (!video) {
-      dispatch(fetchVideo(videoId));    //this will stop constantly fetching the videos for the index page when the page loads, but you need  uncomment the functions above to do this if you want to fetch the videos for the index page when the page loads
+      dispatch(fetchVideo(videoId));
+        //this will stop constantly fetching the videos for the index page when the page loads, but you need  uncomment the functions above to do this if you want to fetch the videos for the index page when the page loads
     }
   }, [dispatch, videoId, video]);
 
