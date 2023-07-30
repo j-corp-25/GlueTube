@@ -64,7 +64,7 @@ export default function VideoForm() {
     } else {
       setTitleError(null);
     }
-    
+
     if (videoFile === null) {
       setMessage("Please select a video file.");
       errors = true;
