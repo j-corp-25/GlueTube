@@ -6,7 +6,7 @@ ruby "3.1.1"
 gem "jbuilder"
 gem "faker"
 gem "bcrypt"
-
+gem "sprockets"
 
 gem "aws-sdk-s3"
 
