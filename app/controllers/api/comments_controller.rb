@@ -1,7 +1,6 @@
 class Api::CommentsController < ApplicationController
-
   def index
-    @comments = Comment.all.sort_by(&:created_at).reverse
+    @comments = Comment.where(parent_id: nil).sort_by(&:created_at).reverse
     render :index
   end
 
@@ -10,7 +9,7 @@ class Api::CommentsController < ApplicationController
     @comment = @video.comments.build(comment_params)
     @comment.author = current_user
     if @comment.save
-      render :show
+      render json: @comment
     else
       render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
     end
@@ -19,17 +18,17 @@ class Api::CommentsController < ApplicationController
   def update
     @comment = current_user.comments.find(params[:id])
 
-    if @video.update(comment_params)
-      render :show
+    if @comment.update(comment_params)
+      render json: @comment
     else
-      render json: { errors: @video.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @comment = current_user.comments.find(params[:id])
     @comment.destroy
-    render :show
+    head :no_content
   end
 
   private
@@ -37,5 +36,4 @@ class Api::CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:body, :parent_id)
   end
-
 end
