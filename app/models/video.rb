@@ -17,7 +17,12 @@ class Video < ApplicationRecord
   has_one_attached :video
 
   has_many :comments, dependent: :destroy
-  
+
+  has_many :likes
+  has_many :liking_authors, through: :likes, source: :author
+  has_many :dislikes
+  has_many :disliking_authors, through: :dislikes, source: :author
+
 
   validates :title, presence: true
   validates :description, presence: true

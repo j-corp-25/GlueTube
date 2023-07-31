@@ -9,8 +9,10 @@ Rails.application.routes.draw do
     resources :videos do
       resources :comments, only: [:index, :create]
     end
-    resources :comments, only: [:update, :destroy]
-    resource :session, only: [:create, :show, :destroy]
+    resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy, :update]
+    resources :dislikes, only: [:create, :destroy]
+    resource :session, only: [:create, :show, :destroy, :index]
   end
   get '*path', to: "static_pages#frontend_index"
 

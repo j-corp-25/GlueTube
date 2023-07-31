@@ -1,4 +1,5 @@
 class Api::CommentsController < ApplicationController
+   
   def index
     @comments = Comment.where(parent_id: nil).sort_by(&:created_at).reverse
     render :index

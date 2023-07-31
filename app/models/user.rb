@@ -15,6 +15,11 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_many :likes, foreign_key: 'author_id'
+  has_many :liked_videos, through: :likes, source: :video
+  has_many :dislikes, foreign_key: 'author_id'
+  has_many :disliked_videos, through: :dislikes, source: :video
+
 
 
   has_many :videos,
