@@ -8,7 +8,7 @@ class ApplicationController < ActionController::API
   protect_from_forgery with: :exception
   before_action :snake_case_params, :attach_authenticity_token
 
-  protect_from_forgery unless: -> { request.format.json? }
+  # protect_from_forgery unless: -> { request.format.json? }
 
 
   def current_user
