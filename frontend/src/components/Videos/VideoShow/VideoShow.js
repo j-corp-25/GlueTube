@@ -11,6 +11,9 @@ import { getVideos, fetchVideos } from "../../../store/videos";
 import * as sessionActions from "../../../store/session";
 import { Link } from "react-router-dom";
 import ReactPlayer from "react-player";
+import Comments from "../../Comments/Comments";
+import { clearComments } from "../../../store/comments";
+import { fetchComments } from "../../../store/comments";
 
 import { useHistory } from "react-router-dom";
 
@@ -20,30 +23,25 @@ const VideoShow = () => {
   const videos = useSelector(getVideos);
   const video = useSelector((state) => getVideo(videoId)(state));
   const sessionUser = useSelector((state) => state.session.user);
+  const comments = useSelector(state => state.comments);
+
   const history = useHistory();
 
   const limitedVideos = videos.slice(0, 15);
 
-  // useEffect(() => {
-  //   dispatch(fetchVideo(videoId));
-  // }, [dispatch, videoId]);
+  useEffect(() => {
+    dispatch(fetchVideo(videoId));
+  }, [dispatch, videoId]);
 
-  // useEffect(() => {
-  //   dispatch(fetchVideos());
-  // }, [dispatch]);
 
   useEffect(() => {
-    if (!video) {
-      dispatch(fetchVideo(videoId));
-        //this will stop constantly fetching the videos for the index page when the page loads, but you need  uncomment the functions above to do this if you want to fetch the videos for the index page when the page loads
-    }
-  }, [dispatch, videoId, video]);
+    dispatch(fetchVideos());
+  }, [dispatch]);
 
   useEffect(() => {
-    if (!videos.length) {
-      dispatch(getVideos());
-    }
-  }, [dispatch, videos]);
+    dispatch(clearComments());
+    dispatch(fetchComments(videoId));
+  }, [dispatch, videoId]);
 
   function handleDelete(e) {
     e.preventDefault();
@@ -55,11 +53,13 @@ const VideoShow = () => {
     return <div>Loading...</div>; // show a loading state
   }
 
+
   // console.log(sessionUser?.id);
   // console.log(video.authorId);
 
   if (sessionUser?.id === video.authorId) {
     return (
+      <>
       <div className="main-show-page">
         <NavBar />
         <div className="video-page-container-show">
@@ -93,7 +93,11 @@ const VideoShow = () => {
             </div>
           </div>
         </div>
+        <Comments videoId={videoId} />
       </div>
+
+
+      </>
     );
   }
   return (
@@ -122,12 +126,24 @@ const VideoShow = () => {
             {limitedVideos.map((video) => (
               <VideoShowItem key={video.id} video={video} />
             ))}
-
           </div>
         </div>
       </div>
+      <Comments videoId={videoId} />
     </div>
   );
 };
 
 export default VideoShow;
+    // useEffect(() => {
+    //   if (!video) {
+    //     dispatch(fetchVideo(videoId));
+    //   }
+    // }, [dispatch, videoId, video]);
+
+    //this will stop constantly fetching the videos for the index page when the page loads, but you need  uncomment the functions above to do this if you want to fetch the videos for the index page when the page loads
+    // useEffect(() => {
+    //   if (!videos.length) {
+    //     dispatch(getVideos());
+    //   }
+    // }, [dispatch, videos]);
