@@ -93,14 +93,13 @@ const videosReducer = (state = {}, action) => {
     switch(action.type){
         case RECEIVE_VIDEO:
 
-            return { ...state, [action.video.id]: action.video };
+            return { ...state, ...action.video.video};
 
         case RECEIVE_VIDEOS:
 
-            const newState = {};
-            for (let video of action.videos) {
-                newState[video.id] = video;
-            }
+            const newState = {...state, ...action.videos.videos};
+
+
             return newState;
 
         case REMOVE_VIDEO:

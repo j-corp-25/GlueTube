@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { RECEIVE_VIDEO } from "./videos";
 
 export const RECEIVE_COMMENTS = "comments/RECEIVE_COMMENTS";
 
@@ -117,6 +118,11 @@ export const commentsReducer = (state = {}, action) => {
     }
     case CLEAR_COMMENTS: {
       return {};
+    }
+    case RECEIVE_VIDEO: {
+      newState = { ...newState, ...action.video.comments };
+      return newState;
+
     }
     default:
       return state;

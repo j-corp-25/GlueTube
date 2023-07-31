@@ -90,9 +90,9 @@ const Comments = ({ videoId }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const [newComment, setNewComment] = useState("");
 
-  useEffect(() => {
-    dispatch(fetchComments(videoId));
-  }, [dispatch, videoId]);
+  // useEffect(() => {
+  //   dispatch(fetchComments(videoId));
+  // }, [dispatch, videoId]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

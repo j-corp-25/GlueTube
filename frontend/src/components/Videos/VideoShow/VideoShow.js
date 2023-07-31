@@ -23,7 +23,7 @@ const VideoShow = () => {
   const videos = useSelector(getVideos);
   const video = useSelector((state) => getVideo(videoId)(state));
   const sessionUser = useSelector((state) => state.session.user);
-  const comments = useSelector(state => state.comments);
+  // const comments = useSelector(state => state.comments);
 
   const history = useHistory();
 
@@ -34,14 +34,14 @@ const VideoShow = () => {
   }, [dispatch, videoId]);
 
 
-  useEffect(() => {
-    dispatch(fetchVideos());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchVideos());
+  // }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(clearComments());
-    dispatch(fetchComments(videoId));
-  }, [dispatch, videoId]);
+  // useEffect(() => {
+  //   dispatch(clearComments());
+  //   dispatch(fetchComments(videoId));
+  // }, [dispatch, videoId]);
 
   function handleDelete(e) {
     e.preventDefault();

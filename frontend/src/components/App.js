@@ -15,7 +15,6 @@ function App() {
 
   useEffect(() => {
     dispatch(sessionActions.restoreSession());
-    dispatch(fetchUsers()); // Add this line
   }, [dispatch]);
 
   return (
