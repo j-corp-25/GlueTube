@@ -41,17 +41,17 @@ ActiveRecord::Base.transaction do
     author_id: demo_user.id
   })
   video.video.attach(
-    io: URI.parse("https://my-gluetube-seeds.s3.amazonaws.com/video_1.mp4").open,
-    filename: "video_1.mp4"
+    io: URI.parse("https://my-gluetube-seeds.s3.amazonaws.com/video_11.mp4").open,
+    filename: "video11_.mp4"
   )
 
   # More users
   puts "Creating more users and videos..."
 
   # Set a video index counter
-  video_index = 10
+  video_index = 14
 
-  4.times do |i|  # This will create 5 more users after the demo user, for a total of 6 users
+  2.times do |i|  # This will create 5 more users after the demo user, for a total of 6 users
     user = User.create!({
       username: Faker::Internet.unique.username(specifier: 3),
       email: Faker::Internet.unique.email,

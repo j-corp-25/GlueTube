@@ -81,7 +81,7 @@ export const commentsReducer = (state = {}, action) => {
   let newState = { ...state };
   switch (action.type) {
     case RECEIVE_COMMENTS: {
-      newState = { ...newState, ...action.comments };
+      newState = {...action.comments };
       return newState;
     }
     case RECEIVE_COMMENT: {
@@ -94,7 +94,7 @@ export const commentsReducer = (state = {}, action) => {
     }
 
     case RECEIVE_VIDEO: {
-      newState = { ...newState, ...action.video.comments };
+      newState = {...action.video.comments };
       return newState;
     }
     default:

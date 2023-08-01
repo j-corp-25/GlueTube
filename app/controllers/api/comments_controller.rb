@@ -1,8 +1,8 @@
 class Api::CommentsController < ApplicationController
 
   def index
-    @comments = Comment.all.order(created_at: :desc)
-    render :index
+    @comments = Comment.all.find(params[:video_id])
+    render 'api/videos/show'
   end
 
   def create
@@ -13,7 +13,8 @@ class Api::CommentsController < ApplicationController
     @comment = @video.comments.new(comment_params)
     @comment.author = current_user
     if @comment.save
-      render json: @comment
+      render json: @comment, status: :created
+      render 'api/videos/show'
     else
       render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
     end
