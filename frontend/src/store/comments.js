@@ -7,12 +7,6 @@ export const RECEIVE_COMMENT = "comments/RECEIVE_COMMENT";
 
 export const DELETE_COMMENT = "comments/DELETE_COMMENT";
 
-export const CLEAR_COMMENTS = "comments/CLEAR_COMMENTS";
-
-export const clearComments = () => ({
-  type: CLEAR_COMMENTS
-});
-
 export const getComment = (commentId) => (state) => {
   return state.comments ? state.comments[commentId] : null;
 };
@@ -36,30 +30,13 @@ export const fetchComment = (commentId) => async (dispatch) => {
   });
 };
 
-// export const createVideoComment = (videoId, comment) => async (dispatch) => {
-//   const response = await csrfFetch(`/api/videos/${videoId}/comments`, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(comment),
-//   });
-//   const data = await response.json();
-//   if (response.ok) {
-//     dispatch({
-//       type: RECEIVE_COMMENT,
-//       comment: data,
-//     });
-//   }
-//   return data;
-// };
 export const createVideoComment = (videoId, comment, userId) => async (dispatch) => {
   const response = await csrfFetch(`/api/videos/${videoId}/comments`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ ...comment, authorId: userId }),
+    body: JSON.stringify({ ...comment, author_id: userId }),
   });
   const data = await response.json();
   if (response.ok) {
@@ -70,7 +47,7 @@ export const createVideoComment = (videoId, comment, userId) => async (dispatch)
   }
   return data;
 };
-// POST   /api/videos/:video_id/comments(.:format)
+
 
 export const updateComment = (comment) => async (dispatch) => {
   const response = await csrfFetch(`/api/comments/${comment.id}`, {
@@ -87,8 +64,6 @@ export const updateComment = (comment) => async (dispatch) => {
   });
 };
 
-// api_comment PATCH  /api/comments/:id(.:format)   api/comments#update
-// PUT    /api/comments/:id(.:format)               api/comments#update
 export const deleteComment = (commentId) => async (dispatch) => {
   await csrfFetch(`/api/comments/${commentId}`, {
     method: "DELETE",
@@ -116,13 +91,10 @@ export const commentsReducer = (state = {}, action) => {
       delete newState[action.commentId];
       return newState;
     }
-    case CLEAR_COMMENTS: {
-      return {};
-    }
+
     case RECEIVE_VIDEO: {
       newState = { ...newState, ...action.video.comments };
       return newState;
-
     }
     default:
       return state;

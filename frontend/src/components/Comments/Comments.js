@@ -1,34 +1,3 @@
-// import React from "react";
-// import Avatar from "../NavBar/NavBar";
-// import "./Comments.css";
-// import { fetchComments, getComments } from "../../store/comments";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useEffect } from "react";
-
-// const Comments = () => {
-//     const dispatch = useDispatch();
-//     const comments = useSelector(getComments);
-
-//     useEffect(() => {
-//         dispatch(fetchComments());
-//     }, [])
-
-//   return (
-//     <div className="comment-container-show-page">
-//       <h1>Comments</h1>
-//       <div className="comment-container-show-page-comments">
-//         <div className="comment-container-show-page-comments-comment">
-//             {/* <Avatar /> */}
-//             <form>
-//             <input type="text" placeholder="Write a comment..." />
-//             </form>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Comments;
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -50,7 +19,7 @@ const Comment = ({ comment, onEdit, onDelete }) => {
   function handleEdit() {
     return (e) => {
       e.preventDefault();
-      dispatch(updateComment(comment.id, editText)); // <-- Use comment.id and editText
+      dispatch(updateComment(comment.id, { body: editText })); // Updated this line
       setIsEditing(false); // <-- Switch off the editing mode after saving
     };
   }
@@ -72,14 +41,14 @@ const Comment = ({ comment, onEdit, onDelete }) => {
             value={editText}
             onChange={(e) => setEditText(e.target.value)}
           />
-          <button onClick={handleEdit}>Save</button>
+          <button onClick={handleEdit()}>Save</button>
           <button onClick={() => setIsEditing(false)}>Cancel</button>
         </>
       ) : (
         <>
           <p className="comment">{comment.body}</p>
           <button onClick={() => setIsEditing(true)}>Edit</button>
-          <button onClick={() => handleDelete(comment.id)}>Delete</button> 
+          <button onClick={() => handleDelete(comment.id)}>Delete</button>
         </>
       )}
     </div>

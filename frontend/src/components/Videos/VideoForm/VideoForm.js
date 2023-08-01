@@ -25,19 +25,6 @@ export default function VideoForm() {
   const [message, setMessage] = useState("");
   const [videoFile, setVideoFile] = useState(null);
 
-  // useEffect(() => {
-  //   console.log(video);
-
-  //   if (videoId) {
-  //     dispatch(fetchVideo(videoId));
-  //     if (video) {
-  //       setTitle(video.title);
-  //       setDescription(video.description);
-  //     }
-  //   }
-  // }, [videoId]);
-
-  // console.log(useDispatch());
   useEffect(() => {
     if (videoId) {
       dispatch(fetchVideo(videoId));

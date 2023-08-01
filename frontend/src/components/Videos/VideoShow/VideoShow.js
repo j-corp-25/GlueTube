@@ -34,15 +34,6 @@ const VideoShow = () => {
     dispatch(fetchVideo(videoId));
   }, [dispatch, videoId]);
 
-  // useEffect(() => {
-  //   dispatch(fetchVideos());
-  // }, [dispatch]);
-
-  // useEffect(() => {
-  //   dispatch(clearComments());
-  //   dispatch(fetchComments(videoId));
-  // }, [dispatch, videoId]);
-
   function handleDelete(e) {
     e.preventDefault();
     dispatch(deleteVideo(video.id));
@@ -50,11 +41,8 @@ const VideoShow = () => {
   }
 
   if (!video) {
-    return <div>Loading...</div>; // show a loading state
+    return <div>Loading...</div>;
   }
-
-  // console.log(sessionUser?.id);
-  // console.log(video.authorId);
 
   if (sessionUser?.id === video.authorId) {
     return (
