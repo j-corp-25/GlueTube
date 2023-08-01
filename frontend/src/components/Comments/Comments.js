@@ -15,6 +15,8 @@ const Comment = ({ comment, onEdit, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(comment.body);
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
+  const [newComment, setNewComment] = useState("");
 
   function handleEdit() {
     return (e) => {
@@ -47,8 +49,12 @@ const Comment = ({ comment, onEdit, onDelete }) => {
       ) : (
         <>
           <p className="comment">{comment.body}</p>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
-          <button onClick={() => handleDelete(comment.id)}>Delete</button>
+          {sessionUser.id === comment.author_id && (
+            <>
+              <button onClick={() => setIsEditing(true)}>Edit</button>
+              <button onClick={() => handleDelete(comment.id)}>Delete</button>
+            </>
+          )}
         </>
       )}
     </div>
@@ -60,6 +66,7 @@ const Comments = ({ videoId }) => {
   const comments = useSelector((state) => getComments(state));
   const sessionUser = useSelector((state) => state.session.user);
   const [newComment, setNewComment] = useState("");
+  const comment = useSelector((state) => getComment(state, videoId))
 
   const handleSubmit = (e) => {
     e.preventDefault();
