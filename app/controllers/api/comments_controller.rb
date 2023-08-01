@@ -26,7 +26,7 @@ class Api::CommentsController < ApplicationController
 
     if @comment.author_id == current_user.id
       if @comment.update(comment_params)
-        render :show
+        render json: @comment.as_json # render updated comment as JSON
       else
         render json: @comment.errors.full_messages, status: 422
       end
@@ -34,6 +34,8 @@ class Api::CommentsController < ApplicationController
       render json: ['You do not have permission to edit this comment'], status: 403
     end
   end
+
+
 
   def destroy
     @comment = Comment.find_by(id: params[:id])

@@ -8,22 +8,20 @@ import {
   getComment,
 } from "../../store/comments";
 import "./Comments.css";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { updateVideo } from "../../store/videos";
 
 const Comment = ({ comment, onEdit, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(comment.body);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [newComment, setNewComment] = useState("");
 
-  function handleEdit() {
-    return (e) => {
-      e.preventDefault();
-      dispatch(updateComment(comment.id, { body: editText })); // Updated this line
-      setIsEditing(false); // <-- Switch off the editing mode after saving
-    };
+  function handleEdit(e) {
+    e.preventDefault();
+    console.log("handleEdit");
+    console.log(comment);
+    console.log(editText);
+    dispatch(updateComment(comment.id, { body: editText })); // Updated this line
+    setIsEditing(false); // <-- Switch off the editing mode after saving
   }
 
   const handleDelete = (id) => {
@@ -43,7 +41,7 @@ const Comment = ({ comment, onEdit, onDelete }) => {
             value={editText}
             onChange={(e) => setEditText(e.target.value)}
           />
-          <button onClick={handleEdit()}>Save</button>
+          <button onClick={(e) => handleEdit(e)}>Save</button>
           <button onClick={() => setIsEditing(false)}>Cancel</button>
         </>
       ) : (
@@ -66,7 +64,7 @@ const Comments = ({ videoId }) => {
   const comments = useSelector((state) => getComments(state));
   const sessionUser = useSelector((state) => state.session.user);
   const [newComment, setNewComment] = useState("");
-  const comment = useSelector((state) => getComment(state, videoId))
+
 
   const handleSubmit = (e) => {
     e.preventDefault();

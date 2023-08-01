@@ -49,11 +49,12 @@ export const createVideoComment = (videoId, comment, userId) => async (dispatch)
 };
 
 
-export const updateComment = (comment) => async (dispatch) => {
-  const response = await csrfFetch(`/api/comments/${comment.id}`, {
-    method: "PATCH",
+export const updateComment = (id, comment) => async (dispatch) => {
+  console.log('updateComment action', { id, comment }); // <-- add logging here
+  const response = await csrfFetch(`/api/comments/${id}`, {
+    method: 'PATCH',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(comment),
   });
