@@ -1,12 +1,6 @@
 class Api::CommentsController < ApplicationController
 
-  def index
-    @comments = Comment.all.find(params[:video_id])
-    render 'api/videos/show'
-  end
-
   def create
-
     @video = Video.find(params[:video_id])
     return render json: { errors: ['Video not found'] }, status: :not_found unless @video
 

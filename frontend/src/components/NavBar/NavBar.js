@@ -15,6 +15,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
+
   const demoLogin = () => {
     const demoUser = {
       credential: "Demo-lition",

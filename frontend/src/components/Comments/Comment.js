@@ -2,21 +2,66 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteComment, updateComment } from "../../store/comments";
 import "./Comments.css";
+import Avatar from "react-avatar";
+import { getComment } from "../../store/comments";
+import { useParams } from "react-router-dom";
 
-const Comment = () => {
+const Comment = ({videoId}) => {
+  const dispatch = useDispatch();
+  const { commentId } = useParams();
+  console.log("🚀 ~ file: Comment.js:12 ~ Comment ~ commentId:", commentId)
   const comments = useSelector((state) => Object.values(state.comments));
+  console.log("🚀 ~ file: Comment.js:STATE ~ Comment ~ comments:", comments);
+  const sessionUser = useSelector((state) => state.session.user);
+  console.log("🚀 ~ file: Comment.js:10 ~ Comment ~ sessionUser:", sessionUser);
+  const comment = useSelector((state) => getComment(comments.commentId)(state));
+  console.log("🚀 ~ file: Comment.js:HERE ~ Comment ~ comment:", comment);
+  const video = useSelector((state) => state.videos[videoId]);
+  console.log("🚀 ~ file: Comment.js:19 ~ Comment ~ video:", video)
+
+  const handleDelete = (commentId) => (e) => {
+    e.preventDefault();
+    dispatch(deleteComment(commentId));
+  };
 
   return (
-    <div className="comment-container-show-page">
-      <h1 className="comment-title">Comments</h1>
-      {comments.map((comment) => (
-        <div key={comment.id} className="comment-container-show-page-comments">
-          <p>{comment.body}</p>
-          <p>Author: {comment.author}</p>
-          {/* Edit and Delete buttons can be added here if needed */}
-        </div>
-      ))}
-    </div>
+    <>
+      <div className="comment-container-show-page">
+        <h1 className="comment-title">Comments</h1>
+        {comments.map((comment) => (
+          <div
+            key={comment.id}
+            className="comment-container-show-page-comments"
+          >
+            <p>{comment.body}</p>
+
+            <div>
+              <h2>{comment.body}</h2>
+              {sessionUser?.id === comment.authorId && (
+                <>
+                <button onClick={handleDelete(comment.id)}>Delete</button>
+                </>
+              )}
+            </div>
+
+            <div>
+              <Avatar
+                name={comment.author}
+                size="35"
+                round={true}
+                color={Avatar.getRandomColor("sitebase", [
+                  "red",
+                  "green",
+                  "blue",
+                ])}
+              />{" "}
+              Author: {comment.author}
+              <p>{comment.updatedAt}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 
@@ -32,18 +77,9 @@ export default Comment;
 //   dispatch(updateComment(updatedComment));
 // };
 
-// <div>
-//   <h2>{comment.body}</h2>
-//   {sessionUser?.id === comment.authorId && (
-//     <>
-//       <button onClick={handleUpdate}>Update</button>
-//       <button onClick={handleDelete}>Delete</button>
-//     </>
-//   )}
-// </div>
 // import { useDispatch, useSelector } from "react-redux";
 // import {
-  //   createVideoComment,
+//   createVideoComment,
 //   updateComment,
 //   deleteComment,
 //   getComments
