@@ -1,5 +1,5 @@
 class Api::CommentsController < ApplicationController
-   
+
   def index
     @comments = Comment.where(parent_id: nil).sort_by(&:created_at).reverse
     render :index
@@ -7,7 +7,7 @@ class Api::CommentsController < ApplicationController
 
   def create
     @video = Video.find(params[:video_id])
-    @comment = @video.comments.build(comment_params)
+    @comment = @video.comments.create(comment_params)
     @comment.author = current_user
     if @comment.save
       render json: @comment
@@ -28,29 +28,31 @@ class Api::CommentsController < ApplicationController
   # end
 
   def update
-    @comment = current_user.comments.find(params[:id])
-    # @comment = Comment.find(params[:id])
-    #testing with postman/
-
-
-    if @comment.update(comment_params)
-      render json: @comment
+    @comment = Comment.find_by(id: params[:id])
+    if @comment.author_id == current_user.id
+      if @comment.update(comment_params)
+        render :show
+      else
+        render json: @comment.errors.full_messages, status: 422
+      end
     else
-      render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
+      render json: ['You do not have permission to edit this comment'], status: 403
     end
   end
 
   def destroy
-    @comment = current_user.comments.find(params[:id])
-    # @comment = Comment.find(params[:id])
-    # /testing with postman/
-    @comment.destroy
-    head :no_content
+    @comment = Comment.find_by(id: params[:id])
+    if @comment.author_id == current_user.id
+      @comment.destroy
+      render :show
+    else
+      render json: ['You do not have permission to delete this comment'], status: 403
+    end
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :parent_id)
+    params.require(:comment).permit(:body)
   end
 end

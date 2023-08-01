@@ -1,9 +1,70 @@
 .comment-container-show-page {
-    height: 200px;
-    width: 50%;
-    border: 1px yellow solid;
-    position: absolute;
-    bottom: -200px;
-    left: 140px;
-    /* top: 100px; */
+  padding: 1vh;
+  width: 50vw;
+  display: flex;
+  /* height: -webkit-fill-available; */
+  flex-direction: column;
+  border: yello;
+  /* margin-left: 10vw; */
+  /* border: 1px yellow solid; */
+}
+
+.comment-title {
+  color: white;
+}
+
+.comment-container-show-page-comments {
+  /* width: 35vw; */
+  border-radius: 30px;
+  padding: 5px;
+  padding-left: 20px;
+  /* height: 5vh; */
+  border-start-end-radius: inherit;
+  border-end-end-radius: inherit;
+  border: 1px gray solid;
+  background: #30363d;
+  color: #ffffff;
+  border-top: none;
+  border-left: none;
+  border: none;
+  /* color: transparent; */
+  background-color: transparent;
+}
+
+.comment-container-show-page-comments-comment {
+  display: flex;
+  flex-direction: column;
+  /* justify-items: legacy; */
+  padding: 0px;
+}
+
+.comment-container-show-page-comments-comment form {
+  margin-bottom: 20px;
+}
+
+.comment-container-show-page-comments-comment input[type="text"] {
+  width: 100%;
+  color: darkgray;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+
+
+.comment-container {
+  padding-top: 20px;
+}
+
+p.comment {
+  /* border: 1px yellow solid; */
+  border: 1px gray solid;
+  /* padding-left: 10px; */
+  margin-top: 10px;
+  border-radius: 30px;
+  padding: 15px;
+}
+.submit-container {
+  display: none;
 }

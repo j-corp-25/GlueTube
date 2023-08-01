@@ -50,7 +50,7 @@ const NavBar = () => {
               </Link>
             </div>
           </div>
-
+{/* ========================================================================== */}
           <div className="nav-search-bar-container">
             <div className="search-bar-sub-container">
               <form className="search-bar">
@@ -71,6 +71,7 @@ const NavBar = () => {
               </form>
             </div>
           </div>
+{/* ========================================================================== */}
           <div className="right-nav">
             <div className="profile-icon">
               <Avatar

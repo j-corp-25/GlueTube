@@ -33,53 +33,55 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createVideoComment,
-  fetchComments,
+  updateComment,
+  deleteComment,
   getComments,
+  getComment,
 } from "../../store/comments";
-import Avatar from "../NavBar/NavBar";
 import "./Comments.css";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { updateVideo } from "../../store/videos";
 
-const Reply = ({ reply }) => (
-  <div>
-    <p>{reply.body}</p>
-  </div>
-);
-
-const Comment = ({ comment, videoId }) => {
-  const [isReplying, setIsReplying] = useState(false);
-  const [replyText, setReplyText] = useState("");
+const Comment = ({ comment, onEdit, onDelete }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editText, setEditText] = useState(comment.body);
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
 
-  const handleReplyClick = () => {
-    setIsReplying(true);
-  };
+  function handleEdit() {
+    return (e) => {
+      e.preventDefault();
+      dispatch(updateComment(comment.id, editText)); // <-- Use comment.id and editText
+      setIsEditing(false); // <-- Switch off the editing mode after saving
+    };
+  }
 
-  const handleReplySubmit = (e) => {
-    e.preventDefault();
-    dispatch(createVideoComment(videoId, { body: replyText, parent_id: comment.id }, sessionUser.id));
-    setReplyText("");
-    setIsReplying(false);
+  const handleDelete = (id) => {
+    if (id) {
+      dispatch(deleteComment(id));
+    } else {
+      console.error("Comment ID is undefined");
+    }
   };
 
   return (
-    <div className="comment">
-      <p>{comment.body}</p>
-      {isReplying && (
-        <form onSubmit={handleReplySubmit}>
+    <div className="comment-container">
+      {isEditing ? (
+        <>
           <input
             type="text"
-            placeholder="Write a reply..."
-            value={replyText}
-            onChange={(e) => setReplyText(e.target.value)}
+            value={editText}
+            onChange={(e) => setEditText(e.target.value)}
           />
-          <button type="submit">Submit Reply</button>
-        </form>
+          <button onClick={handleEdit}>Save</button>
+          <button onClick={() => setIsEditing(false)}>Cancel</button>
+        </>
+      ) : (
+        <>
+          <p className="comment">{comment.body}</p>
+          <button onClick={() => setIsEditing(true)}>Edit</button>
+          <button onClick={() => handleDelete(comment.id)}>Delete</button> 
+        </>
       )}
-      <button onClick={handleReplyClick}>Reply</button>
-      {comment.replies && comment.replies.map((reply) => (
-        <Reply key={reply.id} reply={reply} />
-      ))}
     </div>
   );
 };
@@ -90,19 +92,23 @@ const Comments = ({ videoId }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const [newComment, setNewComment] = useState("");
 
-  // useEffect(() => {
-  //   dispatch(fetchComments(videoId));
-  // }, [dispatch, videoId]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createVideoComment(videoId, { body: newComment }, sessionUser.id));
     setNewComment("");
   };
 
+  const handleEdit = (id, text) => {
+    dispatch(updateComment(id, { body: text }));
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteComment(id));
+  };
+
   return (
     <div className="comment-container-show-page">
-      <h1>Comments</h1>
+      <h1 className="comment-title">Comments</h1>
       <div className="comment-container-show-page-comments">
         <div className="comment-container-show-page-comments-comment">
           {sessionUser && (
@@ -113,11 +119,18 @@ const Comments = ({ videoId }) => {
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
               />
-              <button>Submit</button>
+              <button className="submit-container">Submit</button>
             </form>
           )}
-          {comments.map((comment) => (
-            <Comment key={comment.id} comment={comment} videoId={videoId} />
+          {Object.values(comments).map((comment) => (
+            <div key={comment.id}>
+              <Comment
+                comment={comment}
+                videoId={videoId}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+              />
+            </div>
           ))}
         </div>
       </div>

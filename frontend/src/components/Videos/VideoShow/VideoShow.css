@@ -12,7 +12,8 @@
 }
 
 .video-player-container {
-
+  width: 950px;
+  height: 535px;
 }
 
 .video-player {

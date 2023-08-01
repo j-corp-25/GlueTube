@@ -21,7 +21,8 @@ class User < ApplicationRecord
   has_many :disliked_videos, through: :dislikes, source: :video
 
 
-
+  has_many :comments, foreign_key: 'author_id', dependent: :destroy
+  
   has_many :videos,
   foreign_key: :author_id,
   class_name: 'Video',
