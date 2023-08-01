@@ -5,11 +5,14 @@ import "./Comments.css";
 import Avatar from "react-avatar";
 import { getComment } from "../../store/comments";
 import { useParams } from "react-router-dom";
+// import CommentForm from "./CommentForm";
+import { useState } from "react";
+import { createVideoComment } from "../../store/comments";
 
-const Comment = ({videoId}) => {
+const Comment = ({ videoId }) => {
   const dispatch = useDispatch();
   const { commentId } = useParams();
-  console.log("🚀 ~ file: Comment.js:12 ~ Comment ~ commentId:", commentId)
+  console.log("🚀 ~ file: Comment.js:12 ~ Comment ~ commentId:", commentId);
   const comments = useSelector((state) => Object.values(state.comments));
   console.log("🚀 ~ file: Comment.js:STATE ~ Comment ~ comments:", comments);
   const sessionUser = useSelector((state) => state.session.user);
@@ -17,17 +20,32 @@ const Comment = ({videoId}) => {
   const comment = useSelector((state) => getComment(comments.commentId)(state));
   console.log("🚀 ~ file: Comment.js:HERE ~ Comment ~ comment:", comment);
   const video = useSelector((state) => state.videos[videoId]);
-  console.log("🚀 ~ file: Comment.js:19 ~ Comment ~ video:", video)
+  console.log("🚀 ~ file: Comment.js:19 ~ Comment ~ video:", video);
+  const [isEditing, setIsEditing] = useState({});
+  const [newComment, setNewComment] = useState("");
 
   const handleDelete = (commentId) => (e) => {
     e.preventDefault();
     dispatch(deleteComment(commentId));
   };
 
+  const handleCreate = (e) => {
+    e.preventDefault();
+    dispatch(createVideoComment(videoId, { body: newComment }, sessionUser.id));
+    setNewComment("");
+  };
+
   return (
     <>
       <div className="comment-container-show-page">
         <h1 className="comment-title">Comments</h1>
+
+        <form onSubmit={handleCreate}>
+          <input type="text" value={newComment} onChange={(e) => setNewComment(e.target.value)} placeholder="Add a comment" />
+          <button type="submit">Submit</button>
+        </form>
+
+
         {comments.map((comment) => (
           <div
             key={comment.id}
@@ -39,7 +57,7 @@ const Comment = ({videoId}) => {
               <h2>{comment.body}</h2>
               {sessionUser?.id === comment.authorId && (
                 <>
-                <button onClick={handleDelete(comment.id)}>Delete</button>
+                  <button onClick={handleDelete(comment.id)}>Delete</button>
                 </>
               )}
             </div>
@@ -207,3 +225,38 @@ export default Comment;
 // };
 
 // export default Comments;
+
+// import React, { useState } from "react";
+// import { useSelector, useDispatch } from "react-redux";
+// import { createVideoComment } from "../../../store/comments";
+
+// const CommentForm = ({ videoId }) => {
+//   const dispatch = useDispatch();
+//   const sessionUser = useSelector((state) => state.session.user);
+
+//   const [text, setText] = useState("");
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     const newComment = {
+//       text: text,
+//       videoId: videoId,
+//       authorId: sessionUser.id,
+//     };
+//     dispatch(createVideoComment(videoId, newComment, sessionUser.id));
+//     setText("");
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <textarea
+//         value={text}
+//         onChange={(e) => setText(e.target.value)}
+//         placeholder="Write a comment..."
+//       />
+//       <button type="submit">Post Comment</button>
+//     </form>
+//   );
+// };
+
+// export default CommentForm;
