@@ -1,8 +1,9 @@
-
+import { RECEIVE_COMMENTS } from "./comments";
 import csrfFetch from "./csrf";
 export const RECEIVE_VIDEOS = "videos/RECEIVE_VIDEOS";
 export const RECEIVE_VIDEO = "videos/RECEIVE_VIDEO";
 export const REMOVE_VIDEO = "videos/REMOVE_VIDEO";
+
 
 export const getVideo = (videoId) => {
     return (state) => {
@@ -110,5 +111,43 @@ const videosReducer = (state = {}, action) => {
             return state;
     }
 }
-
 export default videosReducer;
+
+// const videosReducer = (state = {}, action) => {
+//     switch(action.type) {
+//       case RECEIVE_VIDEO:
+//         return { ...state, ...action.video.video };
+
+//       case RECEIVE_VIDEOS:
+//         const newState = {...state, ...action.videos.videos};
+//         return newState;
+
+//       case RECEIVE_COMMENT: {
+//         const { comment, videoId } = action;
+//         const video = state[videoId];
+//         if (video) {
+//           return {
+//             ...state,
+//             [videoId]: {
+//               ...video,
+//               comments: {
+//                 ...video.comments,
+//                 [comment.id]: comment,
+//               }
+//             }
+//           };
+//         } else {
+//           return state; // If video not found, return the current state
+//         }
+//       }
+
+//       case REMOVE_VIDEO:
+//         const { [action.videoId]: removedVideo, ...remainingState } = state;
+//         return remainingState;
+
+//       default:
+//         return state;
+//     }
+//   }
+
+// //   export default videosReducer;

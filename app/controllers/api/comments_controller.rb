@@ -1,14 +1,19 @@
 class Api::CommentsController < ApplicationController
 
   def create
+
     @video = Video.find(params[:video_id])
     return render json: { errors: ['Video not found'] }, status: :not_found unless @video
 
     @comment = @video.comments.new(comment_params)
     @comment.author = current_user
     if @comment.save
-      render json: @comment, status: :created
-      render 'api/videos/show'
+      render "api/videos/show"
+      # render json: @comment.as_json
+
+
+
+      # render 'api/videos/show'
     else
       render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
     end
@@ -17,11 +22,12 @@ class Api::CommentsController < ApplicationController
 
   def update
     @comment = Comment.find_by(id: params[:id])
+    @video = Video.find_by(id: @comment.video_id)
     return render json: { errors: ['Comment not found'] }, status: :not_found unless @comment
 
     if @comment.author_id == current_user.id
       if @comment.update(comment_params)
-        render json: @comment.as_json # render updated comment as JSON
+        render "api/videos/show"
       else
         render json: @comment.errors.full_messages, status: 422
       end

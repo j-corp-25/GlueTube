@@ -7,6 +7,7 @@ export const RECEIVE_COMMENT = "comments/RECEIVE_COMMENT";
 
 export const DELETE_COMMENT = "comments/DELETE_COMMENT";
 
+
 export const getComment = (commentId) => (state) => {
   return state.comments ? state.comments[commentId] : null;
 };
@@ -30,6 +31,24 @@ export const fetchComment = (commentId) => async (dispatch) => {
   });
 };
 
+// export const createVideoComment =
+//   (videoId, comment, userId) => async (dispatch) => {
+//     const response = await csrfFetch(`/api/videos/${videoId}/comments`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({ ...comment, author_id: userId }),
+//     });
+//     const data = await response.json();
+//     if (response.ok) {
+//       dispatch({
+//         type: RECEIVE_COMMENT,
+//         comment: data,
+//       });
+//     }
+//     // return data;
+//   };
 export const createVideoComment = (videoId, comment, userId) => async (dispatch) => {
   const response = await csrfFetch(`/api/videos/${videoId}/comments`, {
     method: "POST",
@@ -41,27 +60,41 @@ export const createVideoComment = (videoId, comment, userId) => async (dispatch)
   const data = await response.json();
   if (response.ok) {
     dispatch({
+      type: RECEIVE_VIDEO,
+      video: data, // include the video ID in the action
+    });
+  }
+};
+
+
+export const createComment = (comment) => async (dispatch) => {
+  const { body, author_id, video_Id } = comment;
+  const response = await csrfFetch(`/api/comments`, {
+    method: "POST",
+    body: JSON.stringify({ body, author_id, video_Id }),
+  });
+  const data = await response.json();
+  if (response.ok) {
+    dispatch({
       type: RECEIVE_COMMENT,
       comment: data,
     });
   }
-  return data;
 };
 
-
 export const updateComment = (id, comment) => async (dispatch) => {
-  console.log('updateComment action', { id, comment }); // <-- add logging here
+  console.log("updateComment action", { id, comment }); // <-- add logging here
   const response = await csrfFetch(`/api/comments/${id}`, {
-    method: 'PATCH',
+    method: "PATCH",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(comment),
   });
   const data = await response.json();
   dispatch({
-    type: RECEIVE_COMMENT,
-    comment: data,
+    type: RECEIVE_VIDEO,
+    video: data,
   });
 };
 
@@ -78,10 +111,11 @@ export const deleteComment = (commentId) => async (dispatch) => {
 };
 
 export const commentsReducer = (state = {}, action) => {
+  debugger
   let newState = { ...state };
   switch (action.type) {
     case RECEIVE_COMMENTS: {
-      newState = {...action.comments };
+      newState = { ...action.comments };
       return newState;
     }
     case RECEIVE_COMMENT: {
@@ -94,7 +128,7 @@ export const commentsReducer = (state = {}, action) => {
     }
 
     case RECEIVE_VIDEO: {
-      newState = {...action.video.comments };
+      newState = { ...newState, ...action.video.comments };
       return newState;
     }
     default:
@@ -103,6 +137,36 @@ export const commentsReducer = (state = {}, action) => {
 };
 
 export default commentsReducer;
+// export const commentsReducer = (state = {}, action) => {
+//   let newState = { ...state };
+//   switch (action.type) {
+//     case RECEIVE_COMMENTS: {
+//       newState = { ...action.comments };
+//       return newState;
+//     }
+//     case RECEIVE_COMMENT: {
+//       const newComments = {
+//         ...state,
+//         [action.comment.id]: action.comment,
+//       };
+//       return newComments;
+//     }
+//     case DELETE_COMMENT: {
+//       delete newState[action.commentId];
+//       return newState;
+//     }
+
+//     case RECEIVE_VIDEO: {
+//       newState = { ...action.video.comments };
+//       return newState;
+//     }
+//     default:
+//       return state;
+//   }
+// };
+
+// export default commentsReducer;
+
 // api_users GET    /api/users(.:format)                                                                              api/users#index {:format=>:json}
 // POST   /api/users(.:format)                                                                              api/users#create {:format=>:json}
 // api_video_comments GET    /api/videos/:video_id/comments(.:format)                                                          api/comments#index {:format=>:json}

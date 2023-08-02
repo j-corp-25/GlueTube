@@ -1,3 +1,7 @@
-# json.array! @comments do |comment|
-#   json.partial! 'comment', comment: comment
+# json.comments do
+#   @comments.each do |comment|
+#     json.set! video.id do
+#       json.partial! "comment", comment: comment
+#     end
+#   end
 # end

@@ -11,9 +11,10 @@ import { getVideos, fetchVideos } from "../../../store/videos";
 import * as sessionActions from "../../../store/session";
 import { Link } from "react-router-dom";
 import ReactPlayer from "react-player";
-import Comment from "../../Comments/Comment";
+import Comments from "../../Comments/Comments";
 import { clearComments } from "../../../store/comments";
 import { fetchComments } from "../../../store/comments";
+// import  Comment  from "../../Comments/Comment";
 
 import { useHistory } from "react-router-dom";
 // import "../../Comments/Comments.css"
@@ -68,7 +69,7 @@ const VideoShow = () => {
                 <div className="video-information">
                   <h1>{video.title}</h1>
                   <p>{video.description}</p>
-                  <Comment videoId={video.id} />
+                  <Comments videoId={videoId} />
                 </div>
               </div>
               <div className="side-bar-container">
@@ -106,7 +107,7 @@ const VideoShow = () => {
                 <h1>{video.title}</h1>
                 <p>{video.description}</p>
               </div>
-              <Comment videoId={video.id} />
+              <Comments videoId={videoId} />
             </div>
             <div className="side-bar-container">
               <div className="side-bar-title-container">

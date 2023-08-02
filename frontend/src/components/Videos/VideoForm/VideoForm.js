@@ -24,7 +24,7 @@ export default function VideoForm() {
   const formType = videoId ? "Update" : "Upload";
   const [message, setMessage] = useState("");
   const [videoFile, setVideoFile] = useState(null);
- 
+
   useEffect(() => {
     if (videoId) {
       dispatch(fetchVideo(videoId));
@@ -53,7 +53,7 @@ export default function VideoForm() {
       setTitleError(null);
     }
 
-    if (videoFile === null) {
+    if (formType=== "Upload" && videoFile === null ) {
       setMessage("Please select a video file.");
       errors = true;
     }
@@ -69,7 +69,10 @@ export default function VideoForm() {
       const formData = new FormData();
       formData.append("video[title]", title);
       formData.append("video[description]", description);
-      formData.append("video[video]", videoFile);
+      if (videoFile!== null) {
+
+        formData.append("video[video]", videoFile);
+      }
 
       try {
         if (formType === "Update") {
