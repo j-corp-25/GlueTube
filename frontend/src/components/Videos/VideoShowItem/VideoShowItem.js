@@ -44,29 +44,25 @@ function VideoShowItem({ video }) {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <Link to={`/videos/${video.id}`}></Link>
-          <div className="player-wrapper">
-            <ReactPlayer
-              className="react-player'"
-              width="340px"
-              height="190px"
-              controls={isControlsVisible}
-              url={video.videoUrl}
-              muted={true}
-              playing={isPlaying}
-              // config={{
-              //   youtube: {
-              //     playerVars: {
-              //       showinfo: 1,
-              //     },
-              //     events: {
-              //       onReady: onPlayerReady,
-              //       onStateChange: onPlayerStateChange,
-              //     },
-              //   },
-              // }}
-            />
+       <Link className="link-wrapper" to={`/videos/${video.id}`}>
+          <div
+            className="video-thumbnail-feed"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className="player-wrapper">
+              <ReactPlayer
+                className="react-player'"
+                width="340px"
+                height="190px"
+                controls={isControlsVisible}
+                url={video.videoUrl}
+                muted={true}
+                playing={isPlaying}
+              />
+            </div>
           </div>
+        </Link>
         </div>
         <div className="video-details">
           <div className="video-channel">

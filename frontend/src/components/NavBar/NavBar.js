@@ -10,6 +10,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import * as sessionActions from "../../store/session";
 import HomeIcon from "@mui/icons-material/Home";
+import 'font-awesome/css/font-awesome.min.css';
+
+
+
+
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -43,7 +48,16 @@ const NavBar = () => {
                   />
                 </figure>
                 <div className="home-button">
-                  {/* <HomeIcon /> */}
+                <i className="fa fa-home fa-2x" style={{color: '#ffffff'}}></i>
+                </div>
+                <div className="home-button">
+                <i className="fa fa-home fa-2x" style={{color: '#ffffff'}}></i>
+                </div>
+                <div className="home-button">
+                <i className="fa fa-home fa-2x" style={{color: '#ffffff'}}></i>
+                </div>
+                <div className="home-button">
+                <i className="fa fa-home fa-2x" style={{color: '#ffffff'}}></i>
                 </div>
               </div>
               <div className="home-button-container">
@@ -112,14 +126,26 @@ const NavBar = () => {
         <nav className="top-nav-bar normal-color">
           <div className="left-nav-side-container">
             <div className="home-logo-container">
-              <figure>
-                <img
-                  className="settings-button-side"
-                  src={settingimg}
-                  alt="Button"
-                />
-              </figure>
-            </div>
+                <figure>
+                  <img
+                    className="settings-button-side"
+                    src={settingimg}
+                    alt="Button"
+                  />
+                </figure>
+                <div className="home-button">
+                <i className="fa fa-home fa-2x" style={{color: '#ffffff'}}></i>
+                </div>
+                <div className="home-button">
+                <i className="fa fa-home fa-2x" style={{color: '#ffffff'}}></i>
+                </div>
+                <div className="home-button">
+                <i className="fa fa-home fa-2x" style={{color: '#ffffff'}}></i>
+                </div>
+                <div className="home-button">
+                <i className="fa fa-home fa-2x" style={{color: '#ffffff'}}></i>
+                </div>
+              </div>
             <div className="home-button-container">
               <Link to="/">
                 <img className="home-button" src={buttonImage} alt="Button" />

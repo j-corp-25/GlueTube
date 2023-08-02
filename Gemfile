@@ -7,6 +7,7 @@ gem "jbuilder"
 gem "faker"
 gem "bcrypt"
 
+
 gem "rufo"
 gem "aws-sdk-s3"
 

@@ -97,7 +97,7 @@ padding-top: 56.25%; Player ratio: 100 / (1280 / 720) */
 
 .video-thumbnail-feed {
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid darkgray;
   border-radius: 12px;
   overflow: hidden;
   object-fit: contain;
@@ -112,4 +112,8 @@ padding-top: 56.25%; Player ratio: 100 / (1280 / 720) */
   position: relative;
   width: 340px;
   height: 190px;
+}
+
+.link-wrapper {
+  border-radius: 1px black solid;
 }
