@@ -111,7 +111,7 @@ export const deleteComment = (commentId) => async (dispatch) => {
 };
 
 export const commentsReducer = (state = {}, action) => {
-  debugger
+
   let newState = { ...state };
   switch (action.type) {
     case RECEIVE_COMMENTS: {

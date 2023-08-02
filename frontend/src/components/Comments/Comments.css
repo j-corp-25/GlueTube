@@ -51,8 +51,6 @@
   border-right: none;
 }
 
-
-
 .comment-container {
   padding-top: 20px;
 }
@@ -67,4 +65,10 @@ p.comment {
 }
 .submit-container {
   display: none;
+}
+
+/* ================= */
+
+.profile-icon-conrainer {
+  padding-right: 30px;
 }
