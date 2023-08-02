@@ -81,7 +81,7 @@
 }
 
 .player-wrapper {
-  position: relative;
+
 }
 
 
@@ -96,12 +96,20 @@ padding-top: 56.25%; Player ratio: 100 / (1280 / 720) */
 }
 
 .video-thumbnail-feed {
-  /* width: 340px;
-  height: 190px; */
   background-color: #fff;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 12px;
   overflow: hidden;
   object-fit: contain;
   cursor: pointer;
+}
+
+.video-container-feed {
+  margin-right: 7px;
+}
+
+.player-wrapper {
+  position: relative;
+  width: 340px;
+  height: 190px;
 }

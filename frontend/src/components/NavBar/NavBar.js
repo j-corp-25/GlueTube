@@ -9,12 +9,11 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import * as sessionActions from "../../store/session";
-
+import HomeIcon from "@mui/icons-material/Home";
 
 const NavBar = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-
 
   const demoLogin = () => {
     const demoUser = {
@@ -32,8 +31,84 @@ const NavBar = () => {
   if (sessionUser) {
     return (
       <>
-    <header>
-
+        <header>
+          <nav className="top-nav-bar normal-color">
+            <div className="left-nav-side-container">
+              <div className="home-logo-container">
+                <figure>
+                  <img
+                    className="settings-button-side"
+                    src={settingimg}
+                    alt="Button"
+                  />
+                </figure>
+                <div className="home-button">
+                  {/* <HomeIcon /> */}
+                </div>
+              </div>
+              <div className="home-button-container">
+                <Link to="/">
+                  <img className="home-button" src={buttonImage} alt="Button" />
+                </Link>
+              </div>
+            </div>
+            {/* ========================================================================== */}
+            <div className="nav-search-bar-container">
+              <div className="search-bar-sub-container">
+                <form className="search-bar">
+                  <input
+                    className="main-nav-search"
+                    type="text"
+                    placeholder="Search"
+                  ></input>
+                  <div className="search-container">
+                    <input
+                      className="search-companion-nav"
+                      type="image"
+                      src={searchImage}
+                      alt="search-button"
+                      name="submit"
+                    ></input>
+                  </div>
+                </form>
+              </div>
+            </div>
+            {/* ========================================================================== */}
+            <div className="right-nav">
+              <div className="profile-icon">
+                <Avatar
+                  name={sessionUser.username}
+                  size="35"
+                  round={true}
+                  color={Avatar.getRandomColor("sitebase", [
+                    "red",
+                    "green",
+                    "blue",
+                  ])}
+                />
+              </div>
+              <input type="button" value="settings"></input>
+              <Link to="/upload">
+                <figure>
+                  <input type="button" value="Upload"></input>
+                </figure>
+              </Link>
+              <input type="button" value="Profile"></input>
+              <div> </div>
+              <input
+                type="button"
+                value="Sign Out"
+                onClick={handleClick}
+              ></input>
+            </div>
+          </nav>
+        </header>
+      </>
+    );
+  }
+  return (
+    <>
+      <header>
         <nav className="top-nav-bar normal-color">
           <div className="left-nav-side-container">
             <div className="home-logo-container">
@@ -51,7 +126,7 @@ const NavBar = () => {
               </Link>
             </div>
           </div>
-{/* ========================================================================== */}
+
           <div className="nav-search-bar-container">
             <div className="search-bar-sub-container">
               <form className="search-bar">
@@ -72,97 +147,30 @@ const NavBar = () => {
               </form>
             </div>
           </div>
-{/* ========================================================================== */}
           <div className="right-nav">
-            <div className="profile-icon">
-              <Avatar
-                name={sessionUser.username}
-                size="35"
-                round={true}
-                color={Avatar.getRandomColor("sitebase", [
-                  "red",
-                  "green",
-                  "blue",
-                ])}
-              />
-            </div>
-            <input type="button" value="settings"></input>
-            <Link to="/upload">
-              <figure>
-                <input type="button" value="Upload"></input>
-              </figure>
-            </Link>
-            <input type="button" value="Profile"></input>
-            <div> </div>
-            <input type="button" value="Sign Out" onClick={handleClick}></input>
-          </div>
-        </nav>
-    </header>
-      </>
-    );
-  }
-  return (
-    <>
-    <header>
-
-      <nav className="top-nav-bar normal-color">
-          <div className="left-nav-side-container">
-            <div className="home-logo-container">
-              <figure>
+            <input onClick={demoLogin} type="button" value="Demouser"></input>
+            {/* <input type="button" value="Upload"></input> */}
+            <div className="settings-container">
+              <figure className="settings-subcontainer">
                 <img
-                  className="settings-button-side"
+                  className="settings-button"
                   src={settingimg}
                   alt="Button"
                 />
               </figure>
             </div>
-            <div className="home-button-container">
-              <Link to="/">
-                <img className="home-button" src={buttonImage} alt="Button" />
-              </Link>
-            </div>
+            {/* <input type="button" value="Profile"></input> */}
+            <Link to="/login">
+              <div className="home-sign-in">
+                <figure>
+                  <span>Sign In</span>
+                </figure>
+                <img src={signinIMG} alt="Button" />
+              </div>
+            </Link>
           </div>
-
-          <div className="nav-search-bar-container">
-            <div className="search-bar-sub-container">
-              <form className="search-bar">
-                <input
-                  className="main-nav-search"
-                  type="text"
-                  placeholder="Search"
-                ></input>
-                <div className="search-container">
-                  <input
-                    className="search-companion-nav"
-                    type="image"
-                    src={searchImage}
-                    alt="search-button"
-                    name="submit"
-                  ></input>
-                </div>
-              </form>
-            </div>
-          </div>
-        <div className="right-nav">
-          <input onClick={demoLogin} type="button" value="Demouser"></input>
-          {/* <input type="button" value="Upload"></input> */}
-          <div className="settings-container">
-            <figure className="settings-subcontainer">
-              <img className="settings-button" src={settingimg} alt="Button" />
-            </figure>
-          </div>
-          {/* <input type="button" value="Profile"></input> */}
-          <Link to="/login">
-            <div className="home-sign-in">
-              <figure>
-                <span>Sign In</span>
-              </figure>
-              <img src={signinIMG} alt="Button" />
-            </div>
-          </Link>
-        </div>
-      </nav>
-    </header>
+        </nav>
+      </header>
     </>
   );
 };
