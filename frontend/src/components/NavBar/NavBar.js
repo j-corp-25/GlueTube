@@ -11,6 +11,7 @@ import { useState } from "react";
 import * as sessionActions from "../../store/session";
 import HomeIcon from "@mui/icons-material/Home";
 import "font-awesome/css/font-awesome.min.css";
+import { useRef } from "react";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,25 @@ const NavBar = () => {
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+  };
+
+  const sliderRef = useRef(null);
+
+  const slideDrag = (e) => {
+    e.preventDefault();
+    sliderRef.current.scrollLeft -= (e.clientX - sliderRef.current.clientX) * 2;
+    sliderRef.current.clientX = e.clientX;
+  };
+
+  const slideStop = () => {
+    document.removeEventListener("mousemove", slideDrag);
+    document.removeEventListener("mouseup", slideStop);
+  };
+
+  const slideStart = (e) => {
+    sliderRef.current.clientX = e.clientX;
+    document.addEventListener("mousemove", slideDrag);
+    document.addEventListener("mouseup", slideStop);
   };
 
   if (sessionUser) {
@@ -75,53 +95,60 @@ const NavBar = () => {
               </div>
             </div>
             {/* ========================================================================== */}
+
             <div className="sliding-navigation-bar-wrapper">
-              <div className="sliding-navigation-bar">
+              <div
+                className="sliding-navigation-bar"
+              >
                 <div>
                   <button>ALL</button>
                 </div>
                 <div>
-                  <button>Gaming</button>
-                </div>
-                <div>
-                  <button>Sports</button>
-                </div>
-                <div>
-                  <button>News</button>
-                </div>
-                <div>
-                  <button>Live</button>
-                </div>
-                <div>
-                  <button>Gadgets</button>
-                </div>
-                <div>
-                  <button>Minecraft</button>
-                </div>
-                <div>
-                  <button>Minecraft</button>
-                </div>
-                <div>
-                  <button>Minecraft</button>
-                </div>
-                <div>
-                  <button>Minecraft</button>
-                </div>
-                <div>
-                  <button>Minecraft</button>
-                </div>
-                <div>
-                  <button>Minecraft</button>
-                </div>
-                <div>
-                  <button>Minecraft</button>
-                </div>
-                <div>
-                  <button>Mario</button>
+                  <button>Cars</button>
                 </div>
                 <div>
                   <button>Cars</button>
                 </div>
+                <div>
+                  <button>Cars</button>
+                </div>
+                <div>
+                  <button>Cars</button>
+                </div>
+                <div>
+                  <button>Cars</button>
+                </div>
+                <div>
+                  <button>Cars</button>
+                </div>
+                <div>
+                  <button>Cars</button>
+                </div>
+                <div>
+                  <button>Cars</button>
+                </div>
+                <div>
+                  <button>Cars</button>
+                </div>
+                <div>
+                  <button>Cars</button>
+                </div>
+                <div>
+                  <button>Cars</button>
+                </div>
+                <div>
+                  <button>Cars</button>
+                </div>
+                <div>
+                  <button>Cars</button>
+                </div>
+                <div>
+                  <button>Cars</button>
+                </div>
+                <div>
+                  <button>Cars</button>
+                </div>
+
               </div>
             </div>
 
