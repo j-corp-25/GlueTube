@@ -75,6 +75,56 @@ const NavBar = () => {
               </div>
             </div>
             {/* ========================================================================== */}
+            <div className="sliding-navigation-bar-wrapper">
+              <div className="sliding-navigation-bar">
+                <div>
+                  <button>ALL</button>
+                </div>
+                <div>
+                  <button>Gaming</button>
+                </div>
+                <div>
+                  <button>Sports</button>
+                </div>
+                <div>
+                  <button>News</button>
+                </div>
+                <div>
+                  <button>Live</button>
+                </div>
+                <div>
+                  <button>Gadgets</button>
+                </div>
+                <div>
+                  <button>Minecraft</button>
+                </div>
+                <div>
+                  <button>Minecraft</button>
+                </div>
+                <div>
+                  <button>Minecraft</button>
+                </div>
+                <div>
+                  <button>Minecraft</button>
+                </div>
+                <div>
+                  <button>Minecraft</button>
+                </div>
+                <div>
+                  <button>Minecraft</button>
+                </div>
+                <div>
+                  <button>Minecraft</button>
+                </div>
+                <div>
+                  <button>Mario</button>
+                </div>
+                <div>
+                  <button>Cars</button>
+                </div>
+              </div>
+            </div>
+
             <div className="nav-search-bar-container">
               <div className="search-bar-sub-container">
                 <form className="search-bar">
@@ -96,7 +146,7 @@ const NavBar = () => {
               </div>
             </div>
             {/* ========================================================================== */}
-            <div className="right-nav">
+            <div className="right-nav-signed-in">
               <div className="profile-icon">
                 <Avatar
                   name={sessionUser.username}
@@ -109,14 +159,15 @@ const NavBar = () => {
                   ])}
                 />
               </div>
-              <input type="button" value="settings"></input>
-              <Link to="/upload">
-                <figure>
-                  <input type="button" value="Upload"></input>
-                </figure>
+              {/* <input type="button" value="settings"></input> */}
+              <Link to="/upload" className="upload-container">
+                <i
+                  class="fa-solid fa-video fa-2x"
+                  style={{ color: "#ffffff" }}
+                ></i>
+                <span className="tooltip-text">Upload a Video</span>
               </Link>
-              <input type="button" value="Profile"></input>
-              <div> </div>
+              {/* <input type="button" value="Profile"></input> */}
               <input
                 type="button"
                 value="Sign Out"
