@@ -126,7 +126,7 @@ const NavBar = () => {
         <nav className="top-nav-bar normal-color">
           <div className="left-nav-side-container">
             <div className="home-logo-container">
-                <figure>
+            <figure className="settings-button-side-wrapper">
                   <img
                     className="settings-button-side"
                     src={settingimg}
@@ -151,6 +151,11 @@ const NavBar = () => {
                 <img className="home-button" src={buttonImage} alt="Button" />
               </Link>
             </div>
+          </div>
+
+          <div className="sliding-navigation-bar">
+          {/* <div><button>ALL</button></div> */}
+
           </div>
 
           <div className="nav-search-bar-container">

@@ -25,16 +25,17 @@
 }
 /* ----------------------------------------- */
 .left-nav-side-container {
-    /* border: 1px yellow solid; */
-    display: flex;
-    /* width: 15vw; */
-    justify-content: space-evenly;
-    padding: 1vh;
-    height: -webkit-fill-available;
-    align-items: center;
+  /* border: 1px yellow solid; */
+  display: flex;
+  /* width: 15vw; */
+  justify-content: space-evenly;
+  padding: 1vh;
+  height: -webkit-fill-available;
+  align-items: center;
 }
 .home-logo-container {
-  border: 1px yellow solid;
+  /* border: 1px yellow solid; */
+  /* border: 1px yellow solid; */
   height: 40vh;
   display: flex;
   align-self: flex-start;
@@ -46,7 +47,9 @@
   padding-bottom: -37px;
   font-size: 15px;
   padding: -5px;
-  margin-top: 13px;
+  margin-top: 8px;
+  text-align: -webkit-center;
+  padding-top: 4px;
 }
 .home-button-container {
   /* border: 1px yellow solid; */
@@ -58,30 +61,26 @@
 /* ------------------------------------------ */
 
 .nav-search-bar-container {
-    /* border: 1px yellow solid; */
-    /* padding: 0vh; */
-    width: 40vw;
-    display: flex;
-    justify-content: center;
-    margin-left: 125px;
+  /* border: 1px yellow solid; */
+  /* padding: 0vh; */
+  width: 40vw;
+  display: flex;
+  justify-content: center;
+  margin-left: 125px;
 }
 .search-bar-sub-container {
-    /* border: 1px solid yellow; */
-    /* width: 45vw; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-
+  /* border: 1px solid yellow; */
+  /* width: 45vw; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
 }
 
 .search-bar {
   display: flex;
   height: 40px;
-
 }
-
-
 
 .main-nav-search {
   width: 30vw;
@@ -164,11 +163,28 @@ header {
 } */
 .home-logo-container :first-child:hover {
   cursor: pointer;
+  border-radius: 20px;
   background: rgba(74, 74, 74, 1);
-  border-radius: 10px;
 }
 
+.settings-button-side {
+  width: 13px;
+  padding-top: -7px;
+  height: 30px;
+  /* margin-bottom: 30px; */
+  /* padding-top: 10px; */
+  /* font-size: 10px; */
+}
 
+.settings-button-side-wrapper {
+  width: 30px;
+  height: 30px;
+}
+.fa-2x {
+  font-size: 2em;
+  width: 35px;
+  height: 35px;
+}
 
 @media (max-width: 768px) {
   .top-nav-bar {
