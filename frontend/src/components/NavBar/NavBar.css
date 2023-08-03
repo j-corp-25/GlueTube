@@ -12,47 +12,49 @@
 .top-nav-bar {
   display: flex;
   justify-content: space-between;
-  margin-top: 0px;
+  /* margin-top: 0px; */
   position: sticky;
-  top: 0;
+  /* top: 0; */
   background-color: #000;
   z-index: 101;
   align-items: center;
   height: 8vh;
   /* border: 1px yellow solid; */
-  padding: 10px;
+  /* padding: 10px; */
+  padding-right: 5px;
 }
 /* ----------------------------------------- */
 .left-nav-side-container {
-  /* border: 1px yellow solid; */
-  display: flex;
-  width: 15vw;
-  justify-content: space-evenly;
-  padding: 1vh;
-  height: -webkit-fill-available;
-  align-items: center;
+    /* border: 1px yellow solid; */
+    display: flex;
+    /* width: 15vw; */
+    justify-content: space-evenly;
+    padding: 1vh;
+    height: -webkit-fill-available;
+    align-items: center;
 }
 .home-logo-container {
-    /* border: 1px yellow solid; */
-    /* padding: 1vh; */
-    /* color: black; */
-    /* background-color: black; */
-    height: 40vh;
-    display: flex;
-    /* justify-content: flex-start; */
-    align-self: flex-start;
-    width: 40px;
-    padding-top: 5px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  border: 1px yellow solid;
+  height: 40vh;
+  display: flex;
+  align-self: flex-start;
+  width: 50px;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 20x;
+  justify-content: space-between;
+  padding-bottom: -37px;
+  font-size: 15px;
+  padding: -5px;
+  margin-top: 13px;
 }
 .home-button-container {
   /* border: 1px yellow solid; */
-  padding: 1vh;
+  /* padding: 1vh; */
 }
-
+.settings-button-side {
+  width: 15px;
+}
 /* ------------------------------------------ */
 
 .nav-search-bar-container {
@@ -140,9 +142,13 @@
   border-radius: 30px;
 }
 
-div.home-sign-in span {
+.home-sign-in span {
   padding-left: 5px;
   padding-right: 5px;
+}
+.home-sign-in:hover {
+  background-color: rgba(74, 74, 74, 1);
+  color: rgba(255, 255, 255, 1);
 }
 
 header {
@@ -153,6 +159,16 @@ header {
   background: black;
   z-index: 102;
 }
+/* .settings-button-side-wrapper:hover{
+  background-color: rgba(74, 74, 74, 1);
+} */
+.home-logo-container :first-child:hover {
+  cursor: pointer;
+  background: rgba(74, 74, 74, 1);
+  border-radius: 10px;
+}
+
+
 
 @media (max-width: 768px) {
   .top-nav-bar {
