@@ -10,11 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import * as sessionActions from "../../store/session";
 import HomeIcon from "@mui/icons-material/Home";
-import 'font-awesome/css/font-awesome.min.css';
-
-
-
-
+import "font-awesome/css/font-awesome.min.css";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -48,16 +44,28 @@ const NavBar = () => {
                   />
                 </figure>
                 <div className="home-button">
-                <i className="fa fa-home fa-2x" style={{color: '#ffffff'}}></i>
+                  <i
+                    className="fa fa-home fa-2x"
+                    style={{ color: "#ffffff" }}
+                  ></i>
                 </div>
                 <div className="home-button">
-                <i className="fa fa-home fa-2x" style={{color: '#ffffff'}}></i>
+                  <i
+                    className="fa fa-home fa-2x"
+                    style={{ color: "#ffffff" }}
+                  ></i>
                 </div>
                 <div className="home-button">
-                <i className="fa fa-home fa-2x" style={{color: '#ffffff'}}></i>
+                  <i
+                    className="fa fa-home fa-2x"
+                    style={{ color: "#ffffff" }}
+                  ></i>
                 </div>
                 <div className="home-button">
-                <i className="fa fa-home fa-2x" style={{color: '#ffffff'}}></i>
+                  <i
+                    className="fa fa-home fa-2x"
+                    style={{ color: "#ffffff" }}
+                  ></i>
                 </div>
               </div>
               <div className="home-button-container">
@@ -126,26 +134,38 @@ const NavBar = () => {
         <nav className="top-nav-bar normal-color">
           <div className="left-nav-side-container">
             <div className="home-logo-container">
-            <figure className="settings-button-side-wrapper">
-                  <img
-                    className="settings-button-side"
-                    src={settingimg}
-                    alt="Button"
-                  />
-                </figure>
-                <div className="home-button">
-                <i className="fa fa-home fa-2x" style={{color: '#ffffff'}}></i>
-                </div>
-                <div className="home-button">
-                <i className="fa fa-home fa-2x" style={{color: '#ffffff'}}></i>
-                </div>
-                <div className="home-button">
-                <i className="fa fa-home fa-2x" style={{color: '#ffffff'}}></i>
-                </div>
-                <div className="home-button">
-                <i className="fa fa-home fa-2x" style={{color: '#ffffff'}}></i>
-                </div>
+              <figure className="settings-button-side-wrapper">
+                <img
+                  className="settings-button-side"
+                  src={settingimg}
+                  alt="Button"
+                />
+              </figure>
+              <div className="home-button">
+                <i
+                  className="fa fa-home fa-2x"
+                  style={{ color: "#ffffff" }}
+                ></i>
               </div>
+              <div className="home-button">
+                <i
+                  className="fa fa-home fa-2x"
+                  style={{ color: "#ffffff" }}
+                ></i>
+              </div>
+              <div className="home-button">
+                <i
+                  className="fa fa-home fa-2x"
+                  style={{ color: "#ffffff" }}
+                ></i>
+              </div>
+              <div className="home-button">
+                <i
+                  className="fa fa-home fa-2x"
+                  style={{ color: "#ffffff" }}
+                ></i>
+              </div>
+            </div>
             <div className="home-button-container">
               <Link to="/">
                 <img className="home-button" src={buttonImage} alt="Button" />
@@ -153,9 +173,54 @@ const NavBar = () => {
             </div>
           </div>
 
-          <div className="sliding-navigation-bar">
-          {/* <div><button>ALL</button></div> */}
-
+          <div className="sliding-navigation-bar-wrapper">
+            <div className="sliding-navigation-bar">
+              <div>
+                <button>ALL</button>
+              </div>
+              <div>
+                <button>Gaming</button>
+              </div>
+              <div>
+                <button>Sports</button>
+              </div>
+              <div>
+                <button>News</button>
+              </div>
+              <div>
+                <button>Live</button>
+              </div>
+              <div>
+                <button>Gadgets</button>
+              </div>
+              <div>
+                <button>Minecraft</button>
+              </div>
+              <div>
+                <button>Minecraft</button>
+              </div>
+              <div>
+                <button>Minecraft</button>
+              </div>
+              <div>
+                <button>Minecraft</button>
+              </div>
+              <div>
+                <button>Minecraft</button>
+              </div>
+              <div>
+                <button>Minecraft</button>
+              </div>
+              <div>
+                <button>Minecraft</button>
+              </div>
+              <div>
+                <button>Mario</button>
+              </div>
+              <div>
+                <button>Cars</button>
+              </div>
+            </div>
           </div>
 
           <div className="nav-search-bar-container">

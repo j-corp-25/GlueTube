@@ -38,7 +38,7 @@ function VideoShowItem({ video }) {
 
   return (
     <>
-      <div className="video-container-feed">
+      {/* <div className="video-container-feed">
         <div
           className="video-thumbnail-feed"
           onMouseEnter={handleMouseEnter}
@@ -78,8 +78,48 @@ function VideoShowItem({ video }) {
             />
           </div>
           <h3 className="video-title">
-            <span>{video.title}</span>
+            <span className="video-title">{video.title}</span>
+            <span className="video-author">{author.username}</span>
           </h3>
+        </div>
+      </div> */}
+      <div className="video-container-feed">
+        <Link className="link-wrapper" to={`/videos/${video.id}`}>
+          <div
+            className="video-thumbnail-feed"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className="player-wrapper">
+              <ReactPlayer
+                width="340px"
+                height="190px"
+                className="react-player"
+                controls={isControlsVisible}
+                url={video.videoUrl}
+                muted={true}
+                playing={isPlaying}
+              />
+            </div>
+          </div>
+        </Link>
+        <div className="video-details">
+          <div className="video-channel">
+            <Avatar
+              name={author ? author.username : ""}
+              size="35"
+              round={true}
+              color={Avatar.getRandomColor("sitebase", [
+                "red",
+                "green",
+                "blue",
+              ])}
+            />
+          </div>
+          <div>
+            <h3 className="video-title">{video.title}</h3>
+            <span className="video-author">{author.username}</span>
+          </div>
         </div>
       </div>
     </>

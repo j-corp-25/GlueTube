@@ -186,6 +186,72 @@ header {
   height: 35px;
 }
 
+/* sliding bar */
+
+.sliding-navigation-bar {
+  display: flex;
+  white-space: nowrap;
+  scrollbar-width: none; /* For Firefox */
+  -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+  width: 99%;
+  overflow-x: scroll; /* Allows horizontal scrolling */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.sliding-navigation-bar::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
+}
+.sliding-navigation-bar::-webkit-scrollbar-thumb {
+  /* For Chrome, Safari, and Edge */
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+.sliding-navigation-bar button {
+  flex: 0 0 auto; /* To prevent shrinking */
+  background-color: #111;
+  border: none;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sliding-navigation-bar button:hover {
+  color: #f1f1f1;
+}
+
+.sliding-navigation-bar-wrapper {
+  position: absolute;
+  top: 55px;
+  left: 100px;
+  width: 90%;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.sliding-navigation-bar button {
+  flex: 0 0 auto;
+  background-color: #111;
+  border: none;
+  color: white;
+  padding: 10px 20px; /* Adjust for desired spacing */
+  margin: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 5px; /* Rounded corners */
+}
+
+.sliding-navigation-bar button:hover {
+  color: #f1f1f1;
+  background-color: #222; /* Darker background on hover */
+}
+
 @media (max-width: 768px) {
   .top-nav-bar {
     flex-direction: column;
