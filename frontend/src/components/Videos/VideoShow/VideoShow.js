@@ -4,20 +4,14 @@ import { useParams } from "react-router-dom";
 import { deleteVideo, fetchVideo, getVideo } from "../../../store/videos";
 import NavBar from "../../NavBar/NavBar";
 import "./VideoShow.css";
-// import VideoList from "../VideoIndex/VideoList";
-import videoImg34 from "../../../assets/Video_Image_1.jpeg";
 import VideoShowItem from "../VideoShowItem/VideoShowItem";
-import { getVideos, fetchVideos } from "../../../store/videos";
-import * as sessionActions from "../../../store/session";
+import { getVideos } from "../../../store/videos";
 import { Link } from "react-router-dom";
 import ReactPlayer from "react-player";
 import Comments from "../../Comments/Comments";
-import { clearComments } from "../../../store/comments";
-import { fetchComments } from "../../../store/comments";
-// import  Comment  from "../../Comments/Comment";
-
 import { useHistory } from "react-router-dom";
-// import "../../Comments/Comments.css"
+import Avatar from "react-avatar";
+import { useState } from "react";
 
 const VideoShow = () => {
   const dispatch = useDispatch();
@@ -25,6 +19,12 @@ const VideoShow = () => {
   const videos = useSelector(getVideos);
   const video = useSelector((state) => getVideo(videoId)(state));
   const sessionUser = useSelector((state) => state.session.user);
+  const [showDescription, setShowDescription] = useState(false);
+
+  const toggleDescription = () => {
+    setShowDescription(!showDescription);
+  };
+
   // const comments = useSelector(state => state.comments);
 
   const history = useHistory();
@@ -49,54 +49,18 @@ const VideoShow = () => {
     return (
       <>
         {/* {Comments && ( */}
-          <div className="main-show-page">
-            <NavBar />
-            <div className="video-page-container-show">
-              <div className="video-player-container">
-                <button>
-                  <Link to={`/videos/${video.id}/edit`}>Edit</Link>
-                </button>
-
-                <button onClick={handleDelete}>Delete</button>
-                <div className="video-player">
-                  <ReactPlayer
-                    width="100%"
-                    height="100%"
-                    controls={true}
-                    url={video.videoUrl}
-                  />
-                </div>
-                <div className="video-information">
-                  <h1>{video.title}</h1>
-                  <p>{video.description}</p>
-                  <Comments videoId={videoId} />
-                </div>
-              </div>
-              <div className="side-bar-container">
-                <div className="side-bar-title-container">
-                  <p className="side-bar-title">Latest Videos</p>
-                </div>
-                <div className="side-bar">
-                  {limitedVideos.map((video) => (
-                    <VideoShowItem key={video.id} video={video} />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        {/* )} */}
-      </>
-    );
-  }
-  return (
-    <>
-      {/* {Comments && ( */}
         <div className="main-show-page">
           <NavBar />
           <div className="video-page-container-show">
             <div className="video-player-container">
-              <div className="video-player">
+              <button>
+                <Link to={`/videos/${video.id}/edit`}>Edit</Link>
+              </button>
+
+              <button onClick={handleDelete}>Delete</button>
+              <div className="player-wrapper-show">
                 <ReactPlayer
+                  className="react-player-show"
                   width="100%"
                   height="100%"
                   controls={true}
@@ -104,10 +68,11 @@ const VideoShow = () => {
                 />
               </div>
               <div className="video-information">
-                <h1>{video.title}</h1>
+                <p>{video.title}</p>
                 <p>{video.description}</p>
+                <p>{video.author.username}</p>
+                <Comments videoId={videoId} />
               </div>
-              <Comments videoId={videoId} />
             </div>
             <div className="side-bar-container">
               <div className="side-bar-title-container">
@@ -121,6 +86,73 @@ const VideoShow = () => {
             </div>
           </div>
         </div>
+        {/* )} */}
+      </>
+    );
+  }
+  return (
+    <>
+      {/* {Comments && ( */}
+      <div className="main-show-page">
+        <NavBar />
+        <div className="video-page-container-show">
+          <div className="video-player-container">
+            <div className="player-wrapper-show">
+              <ReactPlayer
+                className="react-player-show"
+                width="100%"
+                height="100%"
+                controls={true}
+                url={video.videoUrl}
+              />
+            </div>
+            <div className="video-information">
+              <h1 className="video-title">{video.title}</h1>
+              <div className="video-author-container">
+                <Avatar
+                  name={video.author.username}
+                  size="35"
+                  round={true}
+                  color={Avatar.getRandomColor("sitebase", [
+                    "red",
+                    "green",
+                    "blue",
+                  ])}
+                />
+                <span className="video-author-username">
+                  {video.author.username}
+                </span>
+              </div>
+              <div className="video-description-container">
+                <button
+                  className="description-toggle"
+                  onClick={toggleDescription}
+                >
+                  {showDescription ? "Show Less" : "Show More"}
+                </button>
+                <p
+                  className="video-description"
+                  style={{ display: showDescription ? "block" : "none" }}
+                >
+                  {video.description}
+                </p>
+              </div>
+            </div>
+
+            <Comments videoId={videoId} />
+          </div>
+          <div className="side-bar-container">
+            <div className="side-bar-title-container">
+              <p className="side-bar-title"></p>
+            </div>
+            <div className="side-bar">
+              {limitedVideos.map((video) => (
+                <VideoShowItem key={video.id} video={video} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
       {/* )} */}
     </>
   );

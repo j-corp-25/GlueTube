@@ -12,15 +12,11 @@
 .top-nav-bar {
   display: flex;
   justify-content: space-between;
-  /* margin-top: 0px; */
   position: sticky;
-  /* top: 0; */
-  background-color: #000;
+  background-color: rgb(15, 15, 15);
   z-index: 101;
   align-items: center;
   height: 8vh;
-  /* border: 1px yellow solid; */
-  /* padding: 10px; */
   padding-right: 5px;
 }
 /* ----------------------------------------- */
@@ -146,7 +142,7 @@
 }
 .upload-container {
   position: relative;
-  display: inline-block
+  display: inline-block;
 }
 
 .tooltip-text {
@@ -172,7 +168,6 @@
   opacity: 1;
 }
 
-
 .settings-container {
   padding-left: 20px;
   padding-right: 20px;
@@ -195,12 +190,11 @@
 }
 
 header {
-  /* border: 1px yellow solid; */
   height: 115px;
   position: sticky;
   top: 0;
-  background: black;
   z-index: 102;
+  margin-bottom: 16px;
 }
 /* .settings-button-side-wrapper:hover{
   background-color: rgba(74, 74, 74, 1);
@@ -240,16 +234,12 @@ header {
 .sliding-navigation-bar {
   display: flex;
   white-space: nowrap;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  width: 99%;
+  width: 98%;
   overflow-x: scroll;
-  -ms-overflow-style: none;
-  cursor:grab;
-  cursor: move; /* fallback if grab cursor is unsupported */
-  cursor: grab;
-  cursor: -moz-grab;
   cursor: -webkit-grab;
+  background: rgba(15, 15, 15, 1);
+  /* margin-top: 0px; */
+  padding-top: -9px;
 }
 
 .sliding-navigation-bar::-webkit-scrollbar {
@@ -257,22 +247,23 @@ header {
 }
 
 .sliding-navigation-bar::-webkit-scrollbar-thumb {
-
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
 
 .sliding-navigation-bar button {
-  flex: 0 0 auto; /* To prevent shrinking */
-  background-color: #111;
+  flex: 0 0 auto;
+  background-color: #2c2b2b;
   border: none;
   color: white;
-  padding: 10px;
+  padding: 5px 20px;
   margin: 10px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
   transition: 0.5s;
+  border-radius: 7px;
+  margin-top: 20px;
 }
 
 .sliding-navigation-bar button:hover {
@@ -281,20 +272,15 @@ header {
 
 .sliding-navigation-bar-wrapper {
   position: absolute;
-  top: 45px;
-  left: 100px;
-  width: 90%;
+  top: 44px;
+  left: 65px;
+  width: 95%;
   overflow-x: visible;
-  cursor:grab;
-  cursor: move; /* fallback if grab cursor is unsupported */
-  cursor: grab;
-  cursor: -moz-grab;
-  cursor: -webkit-grab;
-
+  margin-top: 10px;
 }
 .sliding-navigation-bar button {
   flex: 0 0 auto;
-  background-color: #111;
+  background-color: #3c3939;
   border: none;
   color: white;
   padding: 5px 20px;

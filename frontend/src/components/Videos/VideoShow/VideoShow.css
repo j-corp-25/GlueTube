@@ -1,10 +1,4 @@
-
-
-
-
-
 /* video player --------------------------------------------------*/
-
 
 .video-page-container-show {
   margin-left: 10vw;
@@ -26,9 +20,7 @@
   color: white;
 }
 
-
 /* sidebar ------------------- */
-
 
 .side-bar-container {
   display: flex;
@@ -49,9 +41,88 @@
 .side-bar-title-container {
 }
 
-
-
 .side-bar-title {
   color: white;
   font-size: 2vw;
+}
+
+/* ================================ */
+
+
+.player-wrapper-show {
+  position: relative;
+  padding-top: 49.25%;
+}
+
+.react-player-show {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.video-page-container-show {
+  margin-left: 5%;
+  display: flex;
+}
+
+
+.video-information {
+  margin-top: 15px;
+}
+
+.video-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.video-author-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.video-author-username {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.video-description {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.video-description-container {
+  background-color:rgba(74, 74, 74, .4);
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.description-toggle {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: right;
+  position: relative;
+  left: 400px;
+  top: 5px;
+}
+
+.video-description {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.description-toggle {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: left;
+  padding: 0;
+  display: block;
 }
