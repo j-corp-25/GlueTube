@@ -11,6 +11,7 @@ import { useState } from "react";
 import * as sessionActions from "../../store/session";
 import HomeIcon from "@mui/icons-material/Home";
 import "font-awesome/css/font-awesome.min.css";
+import SearchBar from "./SearchBar";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -124,7 +125,8 @@ const NavBar = () => {
                 </div>
               </div>
             </div>
-
+            <SearchBar/>
+{/*
             <div className="nav-search-bar-container">
               <div className="search-bar-sub-container">
                 <form className="search-bar">
@@ -144,7 +146,15 @@ const NavBar = () => {
                   </div>
                 </form>
               </div>
-            </div>
+            </div> */}
+
+
+
+
+
+
+
+
             {/* ========================================================================== */}
             <div className="right-nav-signed-in">
               <div className="profile-icon">

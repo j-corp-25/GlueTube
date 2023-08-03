@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   namespace :api, defaults: { format: :json } do
+    get 'videos/search', to: 'videos#search'
     resources :users, only: [:create, :index]
     resources :videos do
       resources :comments

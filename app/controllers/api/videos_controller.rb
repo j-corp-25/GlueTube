@@ -48,9 +48,15 @@ class Api::VideosController < ApplicationController
     render :show
   end
 
+  def search
+    query = params[:query]
+    @videos = Video.where("title ILIKE ? OR description ILIKE ?", "%#{query}%", "%#{query}%")
+    render :search
+  end
+
   private
 
   def video_params
-    params.require(:video).permit(:id,:title, :description, :video)
+    params.require(:video).permit(:id, :title, :description, :video)
   end
 end
