@@ -90,8 +90,8 @@ padding-top: 56.25%; Player ratio: 100 / (1280 / 720) */
 
 
 .react-player {
-  min-width: 95%;
-  min-height: 95%;
+  min-width: 100%;
+  min-height: 100%;
 
 }
 
@@ -110,8 +110,8 @@ padding-top: 56.25%; Player ratio: 100 / (1280 / 720) */
 
 .player-wrapper {
   position: relative;
-  width: 340px;
-  height: 190px;
+  width: 313px;
+  height: 175px;
 }
 
 .link-wrapper {
