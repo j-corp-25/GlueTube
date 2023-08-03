@@ -64,8 +64,8 @@ export default function VideoForm() {
     if (title.trim() === "") {
       setTitleError("Title is a required field.");
       errors = true;
-    } else if (title.trim().length > 50) {
-      setTitleError("Title must be less than 50 characters.");
+    } else if (title.trim().length > 80) {
+      setTitleError("Title must be less than 80 characters.");
       errors = true;
     } else {
       setTitleError(null);
@@ -112,7 +112,7 @@ export default function VideoForm() {
     <form className="video-upload-form" onSubmit={handleSubmit}>
       <div className="video-page-form-container">
         <div className="video-form-header">
-          <h1>{formType} Video</h1>
+          <h1 className="form-title">{formType} Video</h1>
           <div className="step-container"> </div>
         </div>
         <div className="video-form-container">
@@ -146,8 +146,8 @@ export default function VideoForm() {
             <div>
               {formType === "Update" && (
                 <div>
-                  Your original Video file is selected by default. Drag a new
-                  video if you want to update your video
+                  Your <b>original</b> video file is selected by default. Drag a new
+                  video if you want to change your video
                 </div>
               )}
 
@@ -197,10 +197,10 @@ export default function VideoForm() {
           </div>
 
           <div className="video-upload-footer">
-            <button type="button" onClick={() => history.goBack()}>
+            <button className="cancel-button-form" type="button" onClick={() => history.goBack()}>
               Cancel
             </button>
-            <button type="submit">{formType} Video</button>
+            <button className="submit-button-form" type="submit">{formType} Video</button>
           </div>
         </div>
       </div>
