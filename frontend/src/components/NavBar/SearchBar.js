@@ -52,7 +52,7 @@ const SearchBar = () => {
         className="button-search"
       ></input>
 
-      <button id="searchbar-button" onClick={handleSubmit} >SEARCH</button>
+      <button id="searchbar-button" type="submit"  onClick={handleSubmit} >SEARCH</button>
       {searchText && searchResults &&
       <ul id="search-dropdown">
       {searchResults.map((result) => {
