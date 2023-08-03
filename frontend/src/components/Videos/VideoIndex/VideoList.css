@@ -283,3 +283,32 @@ img.videoThumbnail {
   text-decoration: none;
   color: inherit;
 }
+
+.video-created {
+  font-size: 12px;
+  color:darkgray;
+}
+.video-views {
+  font-size: 12px;
+  color:darkgray;
+}
+
+.video-stats {
+  display: flex;
+}
+
+
+.video-title,
+.video-author {
+  display: block; 
+}
+
+.video-views,
+.video-created {
+  font-size: 12px;
+  color: darkgray;
+}
+
+.video-views {
+  margin-right: 5px;
+}
