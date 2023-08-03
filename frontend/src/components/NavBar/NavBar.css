@@ -234,23 +234,30 @@ header {
   padding-left: 20px;
   padding-right: 50px;
 }
+
 /* sliding bar */
 
 .sliding-navigation-bar {
   display: flex;
   white-space: nowrap;
-  scrollbar-width: none; /* For Firefox */
-  -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
   width: 99%;
-  overflow-x: scroll; /* Allows horizontal scrolling */
-  -ms-overflow-style: none; /* IE and Edge */
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  cursor:grab;
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
 }
 
 .sliding-navigation-bar::-webkit-scrollbar {
-  display: none; /* For Chrome, Safari, and Edge */
+  display: none;
 }
+
 .sliding-navigation-bar::-webkit-scrollbar-thumb {
-  /* For Chrome, Safari, and Edge */
+
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
@@ -265,7 +272,7 @@ header {
   text-decoration: none;
   font-size: 18px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 .sliding-navigation-bar button:hover {
@@ -274,30 +281,34 @@ header {
 
 .sliding-navigation-bar-wrapper {
   position: absolute;
-  top: 55px;
+  top: 45px;
   left: 100px;
   width: 90%;
-  overflow-x: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  overflow-x: visible;
+  cursor:grab;
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+
 }
 .sliding-navigation-bar button {
   flex: 0 0 auto;
   background-color: #111;
   border: none;
   color: white;
-  padding: 10px 20px; /* Adjust for desired spacing */
+  padding: 10px 20px;
   margin: 10px;
   text-decoration: none;
   font-size: 18px;
   cursor: pointer;
   transition: 0.3s;
-  border-radius: 5px; /* Rounded corners */
+  border-radius: 5px;
 }
 
 .sliding-navigation-bar button:hover {
   color: #f1f1f1;
-  background-color: #222; /* Darker background on hover */
+  background-color: #222;
 }
 
 @media (max-width: 768px) {

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { DotSpinner } from '@uiball/loaders'
+import { DotSpinner } from "@uiball/loaders";
 import {
   getVideo,
   fetchVideo,
@@ -17,13 +17,31 @@ export default function VideoForm() {
   const history = useHistory();
   const videoId = useParams().videoId;
   const video = useSelector((state) => getVideo(videoId)(state));
+  console.log("🚀 ~ file: VideoForm.js:20 ~ VideoForm ~ video:", video);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [titleError, setTitleError] = useState(null);
   const [descriptionError, setDescriptionError] = useState(null);
+  const [fileError, setFileError] = useState(null);
   const formType = videoId ? "Update" : "Upload";
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(null);
   const [videoFile, setVideoFile] = useState(null);
+  const sessionUser = useSelector((state) => state.session.user);
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    if (e.dataTransfer.items) {
+      // If dropped items are files
+      if (e.dataTransfer.items[0].kind === "file") {
+        const file = e.dataTransfer.items[0].getAsFile();
+        setVideoFile(file);
+      }
+    }
+  };
 
   useEffect(() => {
     if (videoId) {
@@ -53,7 +71,7 @@ export default function VideoForm() {
       setTitleError(null);
     }
 
-    if (formType=== "Upload" && videoFile === null ) {
+    if (formType === "Upload" && videoFile === null) {
       setMessage("Please select a video file.");
       errors = true;
     }
@@ -69,8 +87,7 @@ export default function VideoForm() {
       const formData = new FormData();
       formData.append("video[title]", title);
       formData.append("video[description]", description);
-      if (videoFile!== null) {
-
+      if (videoFile !== null) {
         formData.append("video[video]", videoFile);
       }
 
@@ -78,8 +95,10 @@ export default function VideoForm() {
         if (formType === "Update") {
           formData.append("video[id]", videoId);
           await dispatch(updateVideo(formData));
+          history.push(`/videos/${videoId}`);
         } else {
-          await dispatch(createVideo(formData));
+          const newVideo = await dispatch(createVideo(formData));
+          history.push(`/videos`);
         }
         setMessage(`${formType} Successful!`);
         setTitle("");
@@ -90,49 +109,101 @@ export default function VideoForm() {
     }
   }
   return (
-    <div className="video-page-form-container">
-      <div className="video-form-container">
-        <form className="video-upload-form" onSubmit={handleSubmit}>
-          <h1 className="video-form-title">{formType} Video</h1>
-          <label className="video-upload-form-label">
-            Title
+    <form className="video-upload-form" onSubmit={handleSubmit}>
+      <div className="video-page-form-container">
+        <div className="video-form-header">
+          <h1>{formType} Video</h1>
+          <div className="step-container"> </div>
+        </div>
+        <div className="video-form-container">
+          <div className="thumbnail-upload-section">
+            <label
+              htmlFor="file-upload"
+              className="custom-file-upload"
+              onDragOver={handleDragOver}
+              onDrop={handleDrop}
+            >
+              {videoFile ? (
+                <img src={URL.createObjectURL(videoFile)} alt="thumbnail" />
+              ) : (
+                "+ Drag and drop video files to upload"
+              )}
+
+            {message && <div className="error-message">{message}</div>}
+
+            </label>
             <input
-              type="text"
-              value={title}
-              name="title"
-              onChange={(e) => {
-                setTitle(e.target.value);
-                setTitleError(null);
-              }}
-              className="video-form-input"
+              id="file-upload"
+              type="file"
+              onChange={(e) => setVideoFile(e.target.files[0])}
+              style={{ display: "none" }}
             />
-            {titleError && <div className="error-message">{titleError}</div>}
-          </label>
+            <div className="supported-formats">
+              Supported formats: .MP4, .MOV, .AVI, etc.
+            </div>
+            <div> Hey {sessionUser.username}</div>
+            <br />
+            <div>
+              {formType === "Update" && (
+                <div>
+                  Your original Video file is selected by default. Drag a new
+                  video if you want to update your video
+                </div>
+              )}
 
-          <label className="video-upload-form-label">
-            Description
-            <textarea
-              value={description}
-              name="description"
-              onChange={(e) => {
-                setDescription(e.target.value);
-                setDescriptionError(null);
-              }}
-              className="video-form-textarea"
-            />
-            {descriptionError && (
-              <div className="error-message">{descriptionError}</div>
-            )}
-            <div>{message}</div>
-          </label>
+              {formType === "Upload" && (
+                <div>
+                  Please drag/drop a video file to upload your video and it will
+                  be on its way to the internet! 😮
+                </div>
+              )}
 
-          <input
-            type="file"
-            onChange={(e) => setVideoFile(e.target.files[0])}
-          />
-          <input type="submit" value={`${formType} Video`} />
-        </form>
+              <br />
+            </div>
+            <br />
+          </div>
+          <div className="video-details-section">
+            <label className="video-upload-form-label">
+              Title
+              <input
+                type="text"
+                value={title}
+                name="title"
+                placeholder="Enter Video Title"
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                  setTitleError(null);
+                }}
+                className="video-form-input"
+              />
+              {titleError && <div className="error-message">{titleError}</div>}
+            </label>
+            <label className="video-upload-form-label">
+              Description
+              <textarea
+                value={description}
+                name="description"
+                placeholder="Enter Video Description"
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                  setDescriptionError(null);
+                }}
+                className="video-form-textarea"
+              />
+              {descriptionError && (
+                <div className="error-message">{descriptionError}</div>
+              )}
+            </label>
+          </div>
+
+          <div className="video-upload-footer">
+            <button type="button" onClick={() => history.goBack()}>
+              Cancel
+            </button>
+            <button type="submit">{formType} Video</button>
+          </div>
+        </div>
       </div>
-    </div>
+    </form>
   );
 }

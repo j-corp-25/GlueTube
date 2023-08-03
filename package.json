@@ -24,6 +24,7 @@
     "bootstrap": "^5.3.1",
     "date-fns": "^2.30.0",
     "font-awesome": "^4.7.0",
+    "react-dropzone": "^14.2.3",
     "styled-components": "^5.3.11"
   }
 }
