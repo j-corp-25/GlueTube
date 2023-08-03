@@ -125,7 +125,11 @@ const VideoShow = () => {
               </div>
               <div className="video-description-container">
                 <button
-                  className="description-toggle"
+                  className={
+                    showDescription
+                      ? "description-toggle-less"
+                      : "description-toggle-more"
+                  }
                   onClick={toggleDescription}
                 >
                   {showDescription ? "Show Less" : "Show More"}
