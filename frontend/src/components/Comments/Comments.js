@@ -139,6 +139,14 @@ const Comment = ({ comment }) => {
 
   return (
     <div className="comment-container">
+      <div className="profile-icon-container">
+        <Avatar
+          name={comment.author}
+          size="35"
+          round={true}
+          color={Avatar.getRandomColor("sitebase", ["red", "green", "blue"])}
+        />
+      </div>
       {isEditing ? (
         <>
           <input
@@ -150,28 +158,16 @@ const Comment = ({ comment }) => {
           <button onClick={() => setIsEditing(false)}>Cancel</button>
         </>
       ) : (
-        <>
+        <div className="comment-content">
+          <div className="comment-author">{comment.author}</div>
           <p className="comment">{comment.body}</p>
-          <div className="comment-body-container"></div>
-          <div className="profile-icon-conrainer">
-            <Avatar
-              name={comment.author}
-              size="35"
-              round={true}
-              color={Avatar.getRandomColor("sitebase", [
-                "red",
-                "green",
-                "blue",
-              ])}
-            />
-          </div>
           {sessionUser?.id === comment.authorId && (
-            <>
+            <div className="comment-options">
               <button onClick={() => setIsEditing(true)}>Edit</button>
               <button onClick={() => handleDelete(comment.id)}>Delete</button>
-            </>
+            </div>
           )}
-        </>
+        </div>
       )}
     </div>
   );
@@ -218,17 +214,22 @@ const Comments = ({ videoId }) => {
           <h1 className="comment-title">Comments</h1>
           <div className="comment-container-show-page-comments">
             <div className="comment-container-show-page-comments-comment">
-              {sessionUser && (
-                <form onSubmit={handleSubmit}>
-                  <input
-                    type="text"
-                    placeholder="Write a comment..."
-                    value={newComment}
-                    onChange={(e) => setNewComment(e.target.value)}
-                  />
-                  <button className="submit-container">Submit</button>
-                </form>
-              )}
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  placeholder={
+                    sessionUser
+                      ? "Write a comment..."
+                      : "You need to be logged in to comment"
+                  }
+                  value={newComment}
+                  onChange={(e) => setNewComment(e.target.value)}
+                  disabled={!sessionUser}
+                />
+                <button className="submit-container" disabled={!sessionUser}>
+                  Submit
+                </button>
+              </form>
 
               {sortedComments.map((comment) => (
                 <div key={comment.id}>
@@ -249,6 +250,52 @@ const Comments = ({ videoId }) => {
 };
 
 export default Comments;
+// return (
+//   <>
+//     {comments && (
+//       <div className="comment-container-show-page">
+//         <h1 className="comment-title">Comments</h1>
+//         <div className="comment-section">
+//           {sessionUser && (
+//             <div className="comment-input-section">
+//               <Avatar
+//                 name={sessionUser.username}
+//                 size="35"
+//                 round={true}
+//                 color={Avatar.getRandomColor("sitebase", ["red", "green", "blue"])}
+//               />
+//               <form onSubmit={handleSubmit} className="comment-form">
+//                 <input
+//                   type="text"
+//                   placeholder="Write a comment..."
+//                   value={newComment}
+//                   onChange={(e) => setNewComment(e.target.value)}
+//                 />
+//                 <button className="submit-container">Submit</button>
+//               </form>
+//             </div>
+//           )}
+
+//           {sortedComments.map((comment) => (
+//             <div key={comment.id} className="comment">
+//               <Avatar
+//                 name={comment.author.username}
+//                 size="35"
+//                 round={true}
+//                 color={Avatar.getRandomColor("sitebase", ["red", "green", "blue"])}
+//               />
+//               <div className="comment-body">
+//                 <h3>{comment.author.username}</h3>
+//                 <p>{comment.body}</p>
+//                 {/* Add Edit and Delete buttons if needed */}
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     )}
+//   </>
+// );
 
 // import React, { useState } from "react";
 // import { useSelector, useDispatch } from "react-redux";

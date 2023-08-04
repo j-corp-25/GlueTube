@@ -72,3 +72,230 @@ p.comment {
 .profile-icon-conrainer {
   padding-right: 30px;
 }
+
+
+
+
+
+
+
+.comment-container-show-page {
+  /* Container styles */
+}
+
+.comment-title {
+  /* Styles for the "Comments" title */
+}
+
+.comment-section {
+  /* Styles for the whole comment section */
+}
+
+.comment-input-section {
+  display: flex;
+  align-items: center;
+  /* Additional styles for the input section */
+}
+
+.comment-form {
+  flex: 1;
+  /* Styles for the comment form */
+}
+
+.comment {
+  display: flex;
+  align-items: top;
+  padding: 10px 0;
+  /* Additional styles for each comment */
+}
+
+.comment-body {
+  margin-left: 10px;
+}
+
+/* Additional styling for other elements */
+
+.comment-container-show-page {
+  font-family: Arial, sans-serif;
+  padding: 15px;
+}
+
+.comment-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+.comment-section {
+  border-top: 1px solid #ddd;
+}
+
+.comment-input-section,
+.comment {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 15px;
+}
+
+.comment-input-section .comment-form,
+.comment .comment-body {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+.comment-input-section input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.comment-input-section .submit-container {
+  display: block;
+  background: blue;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.comment .comment-body h3 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.comment .comment-body p {
+  margin: 5px 0;
+}
+
+/* If you want to add edit and delete buttons, you can define styles for them here */
+.comment-container {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.profile-icon-container {
+  margin-right: 10px;
+}
+
+.comment-content {
+  flex-grow: 1;
+}
+
+.comment-author {
+  font-weight: bold;
+}
+
+.comment-options {
+  display: flex;
+  gap: 10px;
+}
+
+.comment-container {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.profile-icon-container {
+  margin-right: 10px;
+}
+
+.comment-content {
+  flex-grow: 1;
+}
+
+.comment-author {
+  font-weight: bold;
+}
+
+.comment-options {
+  display: flex;
+  gap: 10px;
+}
+
+
+.comment-container {
+  display: flex;
+  align-items: flex-start;
+  margin: 10px 0;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.profile-icon-container {
+  flex: 0 0 35px;
+  margin-right: 10px;
+}
+
+.profile-icon-container img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.comment-content {
+  flex-grow: 1;
+  font-size: 14px;
+}
+
+.comment-author {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.comment {
+  color: #555;
+  margin: 0;
+}
+
+.comment-options {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.comment-options button {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+}
+
+.comment-options button:hover {
+  text-decoration: underline;
+}
+
+/* If you are using the form to write/edit a comment */
+input[type="text"] {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5px 0;
+}
+
+button {
+  padding: 5px 10px;
+  background: #f00;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #d00;
+}
+
+/* Styling for the container that holds all comments */
+.comment-container-show-page {
+  padding: 15px;
+}
+
+.comment-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}

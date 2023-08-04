@@ -53,11 +53,11 @@ const VideoShow = () => {
           <NavBar />
           <div className="video-page-container-show">
             <div className="video-player-container">
-              <button>
+              {/* <button>
                 <Link to={`/videos/${video.id}/edit`}>Edit</Link>
               </button>
 
-              <button onClick={handleDelete}>Delete</button>
+              <button onClick={handleDelete}>Delete</button> */}
               <div className="player-wrapper-show">
                 <ReactPlayer
                   className="react-player-show"
@@ -68,15 +68,48 @@ const VideoShow = () => {
                 />
               </div>
               <div className="video-information">
-                <p>{video.title}</p>
-                <p>{video.description}</p>
-                <p>{video.author.username}</p>
-                <Comments videoId={videoId} />
+                <div className="video-information">
+                  <h1 className="video-title">{video.title}</h1>
+                  <div className="video-author-container">
+                    <Avatar
+                      name={video.author.username}
+                      size="35"
+                      round={true}
+                      color={Avatar.getRandomColor("sitebase", [
+                        "red",
+                        "green",
+                        "blue",
+                      ])}
+                    />
+                    <span className="video-author-username">
+                      {video.author.username}
+                    </span>
+                  </div>
+                  <div className="video-description-container">
+                    <button
+                      className={
+                        showDescription
+                          ? "description-toggle-less"
+                          : "description-toggle-more"
+                      }
+                      onClick={toggleDescription}
+                    >
+                      {showDescription ? "Show Less" : "Show More"}
+                    </button>
+                    <p
+                      className="video-description"
+                      style={{ display: showDescription ? "block" : "none" }}
+                    >
+                      {video.description}
+                    </p>
+                  </div>
+              <Comments videoId={videoId} />
+                </div>
               </div>
             </div>
             <div className="side-bar-container">
               <div className="side-bar-title-container">
-                <p className="side-bar-title">Latest Videos</p>
+                <p className="side-bar-title"></p>
               </div>
               <div className="side-bar">
                 {limitedVideos.map((video) => (
@@ -106,6 +139,7 @@ const VideoShow = () => {
                 url={video.videoUrl}
               />
             </div>
+
             <div className="video-information">
               <h1 className="video-title">{video.title}</h1>
               <div className="video-author-container">
@@ -141,9 +175,9 @@ const VideoShow = () => {
                   {video.description}
                 </p>
               </div>
+            <Comments videoId={videoId} />
             </div>
 
-            <Comments videoId={videoId} />
           </div>
           <div className="side-bar-container">
             <div className="side-bar-title-container">
