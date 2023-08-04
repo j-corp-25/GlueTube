@@ -2,20 +2,11 @@ class Api::VideosController < ApplicationController
   wrap_parameters include: Video.attribute_names + [:video]
   before_action :require_login, only: [:create, :update, :destroy]
 
-  # def index
-  #   @videos = Video.includes(:author).all
-  #   render :index
-  # end
-
   def index
     @videos = Video.all.sort { |b, a| b.created_at <=> a.created_at }
     render :index
   end
 
-  # def show
-  #   @video = Video.includes(:author).find(params[:id])
-  #   render :show
-  # end
   def show
     @video = Video.find(params[:id])
     render :show
@@ -23,9 +14,7 @@ class Api::VideosController < ApplicationController
 
   def create
     @video = current_user.videos.new(video_params)
-
     if @video.save
-      # render json: { "video has been created": @video }, status: :created
       render :show
     else
       render json: { errors: @video.errors.full_messages }, status: :unprocessable_entity
@@ -47,7 +36,6 @@ class Api::VideosController < ApplicationController
     @video.destroy
     render :show
   end
-
 
   def search
     query = params[:query]

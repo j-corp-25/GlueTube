@@ -178,11 +178,11 @@ const Comments = ({ videoId }) => {
   const comments = useSelector((state) => state.comments);
   const sessionUser = useSelector((state) => state.session.user);
   const [newComment, setNewComment] = useState("");
-  // debugger
+
   const video = useSelector((state) => state.videos[videoId]);
-  // debugger
+
   const commentIds = video.commentIds;
-  // debugger
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -200,9 +200,7 @@ const Comments = ({ videoId }) => {
 
   let sortedComments = [];
 
-  // if (video && video.commentIds) {
-  //   sortedComments = video.commentIds.map((id) => comments[id]);
-  // }
+
   if (video && video.commentIds) {
     sortedComments = video.commentIds.map((id) => comments[id]).filter(Boolean);
   }

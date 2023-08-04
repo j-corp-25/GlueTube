@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { fetchSearchResults } from "../../store/search";
-import "./SearchShowPage.css";
 import VideoList from "../Videos/VideoIndex/VideoList";
 import NavBar from "../NavBar/NavBar";
 import "../NavBar/NavBar.css"
