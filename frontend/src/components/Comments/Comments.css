@@ -1,24 +1,31 @@
-.comment-container-show-page {
-  padding: 1vh;
-  width: 50vw;
-  display: flex;
-  /* height: -webkit-fill-available; */
-  flex-direction: column;
-  border: yello;
-  /* margin-left: 10vw; */
-  /* border: 1px yellow solid; */
+
+/* ============================== officiall*/
+
+.comment-container-show-page-comments-comment form {
+  margin-bottom: 20px;
 }
 
+
+
+.submit-container {
+  display: none;
+}
+
+
+.comment-container-show-page {
+}
 .comment-title {
-  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .comment-container-show-page-comments {
-  /* width: 35vw; */
+
   border-radius: 30px;
   padding: 5px;
   padding-left: 20px;
-  /* height: 5vh; */
+  height: 5vh;
   border-start-end-radius: inherit;
   border-end-end-radius: inherit;
   border: 1px gray solid;
@@ -27,19 +34,13 @@
   border-top: none;
   border-left: none;
   border: none;
-  /* color: transparent; */
+
   background-color: transparent;
 }
-
 .comment-container-show-page-comments-comment {
   display: flex;
   flex-direction: column;
-  /* justify-items: legacy; */
-  padding: 0px;
-}
-
-.comment-container-show-page-comments-comment form {
-  margin-bottom: 20px;
+  justify-items: legacy;
 }
 
 .comment-container-show-page-comments-comment input[type="text"] {
@@ -50,252 +51,36 @@
   border-left: none;
   border-right: none;
 }
-
-.comment-container {
-  padding-top: 20px;
-}
-
-p.comment {
-  /* border: 1px yellow solid; */
-  border: 1px gray solid;
-  /* padding-left: 10px; */
-  margin-top: 10px;
-  border-radius: 30px;
-  padding: 15px;
-}
-.submit-container {
-  display: none;
-}
-
-/* ================= */
-
-.profile-icon-conrainer {
-  padding-right: 30px;
-}
-
-
-
-
-
-
-
-.comment-container-show-page {
-  /* Container styles */
-}
-
-.comment-title {
-  /* Styles for the "Comments" title */
-}
-
-.comment-section {
-  /* Styles for the whole comment section */
-}
-
-.comment-input-section {
-  display: flex;
-  align-items: center;
-  /* Additional styles for the input section */
-}
-
-.comment-form {
-  flex: 1;
-  /* Styles for the comment form */
-}
-
-.comment {
-  display: flex;
-  align-items: top;
-  padding: 10px 0;
-  /* Additional styles for each comment */
-}
-
-.comment-body {
-  margin-left: 10px;
-}
-
-/* Additional styling for other elements */
-
-.comment-container-show-page {
-  font-family: Arial, sans-serif;
-  padding: 15px;
-}
-
-.comment-title {
-  font-size: 18px;
-  font-weight: bold;
-  color: whitesmoke;
-}
-
-.comment-section {
-  border-top: 1px solid #ddd;
-}
-
-.comment-input-section,
-.comment {
-  display: flex;
-  align-items: flex-start;
-  margin-top: 15px;
-}
-
-.comment-input-section .comment-form,
-.comment .comment-body {
-  flex-grow: 1;
-  margin-left: 10px;
-}
-
-.comment-input-section input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.comment-input-section .submit-container {
-  display: block;
-  background: blue;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 5px;
-}
-
-.comment .comment-body h3 {
-  font-size: 14px;
-  font-weight: bold;
-  margin: 0;
-}
-
-/* .comment .comment-body p {
-  margin: 5px 0;
-} */
-
-/* If you want to add edit and delete buttons, you can define styles for them here */
-/* .comment-container {
-  display: flex;
-  margin-bottom: 15px;
-}
-
-.profile-icon-container {
-  margin-right: 10px;
-}
-
-.comment-content {
-  flex-grow: 1;
-}
-
-.comment-author {
-  font-weight: bold;
-}
-
-.comment-options {
-  display: flex;
-  gap: 10px;
-}
-
 .comment-container {
   display: flex;
-  margin-bottom: 15px;
-}
-
-.profile-icon-container {
-  margin-right: 10px;
-}
-
-.comment-content {
-  flex-grow: 1;
-}
-
-.comment-author {
-  font-weight: bold;
-}
-
-.comment-options {
-  display: flex;
-  gap: 10px;
-}
-
-
-.comment-container {
-  display: flex;
-  align-items: flex-start;
   margin: 10px 0;
   padding: 10px;
-  border-bottom: 1px solid #eee;
 }
 
 .profile-icon-container {
-  flex: 0 0 35px;
   margin-right: 10px;
 }
-
-.profile-icon-container img {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-}
-
 .comment-content {
   flex-grow: 1;
-  font-size: 14px;
 }
 
 .comment-author {
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 4px;
+  font-weight: bold;
 }
-
 .comment {
-  color: #555;
-  margin: 0;
 }
 
 .comment-options {
   display: flex;
   gap: 10px;
   margin-top: 5px;
+  position: absolute;
+  transform: translateX(730px) translateY(-50px);
 }
-
 .comment-options button {
   background: none;
   border: none;
-  color: #666;
+  color: #bab2b2;
   cursor: pointer;
   padding: 0;
 }
-
-.comment-options button:hover {
-  text-decoration: underline;
-}
-
-/* If you are using the form to write/edit a comment */
-/* input[type="text"] {
-  width: 100%;
-  border: 1px solid #ccc;
-  padding: 5px;
-  margin: 5px 0;
-} */
-
-/* button {
-  padding: 5px 10px;
-  background: #f00;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-} */
-
-/* button:hover {
-  background: #d00;
-} */
-
-/* Styling for the container that holds all comments */
-/* .comment-container-show-page {
-  padding: 15px;
-} */
-
-/* .comment-title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 10px;
-} */
