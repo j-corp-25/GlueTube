@@ -298,6 +298,47 @@ header {
   background-color: #ffffff;
 }
 
+
+
+
+.nav-search-bar-container {
+  display: flex;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 30px;
+  height: 30px;
+  width: 400px  ;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+}
+
+#search-input, #search-input:focus {
+  border: 0;
+  outline: none;
+  background-color: rgb(169, 169, 169);
+  border-radius: 3px;
+
+
+}
+
+#search-dropdown {
+  position: absolute;
+  background-color: white;
+  width: 250px;
+
+}
+#searchbar-button{
+  font-size: 15px;
+  border-radius: 3px;
+}
+.search-dropdown-item {
+  border: 1px solid black;
+  padding: 5px;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .top-nav-bar {
     flex-direction: column;

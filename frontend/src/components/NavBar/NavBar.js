@@ -11,7 +11,7 @@ import { useState } from "react";
 import * as sessionActions from "../../store/session";
 import HomeIcon from "@mui/icons-material/Home";
 import "font-awesome/css/font-awesome.min.css";
-import { useRef } from "react";
+import SearchBar from "./SearchBar";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -30,25 +30,6 @@ const NavBar = () => {
     dispatch(sessionActions.logout());
   };
 
-  const sliderRef = useRef(null);
-
-  const slideDrag = (e) => {
-    e.preventDefault();
-    sliderRef.current.scrollLeft -= (e.clientX - sliderRef.current.clientX) * 2;
-    sliderRef.current.clientX = e.clientX;
-  };
-
-  const slideStop = () => {
-    document.removeEventListener("mousemove", slideDrag);
-    document.removeEventListener("mouseup", slideStop);
-  };
-
-  const slideStart = (e) => {
-    sliderRef.current.clientX = e.clientX;
-    document.addEventListener("mousemove", slideDrag);
-    document.addEventListener("mouseup", slideStop);
-  };
-
   if (sessionUser) {
     return (
       <>
@@ -63,6 +44,7 @@ const NavBar = () => {
                     alt="Button"
                   />
                 </figure>
+
                 <div className="home-button">
                   <i
                     className="fa fa-home fa-2x"
@@ -99,60 +81,57 @@ const NavBar = () => {
               </div>
             </div>
             {/* ========================================================================== */}
-
             <div className="sliding-navigation-bar-wrapper">
               <div className="sliding-navigation-bar">
                 <div>
                   <button>ALL</button>
                 </div>
                 <div>
-                  <button>Cars</button>
+                  <button>Gaming</button>
                 </div>
                 <div>
-                  <button>Cars</button>
+                  <button>Sports</button>
                 </div>
                 <div>
-                  <button>Cars</button>
+                  <button>News</button>
                 </div>
                 <div>
-                  <button>Cars</button>
+                  <button>Live</button>
                 </div>
                 <div>
-                  <button>Cars</button>
+                  <button>Gadgets</button>
                 </div>
                 <div>
-                  <button>Cars</button>
+                  <button>Minecraft</button>
                 </div>
                 <div>
-                  <button>Cars</button>
+                  <button>Minecraft</button>
                 </div>
                 <div>
-                  <button>Cars</button>
+                  <button>Minecraft</button>
                 </div>
                 <div>
-                  <button>Cars</button>
+                  <button>Minecraft</button>
                 </div>
                 <div>
-                  <button>Cars</button>
+                  <button>Minecraft</button>
                 </div>
                 <div>
-                  <button>Cars</button>
+                  <button>Minecraft</button>
                 </div>
                 <div>
-                  <button>Cars</button>
+                  <button>Minecraft</button>
                 </div>
                 <div>
-                  <button>Cars</button>
-                </div>
-                <div>
-                  <button>Cars</button>
+                  <button>Mario</button>
                 </div>
                 <div>
                   <button>Cars</button>
                 </div>
               </div>
             </div>
-
+            <SearchBar />
+            {/*
             <div className="nav-search-bar-container">
               <div className="search-bar-sub-container">
                 <form className="search-bar">
@@ -172,7 +151,8 @@ const NavBar = () => {
                   </div>
                 </form>
               </div>
-            </div>
+            </div> */}
+
             {/* ========================================================================== */}
             <div className="right-nav-signed-in">
               <div className="profile-icon">
@@ -212,7 +192,7 @@ const NavBar = () => {
       <header>
         <nav className="top-nav-bar normal-color">
           <div className="left-nav-side-container">
-            <div className="home-logo-container">
+          <div className="home-logo-container">
               <figure className="settings-button-side-wrapper">
                 <img
                   className="settings-button-side"
@@ -227,12 +207,10 @@ const NavBar = () => {
                 ></i>
               </div>
               <div className="home-button">
-                <a href="https://www.linkedin.com/in/jcorporan/">
-                  <i
-                    class="fa-brands fa-linkedin fa-2xl"
-                    style={{ color: "#ffffff" }}
-                  ></i>
-                </a>
+                <i
+                  class="fa-brands fa-linkedin fa-2xl"
+                  style={{ color: "#ffffff" }}
+                ></i>
               </div>
               <div className="home-button">
                 <a href="https://github.com/j-corp-25/GlueTube">
@@ -264,54 +242,52 @@ const NavBar = () => {
                 <button>ALL</button>
               </div>
               <div>
-                <button>Cars</button>
+                <button>Gaming</button>
               </div>
               <div>
-                <button>Cars</button>
+                <button>Sports</button>
               </div>
               <div>
-                <button>Cars</button>
+                <button>News</button>
               </div>
               <div>
-                <button>Cars</button>
+                <button>Live</button>
               </div>
               <div>
-                <button>Cars</button>
+                <button>Gadgets</button>
               </div>
               <div>
-                <button>Cars</button>
+                <button>Minecraft</button>
               </div>
               <div>
-                <button>Cars</button>
+                <button>Minecraft</button>
               </div>
               <div>
-                <button>Cars</button>
+                <button>Minecraft</button>
               </div>
               <div>
-                <button>Cars</button>
+                <button>Minecraft</button>
               </div>
               <div>
-                <button>Cars</button>
+                <button>Minecraft</button>
               </div>
               <div>
-                <button>Cars</button>
+                <button>Minecraft</button>
               </div>
               <div>
-                <button>Cars</button>
+                <button>Minecraft</button>
               </div>
               <div>
-                <button>Cars</button>
-              </div>
-              <div>
-                <button>Cars</button>
+                <button>Mario</button>
               </div>
               <div>
                 <button>Cars</button>
               </div>
             </div>
           </div>
+          <SearchBar />
 
-          <div className="nav-search-bar-container">
+          {/* <div className="nav-search-bar-container">
             <div className="search-bar-sub-container">
               <form className="search-bar">
                 <input
@@ -330,7 +306,7 @@ const NavBar = () => {
                 </div>
               </form>
             </div>
-          </div>
+          </div> */}
           <div className="right-nav">
             <input onClick={demoLogin} type="button" value="Demouser"></input>
             {/* <input type="button" value="Upload"></input> */}

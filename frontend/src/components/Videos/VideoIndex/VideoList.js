@@ -9,10 +9,13 @@ import VideoForm from "../VideoForm/VideoForm";
 import VideoShowItem from "../VideoShowItem/VideoShowItem";
 import { getVideos, fetchVideos } from "../../../store/videos";
 
-const VideoList = () => {
+
+
+const VideoList = ({searchResults}) => {
   const dispatch = useDispatch();
   // const videos = useSelector(getVideos);
   const videos = useSelector((state) => getVideos(state));
+  const items = searchResults || videos;
 
   // useEffect(() => {
   //     dispatch(fetchVideos());
@@ -32,7 +35,7 @@ const VideoList = () => {
     <>
       {videos && (
         <section className="video-grid">
-          {videos.map((video) => (
+          {items.map((video) => (
             <VideoShowItem key={video.id} video={video} />
           ))}
         </section>

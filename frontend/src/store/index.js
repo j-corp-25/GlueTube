@@ -4,11 +4,12 @@ import session from './session'
 import videos from './videos'
 import users from './users'
 import comments from './comments'
+import search from './search'
 
 
 
 const rootReducer = combineReducers({
-  session,videos,users, comments
+  session,videos,users, comments,search
 });
 let enhancer;
 
