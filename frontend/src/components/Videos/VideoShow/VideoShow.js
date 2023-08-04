@@ -53,11 +53,11 @@ const VideoShow = () => {
           <NavBar />
           <div className="video-page-container-show">
             <div className="video-player-container">
-              {/* <button>
+              <button>
                 <Link to={`/videos/${video.id}/edit`}>Edit</Link>
               </button>
 
-              <button onClick={handleDelete}>Delete</button> */}
+              <button onClick={handleDelete}>Delete</button>
               <div className="player-wrapper-show">
                 <ReactPlayer
                   className="react-player-show"

@@ -166,12 +166,12 @@ p.comment {
   margin: 0;
 }
 
-.comment .comment-body p {
+/* .comment .comment-body p {
   margin: 5px 0;
-}
+} */
 
 /* If you want to add edit and delete buttons, you can define styles for them here */
-.comment-container {
+/* .comment-container {
   display: flex;
   margin-bottom: 15px;
 }
@@ -270,32 +270,32 @@ p.comment {
 }
 
 /* If you are using the form to write/edit a comment */
-input[type="text"] {
+/* input[type="text"] {
   width: 100%;
   border: 1px solid #ccc;
   padding: 5px;
   margin: 5px 0;
-}
+} */
 
-button {
+/* button {
   padding: 5px 10px;
   background: #f00;
   color: #fff;
   border: none;
   cursor: pointer;
-}
+} */
 
-button:hover {
+/* button:hover {
   background: #d00;
-}
+} */
 
 /* Styling for the container that holds all comments */
-.comment-container-show-page {
+/* .comment-container-show-page {
   padding: 15px;
-}
+} */
 
-.comment-title {
+/* .comment-title {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 10px;
-}
+} */
