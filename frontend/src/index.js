@@ -27,13 +27,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const renderApp = () => {
   root.render(
-    <React.StrictMode>
+
       <Provider store={store}>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </Provider>
-    </React.StrictMode>
+
   );
 }
 

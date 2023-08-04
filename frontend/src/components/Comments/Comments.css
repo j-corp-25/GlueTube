@@ -1,0 +1,86 @@
+
+/* ============================== officiall*/
+
+.comment-container-show-page-comments-comment form {
+  margin-bottom: 20px;
+}
+
+
+
+.submit-container {
+  display: none;
+}
+
+
+.comment-container-show-page {
+}
+.comment-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.comment-container-show-page-comments {
+
+  border-radius: 30px;
+  padding: 5px;
+  padding-left: 20px;
+  height: 5vh;
+  border-start-end-radius: inherit;
+  border-end-end-radius: inherit;
+  border: 1px gray solid;
+  background: #30363d;
+  color: #ffffff;
+  border-top: none;
+  border-left: none;
+  border: none;
+
+  background-color: transparent;
+}
+.comment-container-show-page-comments-comment {
+  display: flex;
+  flex-direction: column;
+  justify-items: legacy;
+}
+
+.comment-container-show-page-comments-comment input[type="text"] {
+  width: 100%;
+  color: darkgray;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.comment-container {
+  display: flex;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.profile-icon-container {
+  margin-right: 10px;
+}
+.comment-content {
+  flex-grow: 1;
+}
+
+.comment-author {
+  font-weight: bold;
+}
+.comment {
+}
+
+.comment-options {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+  position: absolute;
+  transform: translateX(730px) translateY(-50px);
+}
+.comment-options button {
+  background: none;
+  border: none;
+  color: #bab2b2;
+  cursor: pointer;
+  padding: 0;
+}

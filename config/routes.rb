@@ -5,11 +5,17 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   namespace :api, defaults: { format: :json } do
+    get 'videos/search', to: 'videos#search'
     resources :users, only: [:create, :index]
-    resources :videos
-    resource :session, only: [:create, :show, :destroy]
+    resources :videos do
+      resources :comments
+    end
+    resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy, :update]
+    resources :dislikes, only: [:create, :destroy]
+    resource :session, only: [:create, :show, :destroy, :index]
   end
-  get '*path', to: "static_pages#frontend_index"
+  get "*path", to: "static_pages#frontend_index"
 
   # post 'api/test', to: 'application#test'
 end

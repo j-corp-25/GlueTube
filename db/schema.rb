@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_26_150828) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_31_120416) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,38 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_150828) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "body", null: false
+    t.bigint "author_id", null: false
+    t.bigint "video_id", null: false
+    t.bigint "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_comments_on_author_id"
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
+    t.index ["video_id"], name: "index_comments_on_video_id"
+  end
+
+  create_table "dislikes", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id", "video_id"], name: "index_dislikes_on_author_id_and_video_id", unique: true
+    t.index ["author_id"], name: "index_dislikes_on_author_id"
+    t.index ["video_id"], name: "index_dislikes_on_video_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id", "video_id"], name: "index_likes_on_author_id_and_video_id", unique: true
+    t.index ["author_id"], name: "index_likes_on_author_id"
+    t.index ["video_id"], name: "index_likes_on_video_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "session_token", null: false
@@ -67,5 +99,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_150828) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "comments", column: "parent_id"
+  add_foreign_key "comments", "users", column: "author_id"
+  add_foreign_key "comments", "videos"
+  add_foreign_key "dislikes", "users", column: "author_id"
+  add_foreign_key "dislikes", "videos"
+  add_foreign_key "likes", "users", column: "author_id"
+  add_foreign_key "likes", "videos"
   add_foreign_key "videos", "users", column: "author_id"
 end

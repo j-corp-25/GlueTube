@@ -9,13 +9,13 @@ import { useEffect } from "react";
 import VideoForm from "./Videos/VideoForm/VideoForm";
 import VideoShow from "./Videos/VideoShow/VideoShow";
 import { fetchUsers } from '../store/users'; // Add this line
+import SearchShowPage from "./SearchShowPage.js/SearchShowPage";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(sessionActions.restoreSession());
-    dispatch(fetchUsers()); // Add this line
   }, [dispatch]);
 
   return (
@@ -26,6 +26,7 @@ function App() {
         <Route path="/upload" component={VideoForm} />
         <Route path="/login" component={LoginFormPage} />
         <Route path="/signup" component={SignUpForm} />
+        <Route path='/search' component={SearchShowPage}></Route>
         <Route path="/" exact component={GlueTube} />
         <Redirect to="/" />
       </Switch>
