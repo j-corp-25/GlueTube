@@ -12,7 +12,7 @@ import Comments from "../../Comments/Comments";
 import { useHistory } from "react-router-dom";
 import Avatar from "react-avatar";
 import { useState } from "react";
-
+import { fetchVideos } from "../../../store/videos";
 const VideoShow = () => {
   const dispatch = useDispatch();
   const { videoId } = useParams();
@@ -20,6 +20,7 @@ const VideoShow = () => {
   const video = useSelector((state) => getVideo(videoId)(state));
   const sessionUser = useSelector((state) => state.session.user);
   const [showDescription, setShowDescription] = useState(false);
+
 
   const toggleDescription = () => {
     setShowDescription(!showDescription);
@@ -35,11 +36,12 @@ const VideoShow = () => {
     dispatch(fetchVideo(videoId));
   }, [dispatch, videoId]);
 
-  function handleDelete(e) {
+  const handleDelete = async (e) => {
     e.preventDefault();
-    dispatch(deleteVideo(video.id));
+    await dispatch(deleteVideo(video.id));
+    await dispatch(fetchVideos()); // Refetch the videos
     history.push("/");
-  }
+  };
 
   if (!video) {
     return <div className="loading-stage">Loading...</div>;
