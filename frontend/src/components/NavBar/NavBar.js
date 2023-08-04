@@ -70,23 +70,27 @@ const NavBar = () => {
                   ></i>
                 </div>
                 <div className="home-button">
-                  <i
-                    className="fa fa-home fa-2x"
-                    style={{ color: "#ffffff" }}
-                  ></i>
+                  <a href="https://www.linkedin.com/in/jcorporan/">
+                    <i
+                      class="fa-brands fa-linkedin fa-2xl"
+                      style={{ color: "#ffffff" }}
+                    ></i>
+                  </a>
                 </div>
                 <div className="home-button">
+                  <a href="https://github.com/j-corp-25/GlueTube">
+                    <i
+                      class="fa-brands fa-github fa-2xl"
+                      style={{ color: "#ffffff" }}
+                    ></i>
+                  </a>
+                </div>
+                {/* <div className="home-button">
                   <i
                     className="fa fa-home fa-2x"
                     style={{ color: "#ffffff" }}
                   ></i>
-                </div>
-                <div className="home-button">
-                  <i
-                    className="fa fa-home fa-2x"
-                    style={{ color: "#ffffff" }}
-                  ></i>
-                </div>
+                </div> */}
               </div>
               <div className="home-button-container">
                 <Link to="/">
@@ -97,9 +101,7 @@ const NavBar = () => {
             {/* ========================================================================== */}
 
             <div className="sliding-navigation-bar-wrapper">
-              <div
-                className="sliding-navigation-bar"
-              >
+              <div className="sliding-navigation-bar">
                 <div>
                   <button>ALL</button>
                 </div>
@@ -148,7 +150,6 @@ const NavBar = () => {
                 <div>
                   <button>Cars</button>
                 </div>
-
               </div>
             </div>
 
@@ -226,23 +227,29 @@ const NavBar = () => {
                 ></i>
               </div>
               <div className="home-button">
-                <i
-                  className="fa fa-home fa-2x"
-                  style={{ color: "#ffffff" }}
-                ></i>
+                <a href="https://www.linkedin.com/in/jcorporan/">
+                  <i
+                    class="fa-brands fa-linkedin fa-2xl"
+                    style={{ color: "#ffffff" }}
+                  ></i>
+                </a>
               </div>
               <div className="home-button">
-                <i
-                  className="fa fa-home fa-2x"
-                  style={{ color: "#ffffff" }}
-                ></i>
+                <a href="https://github.com/j-corp-25/GlueTube">
+                  <i
+                    class="fa-brands fa-github fa-2xl"
+                    style={{ color: "#ffffff" }}
+                  ></i>
+                </a>
               </div>
-              <div className="home-button">
-                <i
-                  className="fa fa-home fa-2x"
-                  style={{ color: "#ffffff" }}
-                ></i>
-              </div>
+              {/* <div className="home-button">
+                <a href="mailto:corporan.Jordy@gmail.com?subject=General%20Inquiry">
+                  <i
+                    className="fa fa-envelope fa-2x"
+                    style={{ color: "#ffffff" }}
+                  ></i>
+                </a>
+              </div> */}
             </div>
             <div className="home-button-container">
               <Link to="/">
@@ -252,60 +259,57 @@ const NavBar = () => {
           </div>
 
           <div className="sliding-navigation-bar-wrapper">
-              <div
-                className="sliding-navigation-bar"
-              >
-                <div>
-                  <button>ALL</button>
-                </div>
-                <div>
-                  <button>Cars</button>
-                </div>
-                <div>
-                  <button>Cars</button>
-                </div>
-                <div>
-                  <button>Cars</button>
-                </div>
-                <div>
-                  <button>Cars</button>
-                </div>
-                <div>
-                  <button>Cars</button>
-                </div>
-                <div>
-                  <button>Cars</button>
-                </div>
-                <div>
-                  <button>Cars</button>
-                </div>
-                <div>
-                  <button>Cars</button>
-                </div>
-                <div>
-                  <button>Cars</button>
-                </div>
-                <div>
-                  <button>Cars</button>
-                </div>
-                <div>
-                  <button>Cars</button>
-                </div>
-                <div>
-                  <button>Cars</button>
-                </div>
-                <div>
-                  <button>Cars</button>
-                </div>
-                <div>
-                  <button>Cars</button>
-                </div>
-                <div>
-                  <button>Cars</button>
-                </div>
-
+            <div className="sliding-navigation-bar">
+              <div>
+                <button>ALL</button>
+              </div>
+              <div>
+                <button>Cars</button>
+              </div>
+              <div>
+                <button>Cars</button>
+              </div>
+              <div>
+                <button>Cars</button>
+              </div>
+              <div>
+                <button>Cars</button>
+              </div>
+              <div>
+                <button>Cars</button>
+              </div>
+              <div>
+                <button>Cars</button>
+              </div>
+              <div>
+                <button>Cars</button>
+              </div>
+              <div>
+                <button>Cars</button>
+              </div>
+              <div>
+                <button>Cars</button>
+              </div>
+              <div>
+                <button>Cars</button>
+              </div>
+              <div>
+                <button>Cars</button>
+              </div>
+              <div>
+                <button>Cars</button>
+              </div>
+              <div>
+                <button>Cars</button>
+              </div>
+              <div>
+                <button>Cars</button>
+              </div>
+              <div>
+                <button>Cars</button>
               </div>
             </div>
+          </div>
 
           <div className="nav-search-bar-container">
             <div className="search-bar-sub-container">
