@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :dislikes, only: [:create, :destroy]
     resource :session, only: [:create, :show, :destroy, :index]
   end
-  get "*path", to: "static_pages#frontend_index"
 
   # post 'api/test', to: 'application#test'
+  get "*path", to: "static_pages#frontend_index"
 end
