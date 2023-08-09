@@ -61,6 +61,8 @@ export default function VideoForm() {
 
     let errors = false;
 
+    
+
     if (title.trim() === "") {
       setTitleError("Title is a required field.");
       errors = true;
