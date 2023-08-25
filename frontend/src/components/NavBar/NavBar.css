@@ -339,7 +339,7 @@ header {
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .top-nav-bar {
     flex-direction: column;
     justify-content: space-between;
@@ -365,16 +365,16 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-  }
-
+  } */
+/*
   div.right-nav > input {
-    margin: 10px 0; /* Add some vertical margin */
+    margin: 10px 0;
   }
 
   .home-button {
     margin: 0;
-  }
-}
+  } */
+/* } */
 
 /*
 
