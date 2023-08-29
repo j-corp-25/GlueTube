@@ -80,16 +80,14 @@
 
 .main-nav-search {
   width: 30vw;
-  border-radius: 30px;
   padding: 5px;
   padding-left: 20px;
-  height: 5vh;
-  border-start-end-radius: inherit;
-  border-end-end-radius: inherit;
   border: 1px gray solid;
   background: #000;
   color: #ffffff;
   height: inherit;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
 }
 .main-nav-search:focus {
   border: 1px blue solid;
