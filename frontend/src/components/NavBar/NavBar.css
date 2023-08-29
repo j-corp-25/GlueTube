@@ -323,21 +323,35 @@ header {
 
 }
 
-#search-dropdown {
+.search-dropdown {
   position: absolute;
-  background-color: white;
-  width: 250px;
+  top: 150%;
+  left: 0;
+  width: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 1;
+  color: white;
 
 }
-#searchbar-button{
+
+#searchbar-button {
   font-size: 15px;
   border-radius: 3px;
 }
+
 .search-dropdown-item {
-  border: 1px solid black;
-  padding: 5px;
+  padding: 10px 15px;
   cursor: pointer;
+  background-color: rgba(15, 15, 15, 1);
+  transition: background-color 0.2s;
 }
+
+.search-dropdown-item:hover {
+  background-color: gray;
+}
+
 
 /* @media (max-width: 768px) {
   .top-nav-bar {
