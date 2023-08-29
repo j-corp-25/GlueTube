@@ -95,7 +95,7 @@
   border-top-left-radius: 30px;
 }
 .main-nav-search:focus {
-  border: 1px blue solid;
+  border: 1px rgba(27, 99, 185, 1) solid;
 }
 .search-container {
   display: flex;
