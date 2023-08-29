@@ -19,8 +19,8 @@ const NavBar = () => {
 
   const demoLogin = () => {
     const demoUser = {
-      credential: "Demo-lition",
-      password: "password",
+      credential: "demoUser",
+      password: "password1",
     };
     dispatch(sessionActions.login(demoUser));
   };
