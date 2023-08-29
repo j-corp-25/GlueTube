@@ -6,6 +6,7 @@ import { clearSearchResults } from "../../store/search";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "../NavBar/NavBar.css";
+import searchImage from "../../assets/zoom (1).png";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -42,21 +43,30 @@ const SearchBar = () => {
   };
 
   return (
-    <div id="nav-search-bar-container">
-      {/* <div className="search-bar-sub-container"> */}
-        <input
-          type="text"
-          id="search-input"
-          value={searchText}
-          onChange={handleSearch}
-          className="button-search"
-        ></input>
+    <div className="nav-search-bar-container">
+      <div className="search-bar-sub-container">
+        <form className="search-bar" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={searchText}
+            onChange={handleSearch}
+            className="main-nav-search"
+            placeholder="Search"
+          ></input>
 
-        <button id="searchbar-button" type="submit" onClick={handleSubmit}>
-          SEARCH
-        </button>
+          <div className="search-container">
+            <input
+              className="search-companion-nav"
+              type="image"
+              src={searchImage}
+              alt="search-button"
+              name="submit"
+            ></input>
+          </div>
+        </form>
+
         {searchText && searchResults && (
-          <ul id="search-dropdown">
+          <ul className="search-dropdown"> 
             {searchResults.map((result) => {
               return (
                 <li
@@ -69,7 +79,7 @@ const SearchBar = () => {
             })}
           </ul>
         )}
-      {/* </div> */}
+      </div>
     </div>
   );
 };
