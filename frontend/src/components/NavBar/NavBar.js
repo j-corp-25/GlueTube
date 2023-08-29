@@ -284,9 +284,9 @@ const NavBar = () => {
               </div>
             </div>
           </div>
-          {/* <SearchBar /> */}
+          <SearchBar />
 
-          <div className="nav-search-bar-container">
+          {/* <div className="nav-search-bar-container">
             <div className="search-bar-sub-container">
               <form className="search-bar">
                 <input
@@ -305,7 +305,7 @@ const NavBar = () => {
                 </div>
               </form>
             </div>
-          </div>
+          </div> */}
           <div className="right-nav">
             <input onClick={demoLogin} type="button" value="Demouser"></input>
             {/* <input type="button" value="Upload"></input> */}
