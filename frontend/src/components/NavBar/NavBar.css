@@ -54,15 +54,20 @@
 .settings-button-side {
   width: 15px;
 }
+
+/* MAIN SEARCH BAR */
 /* ------------------------------------------ */
 
 .nav-search-bar-container {
-  /* border: 1px yellow solid; */
-  /* padding: 0vh; */
-  width: 40vw;
   display: flex;
-  justify-content: center;
-  margin-left: 125px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 30px;
+  height: 30px;
+  width: 40vw;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
 }
 .search-bar-sub-container {
   /* border: 1px solid yellow; */
@@ -299,18 +304,6 @@ header {
 
 
 
-.nav-search-bar-container {
-  display: flex;
-  padding: 5px;
-  border: 1px solid black;
-  border-radius: 30px;
-  height: 30px;
-  width: 400px  ;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-
-}
 
 #search-input, #search-input:focus {
   border: 0;
