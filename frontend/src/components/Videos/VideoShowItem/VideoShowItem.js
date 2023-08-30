@@ -4,16 +4,12 @@ import "./VideoShowItem.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-// import videoImg1 from "../../../assets/Video_Image_1.jpeg";
-// import videoImg2 from "../../../assets/Video_Img_2.jpeg";
-// import videoImg3 from "../../../assets/Video_Img_3.jpeg";
 import Avatar from "react-avatar";
 import { useSelector } from "react-redux";
 import ReactPlayer from "react-player";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 function VideoShowItem({ video }) {
-  // const videoId = useParams().videoId;
   const [isPlaying, setIsPlaying] = useState(false);
   const [isControlsVisible, setIsControlsVisible] = useState(false);
   const viewCounts = [
@@ -50,7 +46,7 @@ function VideoShowItem({ video }) {
     hoverTimeout = setTimeout(() => {
       setIsPlaying(true);
       setIsControlsVisible(true);
-    }, 300); 
+    }, 300);
   };
 
   const handleMouseLeave = () => {
