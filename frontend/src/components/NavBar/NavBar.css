@@ -122,6 +122,11 @@
   /* flex-direction: row; */
   /* justify-content: flex-end; */
   justify-content: right;
+  justify-content: space-evenly;
+}
+.Demouser-button {
+  border-radius: 10px;
+
 }
 
 .right-nav-signed-in {

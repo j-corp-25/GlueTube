@@ -81,7 +81,7 @@ const NavBar = () => {
               </div>
             </div>
             {/* ========================================================================== */}
-            <div className="sliding-navigation-bar-wrapper">
+            {/* <div className="sliding-navigation-bar-wrapper">
               <div className="sliding-navigation-bar">
                 <div>
                   <button>ALL</button>
@@ -129,7 +129,7 @@ const NavBar = () => {
                   <button>Cars</button>
                 </div>
               </div>
-            </div>
+            </div> */}
             <SearchBar />
             {/* <div className="nav-search-bar-container">
               <div className="search-bar-sub-container">
@@ -235,7 +235,7 @@ const NavBar = () => {
             </div>
           </div>
 
-          <div className="sliding-navigation-bar-wrapper">
+          {/* <div className="sliding-navigation-bar-wrapper">
             <div className="sliding-navigation-bar">
               <div>
                 <button>ALL</button>
@@ -283,7 +283,7 @@ const NavBar = () => {
                 <button>Cars</button>
               </div>
             </div>
-          </div>
+          </div> */}
           <SearchBar />
 
           {/* <div className="nav-search-bar-container">
@@ -307,9 +307,9 @@ const NavBar = () => {
             </div>
           </div> */}
           <div className="right-nav">
-            <input onClick={demoLogin} type="button" value="Demouser"></input>
+            <input className="Demouser-button" onClick={demoLogin} type="button" value="Demouser"></input>
             {/* <input type="button" value="Upload"></input> */}
-            <div className="settings-container">
+            {/* <div className="settings-container">
               <figure className="settings-subcontainer">
                 <img
                   className="settings-button"
@@ -317,7 +317,7 @@ const NavBar = () => {
                   alt="Button"
                 />
               </figure>
-            </div>
+            </div> */}
             {/* <input type="button" value="Profile"></input> */}
             <Link to="/login">
               <div className="home-sign-in">
