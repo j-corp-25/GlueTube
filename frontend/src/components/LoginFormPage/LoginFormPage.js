@@ -67,6 +67,11 @@ const LoginFormPage = () => {
   return (
     <div className="page-container">
       <div className="signin-container">
+      <div className="signup-container-home">
+          <Link to="/">
+          Go Back to Home
+          </Link>
+        </div>
         <figure className="logo-container">
           <img className="gloogle-logo" src={googleLogo} />
         </figure>

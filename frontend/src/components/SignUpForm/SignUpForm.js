@@ -5,6 +5,8 @@ import { Redirect } from "react-router-dom";
 import { useState } from "react";
 import googleLogo from "../../assets/GlooGle2.svg";
 import "./SignUpForm.css";
+import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -16,6 +18,7 @@ const SignUpForm = () => {
   const [username, setUsername] = useState("");
   const [showBasicInfo, setShowBasicInfo] = useState(false);
   const [errors, setErrors] = useState({});
+  const history = useHistory();
 
   if (sessionUser) {
     return <Redirect to="/" />;
@@ -97,6 +100,12 @@ const SignUpForm = () => {
   return (
     <div className="page-container">
       <div className="signup-container-full">
+        <div className="signup-container-home">
+          <Link to="/">
+          Go Back to Home
+          </Link>
+        </div>
+
         <figure className="logo-container">
           <img className="gloogle-logo" src={googleLogo} />
         </figure>

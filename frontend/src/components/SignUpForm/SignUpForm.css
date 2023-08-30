@@ -52,7 +52,7 @@ button.next-button-signup {
 
 button.back-button-signup {
     position: absolute;
-    bottom: 45px;
+    bottom: 20px;
     /* border: 10px; */
     border-radius: 5px;
     width: 80px;
@@ -62,9 +62,9 @@ button.back-button-signup {
   button.signup-button {
     right: 40px;
     position: absolute;
-    bottom: 45px;
+    bottom: 20px;
     border-radius: 5px;
-    width: 80px;
+
   }
 
 .email-input-signup, .username-input-signup, .password-input-signup {
