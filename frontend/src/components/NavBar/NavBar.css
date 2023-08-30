@@ -59,56 +59,51 @@
 /* ------------------------------------------ */
 
 .nav-search-bar-container {
-  display: flex;
-  padding: 5px;
-  border: 1px solid black;
-  border-radius: 30px;
-  height: 30px;
-  width: 40vw;
   align-items: center;
+  border: 1px solid #000;
+  border-radius: 30px;
+  display: flex;
+  height: 30px;
   justify-content: space-between;
   position: relative;
 }
 .search-bar-sub-container {
-  /* border: 1px solid yellow; */
-  /* width: 45vw; */
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
   height: fit-content;
+  justify-content: center;
 }
 
 .search-bar {
   display: flex;
-  height: 40px;
+  height: 45px;
 }
 
 .main-nav-search {
-  width: 40vw;
-  padding: 5px;
-  padding-left: 20px;
-  border: 1px gray solid;
   background: #000;
-  color: #ffffff;
-  height: inherit;
+  border: 1px solid gray;
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
+  color: #fff;
+  height: inherit;
+  padding: 5px 5px 5px 20px;
+  width: 40vw;
 }
 .main-nav-search:focus {
   border: 1px rgba(27, 99, 185, 1) solid;
 }
 .search-container {
-  display: flex;
   align-items: center;
   background: #232323;
-  width: 60px;
-  justify-content: center;
-  height: inherit;
-  position: inherit;
-  border-top-right-radius: 30px;
+  border: 1px solid gray;
   border-bottom-right-radius: 30px;
-  border: 1px gray solid;
   border-left: none;
+  border-top-right-radius: 30px;
+  display: flex;
+  height: inherit;
+  justify-content: center;
+  position: inherit;
+  width: 60px;
 }
 .search-companion-nav {
   width: 20px;
@@ -318,7 +313,7 @@ header {
   position: absolute;
   top: 150%;
   left: 0;
-  width: 30vw;
+  width: 40vw;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
