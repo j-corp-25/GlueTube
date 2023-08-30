@@ -17,7 +17,6 @@ export default function VideoForm() {
   const history = useHistory();
   const videoId = useParams().videoId;
   const video = useSelector((state) => getVideo(videoId)(state));
-  console.log("🚀 ~ file: VideoForm.js:20 ~ VideoForm ~ video:", video);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [titleError, setTitleError] = useState(null);
@@ -61,7 +60,7 @@ export default function VideoForm() {
 
     let errors = false;
 
-    
+
 
     if (title.trim() === "") {
       setTitleError("Title is a required field.");

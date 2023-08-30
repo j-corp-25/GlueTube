@@ -71,9 +71,6 @@ const Comment = ({ comment }) => {
   const sessionUser = useSelector((state) => state.session.user);
   function handleEdit(e) {
     e.preventDefault();
-    console.log("handleEdit");
-    console.log(comment);
-    console.log(editText);
     dispatch(updateComment(comment.id, { body: editText }));
     setIsEditing(false);
   }

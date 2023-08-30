@@ -83,7 +83,7 @@ export const createComment = (comment) => async (dispatch) => {
 };
 
 export const updateComment = (id, comment) => async (dispatch) => {
-  console.log("updateComment action", { id, comment }); // <-- add logging here
+
   const response = await csrfFetch(`/api/comments/${id}`, {
     method: "PATCH",
     headers: {

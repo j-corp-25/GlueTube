@@ -21,8 +21,8 @@ const searchReducer = (state = {}, action) => {
   const newState = { ...state };
   switch (action.type) {
     case GET_SEARCH_RESULTS:
-        console.log(action)
-     
+
+
 
 
       return { ...action.searchResults.videos };

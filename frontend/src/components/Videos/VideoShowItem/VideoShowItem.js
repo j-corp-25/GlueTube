@@ -50,7 +50,7 @@ function VideoShowItem({ video }) {
     hoverTimeout = setTimeout(() => {
       setIsPlaying(true);
       setIsControlsVisible(true);
-    }, 300); // 300ms delay
+    }, 300); 
   };
 
   const handleMouseLeave = () => {
@@ -58,14 +58,11 @@ function VideoShowItem({ video }) {
     hoverTimeout = setTimeout(() => {
       setIsPlaying(false);
       setIsControlsVisible(false);
-    }, 300); // 300ms delay
+    }, 300);
   };
-  // const videoObj = useSelector((state) => state.videos[videoId]);
-  // console.log("Video:", video);
-  // console.log("Users:", users);
+
   const author = video.author;
-  // console.log("Author ID:", video.authorId);
-  // console.log("Users:", users);
+
   // // Continue with rendering...
 
   return (

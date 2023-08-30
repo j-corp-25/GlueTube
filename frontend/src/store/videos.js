@@ -26,7 +26,7 @@ export const getVideos = (state) => {
 export const fetchVideos = () => async (dispatch) => {
     const response = await csrfFetch('/api/videos');
     const data = await response.json();
-    console.log(data);
+
 
     dispatch({
         type: RECEIVE_VIDEOS,
