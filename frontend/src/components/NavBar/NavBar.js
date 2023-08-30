@@ -19,7 +19,7 @@ const NavBar = () => {
 
   const demoLogin = () => {
     const demoUser = {
-      credential: "demoUser",
+      credential: "demouser",
       password: "password1",
     };
     dispatch(sessionActions.login(demoUser));
@@ -175,11 +175,14 @@ const NavBar = () => {
                 <span className="tooltip-text">Upload a Video</span>
               </Link>
               {/* <input type="button" value="Profile"></input> */}
+              <div className="home-sign-out">
               <input
+                className="home-sign-out-button"
                 type="button"
                 value="Sign Out"
                 onClick={handleClick}
               ></input>
+              </div>
             </div>
           </nav>
         </header>

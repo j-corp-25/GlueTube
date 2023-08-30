@@ -186,6 +186,14 @@
   border-radius: 30px;
 }
 
+
+.home-sign-out-button {
+  border-radius: 10px;
+  font-weight: bold;
+  border: #ff0000 2px solid;
+
+}
+
 .home-sign-in span {
   padding-left: 5px;
   padding-right: 5px;
