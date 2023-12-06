@@ -1,4 +1,5 @@
 require "open-uri"
+require 'faker'
 
 ActiveRecord::Base.transaction do
   puts "Destroying tables..."
@@ -23,31 +24,30 @@ ActiveRecord::Base.transaction do
     last_name: 'user'
   )
 
-  puts "creating video for demo user..."
+  puts "Creating video for demouser..."
 
-  video = Video.create!({
+  demo_video = Video.create!({
     title: Faker::Book.title,
     description: Faker::Lorem.paragraph,
     author_id: demo_user.id
   })
 
-  video.video.attach(
+  demo_video.video.attach(
     io: URI.parse("https://my-gluetube-seeds.s3.amazonaws.com/video_1.mp4").open,
     filename: "video_1.mp4"
   )
 
-  puts "Creating more users and videos..."
-
-  video_index = 2
-
-  19.times do  # Adjusted from 8 to 19 iterations
+  # Create additional users with videos and comments
+  5.times do |i|
     user = User.create!({
       username: Faker::Internet.unique.username(specifier: 3),
       email: Faker::Internet.unique.email,
-      password: 'somepassword',
+      password: 'password',
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name
     })
+
+    puts "Creating video for #{user.username}..."
 
     video = Video.create!({
       title: Faker::Book.title,
@@ -56,27 +56,19 @@ ActiveRecord::Base.transaction do
     })
 
     video.video.attach(
-      io: URI.parse("https://my-gluetube-seeds.s3.amazonaws.com/video_#{video_index}.mp4").open,
-      filename: "video_#{video_index}.mp4"
+      io: URI.parse("https://my-gluetube-seeds.s3.amazonaws.com/video_#{i + 2}.mp4").open,
+      filename: "video_#{i + 2}.mp4"
     )
 
-    video_index += 1
-  end
-
-  puts "Creating comments..."
-
-  Video.all.each do |video|
-    7.times do
-      user = User.all.sample
-      comment_body = Faker::Lorem.sentence
+    # Create random comments for each video
+    rand(5..10).times do
       Comment.create!(
-        body: comment_body,
-        author_id: user.id,
-        video_id: video.id,
-        parent_id: nil
+        body: Faker::Lorem.sentence,
+        author_id: User.all.sample.id,
+        video_id: video.id
       )
     end
   end
 
-  puts "Done!"
+  puts "Seed data created successfully!"
 end
