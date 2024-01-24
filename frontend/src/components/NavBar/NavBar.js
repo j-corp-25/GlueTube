@@ -1,79 +1,91 @@
-import React from "react";
-import buttonImage from "../../assets/button.svg";
-import searchImage from "../../assets/zoom (1).png";
-import signinIMG from "../../assets/SignImage.svg";
-import settingimg from "../../assets/ProfileSettings.svg";
-import Avatar from "react-avatar";
-import "./NavBar.css";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import * as sessionActions from "../../store/session";
-import HomeIcon from "@mui/icons-material/Home";
-import "font-awesome/css/font-awesome.min.css";
-import SearchBar from "./SearchBar";
+import React from 'react'
+import buttonImage from '../../assets/button.svg'
+import searchImage from '../../assets/zoom (1).png'
+import signinIMG from '../../assets/SignImage.svg'
+import settingimg from '../../assets/ProfileSettings.svg'
+import Avatar from 'react-avatar'
+import './NavBar.css'
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
+import * as sessionActions from '../../store/session'
+import HomeIcon from '@mui/icons-material/Home'
+import 'font-awesome/css/font-awesome.min.css'
+import SearchBar from './SearchBar'
 
 const NavBar = () => {
-  const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch()
+  const sessionUser = useSelector((state) => state.session.user)
 
   const demoLogin = () => {
     const demoUser = {
-      credential: "Demo-lition",
-      password: "password",
-    };
-    dispatch(sessionActions.login(demoUser));
-  };
+      credential: 'Demo-lition',
+      password: 'password',
+    }
+    dispatch(sessionActions.login(demoUser))
+  }
 
   const handleClick = (e) => {
-    e.preventDefault();
-    dispatch(sessionActions.logout());
-  };
+    e.preventDefault()
+    dispatch(sessionActions.logout())
+  }
 
   if (sessionUser) {
     return (
       <>
         <header>
-          <nav className="top-nav-bar normal-color">
-            <div className="left-nav-side-container">
-              <div className="home-logo-container">
-                <figure className="settings-button-side-wrapper">
+          <nav className='top-nav-bar normal-color flex'>
+            <div className='left-nav-side-container'>
+              <div className='home-logo-container'>
+                <figure className='settings-button-side-wrapper'>
                   <img
-                    className="settings-button-side"
+                    className='settings-button-side'
                     src={settingimg}
-                    alt="Button"
+                    alt='Button'
                   />
                 </figure>
 
-                <div className="home-button">
+                <div className='home-button'>
                   <i
-                    className="fa fa-home fa-2x"
-                    style={{ color: "#ffffff" }}
+                    className='fa fa-home fa-2x'
+                    style={{ color: '#ffffff' }}
                   ></i>
                 </div>
-                <div className="home-button">
-                  <a href="https://www.linkedin.com/in/jcorporan/">
+                <div className='home-button'>
+                  <a href='https://www.linkedin.com/in/jcorporan/'>
                     <i
-                      class="fa-brands fa-linkedin fa-2xl"
-                      style={{ color: "#ffffff" }}
+                      class='fa-brands fa-linkedin fa-2xl'
+                      style={{ color: '#ffffff' }}
                     ></i>
                   </a>
                 </div>
-                <div className="home-button">
-                  <a href="https://github.com/j-corp-25/GlueTube">
+                <div className='home-button'>
+                  <a href='https://github.com/j-corp-25/GlueTube'>
                     <i
-                      class="fa-brands fa-github fa-2xl"
-                      style={{ color: "#ffffff" }}
+                      class='fa-brands fa-github fa-2xl'
+                      style={{ color: '#ffffff' }}
                     ></i>
                   </a>
                 </div>
 
                 <input
-                className="home-sign-out-button bg-gray-100 md:hidden mx-auto px-1 size-15 text-xs py-1"
-                type="button"
-                value="Sign Out"
-                onClick={handleClick}
-              ></input>
+                  className='home-sign-out-button bg-gray-100 md:hidden mx-auto px-1 size-15 text-xs py-1'
+                  type='button'
+                  value='Sign Out'
+                  onClick={handleClick}
+                ></input>
+
+                <div className=' md:hidden relative '>
+                  <Link to='/upload' className='upload-container '>
+                    <i
+                      class='fa-solid fa-video fa-2x'
+                      style={{ color: '#ffffff' }}
+                    ></i>
+                    <span className='tooltip-text size-10 text-xs'>
+                      Upload a Video
+                    </span>
+                  </Link>
+                </div>
                 {/* <div className="home-button">
                   <i
                     className="fa fa-home fa-2x"
@@ -81,9 +93,13 @@ const NavBar = () => {
                   ></i>
                 </div> */}
               </div>
-              <div className="home-button-container">
-                <Link to="/">
-                  <img className="home-button" src={buttonImage} alt="Button" />
+              <div className='home-button-container'>
+                <Link to='/'>
+                  <img
+                    className='home-button '
+                    src={buttonImage}
+                    alt='Button'
+                  />
                 </Link>
               </div>
             </div>
@@ -137,7 +153,10 @@ const NavBar = () => {
                 </div>
               </div>
             </div> */}
-            <SearchBar />
+
+            <div className=' m-0'>
+              <SearchBar />
+            </div>
             {/* <div className="nav-search-bar-container">
               <div className="search-bar-sub-container">
                 <form className="search-bar">
@@ -160,75 +179,83 @@ const NavBar = () => {
             </div> */}
 
             {/* ========================================================================== */}
-            <div className="right-nav-signed-in">
-              <div className="profile-icon">
+            <div className='right-nav-signed-in m-0'>
+              <div className='profile-icon m-0'>
                 <Avatar
                   name={sessionUser.username}
-                  size="35"
+                  size='35'
                   round={true}
-                  color={Avatar.getRandomColor("sitebase", [
-                    "red",
-                    "green",
-                    "blue",
+                  color={Avatar.getRandomColor('sitebase', [
+                    'red',
+                    'green',
+                    'blue',
                   ])}
                 />
               </div>
               {/* <input type="button" value="settings"></input> */}
-              <Link to="/upload" className="upload-container">
-                <i
-                  class="fa-solid fa-video fa-2x"
-                  style={{ color: "#ffffff" }}
-                ></i>
-                <span className="tooltip-text">Upload a Video</span>
-              </Link>
+              <div className='hidden md:inline-block px-1 py-1 size-15 text-md mx-3'>
+                <Link to='/upload' className='upload-container '>
+                  <i
+                    class='fa-solid fa-video fa-2x'
+                    style={{ color: '#ffffff' }}
+                  ></i>
+                  <span className='tooltip-text'>Upload a Video</span>
+                </Link>
+              </div>
               {/* <input type="button" value="Profile"></input> */}
-              <div className="home-sign-out tex">
-              <input
-                className="home-sign-out-button bg-gray-100 hidden md:inline-block px-1 py-1 size-15 text-md mx-3"
-                type="button"
-                value="Sign Out"
-                onClick={handleClick}
-              ></input>
+              <div className='home-sign-out mx-auto'>
+                <input
+                  className='home-sign-out-button bg-gray-100 hidden md:inline-block px-1 py-1 size-15 text-md mx-3'
+                  type='button'
+                  value='Sign Out'
+                  onClick={handleClick}
+                ></input>
               </div>
             </div>
           </nav>
         </header>
       </>
-    );
+    )
   }
   return (
     <>
       <header>
-        <nav className="top-nav-bar normal-color">
-          <div className="left-nav-side-container">
-          <div className="home-logo-container">
-              <figure className="settings-button-side-wrapper">
+        <nav className='top-nav-bar normal-color'>
+          <div className='left-nav-side-container'>
+            <div className='home-logo-container'>
+              <figure className='settings-button-side-wrapper'>
                 <img
-                  className="settings-button-side"
+                  className='settings-button-side'
                   src={settingimg}
-                  alt="Button"
+                  alt='Button'
                 />
               </figure>
-              <div className="home-button">
+              <div className='home-button'>
                 <i
-                  className="fa fa-home fa-2x"
-                  style={{ color: "#ffffff" }}
+                  className='fa fa-home fa-2x'
+                  style={{ color: '#ffffff' }}
                 ></i>
               </div>
-              <div className="home-button">
+              <div className='home-button'>
                 <i
-                  class="fa-brands fa-linkedin fa-2xl"
-                  style={{ color: "#ffffff" }}
+                  class='fa-brands fa-linkedin fa-2xl'
+                  style={{ color: '#ffffff' }}
                 ></i>
               </div>
-              <div className="home-button">
-                <a href="https://github.com/j-corp-25/GlueTube">
+              <div className='home-button'>
+                <a href='https://github.com/j-corp-25/GlueTube'>
                   <i
-                    class="fa-brands fa-github fa-2xl"
-                    style={{ color: "#ffffff" }}
+                    class='fa-brands fa-github fa-2xl'
+                    style={{ color: '#ffffff' }}
                   ></i>
                 </a>
               </div>
+              <input
+                className='Demouser-button bg-gray-100 md:hidden mx-auto px-1 size-15 text-xs py-1'
+                onClick={demoLogin}
+                type='button'
+                value='Demouser'
+              ></input>
               {/* <div className="home-button">
                 <a href="mailto:corporan.Jordy@gmail.com?subject=General%20Inquiry">
                   <i
@@ -238,9 +265,9 @@ const NavBar = () => {
                 </a>
               </div> */}
             </div>
-            <div className="home-button-container">
-              <Link to="/">
-                <img className="home-button" src={buttonImage} alt="Button" />
+            <div className='home-button-container p-0'>
+              <Link to='/'>
+                <img className='home-button ' src={buttonImage} alt='Button' />
               </Link>
             </div>
           </div>
@@ -294,7 +321,9 @@ const NavBar = () => {
               </div>
             </div>
           </div> */}
-          <SearchBar />
+          <div className='w-auto'>
+            <SearchBar />
+          </div>
 
           {/* <div className="nav-search-bar-container">
             <div className="search-bar-sub-container">
@@ -316,8 +345,13 @@ const NavBar = () => {
               </form>
             </div>
           </div> */}
-          <div className="right-nav">
-            <input className="Demouser-button bg-gray-100" onClick={demoLogin} type="button" value="Demouser"></input>
+          <div className='right-nav'>
+            <input
+              className='Demouser-button bg-gray-100 hidden md:inline-block px-1 py-1 size-15 text-md mx-3'
+              onClick={demoLogin}
+              type='button'
+              value='Demouser'
+            ></input>
             {/* <input type="button" value="Upload"></input> */}
             {/* <div className="settings-container">
               <figure className="settings-subcontainer">
@@ -329,19 +363,19 @@ const NavBar = () => {
               </figure>
             </div> */}
             {/* <input type="button" value="Profile"></input> */}
-            <Link to="/login">
-              <div className="home-sign-in">
+            <Link to='/login'>
+              <div className='home-sign-in'>
                 <figure>
                   <span>Sign In</span>
                 </figure>
-                <img src={signinIMG} alt="Button" />
+                <img src={signinIMG} alt='Button' />
               </div>
             </Link>
           </div>
         </nav>
       </header>
     </>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar
