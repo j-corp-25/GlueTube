@@ -66,7 +66,7 @@ const SearchBar = () => {
         </form>
 
         {searchText && searchResults && (
-          <ul className="search-dropdown">  
+          <ul className="search-dropdown">
             {searchResults.map((result) => {
               return (
                 <li

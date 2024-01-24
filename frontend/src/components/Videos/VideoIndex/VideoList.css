@@ -229,7 +229,7 @@ img.videoThumbnail {
 .link-wrapper {
   border-radius: 1px black solid;
 } */
-.video-grid {
+/* .video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(314px, 1fr));
   grid-gap: 20px;
@@ -300,7 +300,7 @@ img.videoThumbnail {
 
 .video-title,
 .video-author {
-  display: block; 
+  display: block;
 }
 
 .video-views,
@@ -311,4 +311,4 @@ img.videoThumbnail {
 
 .video-views {
   margin-right: 5px;
-}
+} */

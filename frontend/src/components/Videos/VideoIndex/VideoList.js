@@ -2,7 +2,7 @@ import React from "react";
 import videoImg1 from "../../../assets/Video_Image_1.jpeg";
 import videoImg2 from "../../../assets/Video_Img_2.jpeg";
 import videoImg3 from "../../../assets/Video_Img_3.jpeg";
-import "./VideoList.css";
+// import "./VideoList.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import VideoForm from "../VideoForm/VideoForm";
@@ -16,12 +16,12 @@ const VideoList = ({searchResults}) => {
   const videos = useSelector((state) => getVideos(state));
   const items = searchResults || videos;
   useEffect(() => {
-    dispatch(fetchVideos());
+    // dispatch(fetchVideos());
   }, [dispatch]);
   return (
     <>
       {videos && (
-        <section className="video-grid">
+        <section className=" ">
           {items.map((video) => (
             <VideoShowItem key={video.id} video={video} />
           ))}

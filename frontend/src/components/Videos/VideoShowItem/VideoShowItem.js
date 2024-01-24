@@ -108,16 +108,16 @@ function VideoShowItem({ video }) {
           </h3>
         </div>
       </div> */}
-      <div className="video-container-feed">
+      <div className=" ">
         <Link className="link-wrapper" to={`/videos/${video.id}`}>
           <div
             className="video-thumbnail-feed"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <div className="player-wrapper">
+            <div className="">
               <ReactPlayer
-                width="95%"
+                width="100%"
                 height="100%"
                 className="react-player"
                 controls={isControlsVisible}

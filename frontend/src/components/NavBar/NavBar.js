@@ -19,8 +19,8 @@ const NavBar = () => {
 
   const demoLogin = () => {
     const demoUser = {
-      credential: "demouser",
-      password: "password1",
+      credential: "Demo-lition",
+      password: "password",
     };
     dispatch(sessionActions.login(demoUser));
   };
@@ -67,6 +67,13 @@ const NavBar = () => {
                     ></i>
                   </a>
                 </div>
+
+                <input
+                className="home-sign-out-button bg-gray-100 md:hidden mx-auto px-1 size-15 text-xs py-1"
+                type="button"
+                value="Sign Out"
+                onClick={handleClick}
+              ></input>
                 {/* <div className="home-button">
                   <i
                     className="fa fa-home fa-2x"
@@ -175,9 +182,9 @@ const NavBar = () => {
                 <span className="tooltip-text">Upload a Video</span>
               </Link>
               {/* <input type="button" value="Profile"></input> */}
-              <div className="home-sign-out">
+              <div className="home-sign-out tex">
               <input
-                className="home-sign-out-button"
+                className="home-sign-out-button bg-gray-100 hidden md:inline-block px-1 py-1 size-15 text-md mx-3"
                 type="button"
                 value="Sign Out"
                 onClick={handleClick}
@@ -310,7 +317,7 @@ const NavBar = () => {
             </div>
           </div> */}
           <div className="right-nav">
-            <input className="Demouser-button" onClick={demoLogin} type="button" value="Demouser"></input>
+            <input className="Demouser-button bg-gray-100" onClick={demoLogin} type="button" value="Demouser"></input>
             {/* <input type="button" value="Upload"></input> */}
             {/* <div className="settings-container">
               <figure className="settings-subcontainer">

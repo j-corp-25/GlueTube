@@ -88,12 +88,12 @@
 /*
 padding-top: 56.25%; Player ratio: 100 / (1280 / 720) */
 
-
-.react-player {
+/* .react-player {
   min-width: 100%;
   min-height: 100%;
 
-}
+} */
+/*
 
 .video-thumbnail-feed {
   background-color: #fff;
@@ -116,4 +116,4 @@ padding-top: 56.25%; Player ratio: 100 / (1280 / 720) */
 
 .link-wrapper {
   border-radius: 1px black solid;
-}
+} */
