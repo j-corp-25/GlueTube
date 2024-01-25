@@ -37,63 +37,6 @@ const NavBar = () => {
           <nav className='top-nav-bar normal-color flex gap-2 w-[98%] mx-auto'>
             <div className='left-nav-side-container'>
               <div className='home-logo-container'>
-                <figure className='settings-button-side-wrapper'>
-                  <img
-                    className='settings-button-side'
-                    src={settingimg}
-                    alt='Button'
-                  />
-                </figure>
-
-                <div className='home-button'>
-                  <i
-                    className='fa fa-home fa-2x'
-                    style={{ color: '#ffffff' }}
-                  ></i>
-                </div>
-                <div className='home-button'>
-                  <a href='https://www.linkedin.com/in/jcorporan/'>
-                    <i
-                      class='fa-brands fa-linkedin fa-2xl'
-                      style={{ color: '#ffffff' }}
-                    ></i>
-                  </a>
-                </div>
-                <div className='home-button'>
-                  <a href='https://github.com/j-corp-25/GlueTube'>
-                    <i
-                      class='fa-brands fa-github fa-2xl'
-                      style={{ color: '#ffffff' }}
-                    ></i>
-                  </a>
-                </div>
-
-                <input
-                  className='home-sign-out-button bg-gray-100 md:hidden mx-auto px-1 size-15 text-xs py-1'
-                  type='button'
-                  value='Sign Out'
-                  onClick={handleClick}
-                ></input>
-
-                <div className=' md:hidden relative '>
-                  <Link to='/upload' className='upload-container '>
-                    <i
-                      class='fa-solid fa-video fa-2x'
-                      style={{ color: '#ffffff' }}
-                    ></i>
-                    <span className='tooltip-text size-10 text-xs'>
-                      Upload a Video
-                    </span>
-                  </Link>
-                </div>
-                {/* <div className="home-button">
-                  <i
-                    className="fa fa-home fa-2x"
-                    style={{ color: "#ffffff" }}
-                  ></i>
-                </div> */}
-              </div>
-              <div className='home-button-container'>
                 <Link to='/'>
                   <img
                     className='home-button '
@@ -101,6 +44,57 @@ const NavBar = () => {
                     alt='Button'
                   />
                 </Link>
+
+                <Link to='/'>
+
+                <div className='home-button'>
+                  <i
+                    className='fa fa-home fa-2x'
+                    style={{ color: '#ffffff' }}
+                  ></i>
+                </div>
+                    </Link>
+                <div className='home-button'>
+                  <a href='https://www.linkedin.com/in/jcorporan/'>
+                    <i
+                      class='fa-brands fa-linkedin fa-2x'
+                      style={{ color: '#ffffff' }}
+                    ></i>
+                  </a>
+                </div>
+                <div className='home-button'>
+                  <a href='https://github.com/j-corp-25/GlueTube'>
+                    <i
+                      className='fa-brands fa-github fa-2x p-0'
+                      style={{ color: '#ffffff' }}
+                    ></i>
+                  </a>
+                </div>
+
+                <div className=' md:hidden relative '>
+                  <Link to='/upload' className='upload-container '>
+                    <i
+                      className='fa-solid fa-video fa-2x p-0'
+                      style={{ color: '#ffffff' }}
+                    ></i>
+                    <span className='tooltip-text '>
+                      Upload a Video
+                    </span>
+                  </Link>
+                </div>
+                <input
+                  className='home-sign-out-button bg-gray-100 md:hidden p-1 text-xs'
+                  type='button'
+                  value='Sign Out'
+                  onClick={handleClick}
+                ></input>
+
+                {/* <div className="home-button">
+                  <i
+                    className="fa fa-home fa-2x"
+                    style={{ color: "#ffffff" }}
+                  ></i>
+                </div> */}
               </div>
             </div>
             {/* ========================================================================== */}
@@ -154,8 +148,7 @@ const NavBar = () => {
               </div>
             </div> */}
 
-
-  <SearchBar />
+            <SearchBar />
 
             {/* <div className="nav-search-bar-container">
               <div className="search-bar-sub-container">
@@ -220,38 +213,36 @@ const NavBar = () => {
   return (
     <>
       <header>
-        <nav className='top-nav-bar normal-color gap-2 w-[98%] mx-auto'>
+        <nav className='top-nav-bar normal-color gap-2 w-[98%] mx-auto flex justify-between items-center'>
           <div className='left-nav-side-container'>
-            <div className='home-logo-container'>
-              <figure className='settings-button-side-wrapper'>
-                <img
-                  className='settings-button-side'
-                  src={settingimg}
-                  alt='Button'
-                />
-              </figure>
+            <div className='home-logo-container '>
+              <div className=''>
+                <Link to='/'>
+                  <img className='home-button p-0' src={buttonImage} alt='Button' />
+                </Link>
+              </div>
               <div className='home-button'>
                 <i
-                  className='fa fa-home fa-2x'
+                  className='fa fa-home fa-2x p-0'
                   style={{ color: '#ffffff' }}
                 ></i>
               </div>
               <div className='home-button'>
                 <i
-                  class='fa-brands fa-linkedin fa-2xl'
+                  class='fa-brands fa-linkedin fa-2x'
                   style={{ color: '#ffffff' }}
                 ></i>
               </div>
               <div className='home-button'>
                 <a href='https://github.com/j-corp-25/GlueTube'>
                   <i
-                    class='fa-brands fa-github fa-2xl'
+                    class='fa-brands fa-github fa-2x'
                     style={{ color: '#ffffff' }}
                   ></i>
                 </a>
               </div>
               <input
-                className='Demouser-button bg-gray-100 md:hidden mx-auto px-1 size-15 text-xs py-1'
+                className='Demouser-button bg-gray-100 md:hidden p-1 text-xs '
                 onClick={demoLogin}
                 type='button'
                 value='Demouser'
@@ -265,11 +256,11 @@ const NavBar = () => {
                 </a>
               </div> */}
             </div>
-            <div className='home-button-container p-0'>
+            {/* <div className='home-button-container p-0'>
               <Link to='/'>
                 <img className='home-button ' src={buttonImage} alt='Button' />
               </Link>
-            </div>
+            </div> */}
           </div>
 
           {/* <div className="sliding-navigation-bar-wrapper">
@@ -322,8 +313,7 @@ const NavBar = () => {
             </div>
           </div> */}
 
-            <SearchBar />
-
+          <SearchBar />
 
           {/* <div className="nav-search-bar-container">
             <div className="search-bar-sub-container">
@@ -366,7 +356,9 @@ const NavBar = () => {
             <Link to='/login'>
               <div className='home-sign-in'>
                 <figure>
-                  <span className=' hidden md:inline-block md:text-xs'>Sign In</span>
+                  <span className=' hidden md:inline-block md:text-xs'>
+                    Sign In
+                  </span>
                 </figure>
                 <img src={signinIMG} className='' alt='Button' />
               </div>
