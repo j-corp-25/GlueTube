@@ -2,7 +2,7 @@
   width: 20px;
 }
 .profile-icon {
-  padding-right: 30px;
+  /* padding-right: 30px; */
 }
 
 .sb-avatar__text div span span {
@@ -17,7 +17,7 @@
   z-index: 101;
   align-items: center;
   height: 8vh;
-  padding-right: 5px;
+  /* padding-right: 5px; */
 }
 /* ----------------------------------------- */
 .left-nav-side-container {
@@ -116,7 +116,6 @@
   display: flex;
   /* border: 1px yellow solid; */
   height: -webkit-fill-available;
-  min-width: 25vw;
   align-items: center;
   /* justify-content: space-evenly; */
   /* flex-direction: row; */
@@ -136,7 +135,7 @@
   display: flex;
   /* border: 1px yellow solid; */
   height: -webkit-fill-available;
-  min-width: 25vw;
+  /* min-width: 25vw; */
   align-items: center;
   /* justify-content: space-evenly; */
   /* flex-direction: row; */

@@ -34,7 +34,7 @@ const NavBar = () => {
     return (
       <>
         <header>
-          <nav className='top-nav-bar normal-color flex'>
+          <nav className='top-nav-bar normal-color flex '>
             <div className='left-nav-side-container'>
               <div className='home-logo-container'>
                 <figure className='settings-button-side-wrapper'>
@@ -154,9 +154,9 @@ const NavBar = () => {
               </div>
             </div> */}
 
-            <div className=' m-0'>
-              <SearchBar />
-            </div>
+
+  <SearchBar />
+
             {/* <div className="nav-search-bar-container">
               <div className="search-bar-sub-container">
                 <form className="search-bar">
@@ -179,8 +179,8 @@ const NavBar = () => {
             </div> */}
 
             {/* ========================================================================== */}
-            <div className='right-nav-signed-in m-0'>
-              <div className='profile-icon m-0'>
+            <div className='right-nav-signed-in'>
+              <div className='profile-icon p-0'>
                 <Avatar
                   name={sessionUser.username}
                   size='35'
@@ -321,7 +321,7 @@ const NavBar = () => {
               </div>
             </div>
           </div> */}
-          <div className='w-auto'>
+          <div className=''>
             <SearchBar />
           </div>
 
