@@ -46,14 +46,13 @@ const NavBar = () => {
                 </Link>
 
                 <Link to='/'>
-
-                <div className='home-button'>
-                  <i
-                    className='fa fa-home fa-2x'
-                    style={{ color: '#ffffff' }}
-                  ></i>
-                </div>
-                    </Link>
+                  <div className='home-button'>
+                    <i
+                      className='fa fa-home fa-2x'
+                      style={{ color: '#ffffff' }}
+                    ></i>
+                  </div>
+                </Link>
                 <div className='home-button'>
                   <a href='https://www.linkedin.com/in/jcorporan/'>
                     <i
@@ -77,9 +76,7 @@ const NavBar = () => {
                       className='fa-solid fa-video fa-2x p-0'
                       style={{ color: '#ffffff' }}
                     ></i>
-                    <span className='tooltip-text '>
-                      Upload a Video
-                    </span>
+                    <span className='tooltip-text '>Upload a Video</span>
                   </Link>
                 </div>
                 <input
@@ -218,15 +215,21 @@ const NavBar = () => {
             <div className='home-logo-container '>
               <div className=''>
                 <Link to='/'>
-                  <img className='home-button p-0' src={buttonImage} alt='Button' />
+                  <img
+                    className='home-button p-0'
+                    src={buttonImage}
+                    alt='Button'
+                  />
                 </Link>
               </div>
-              <div className='home-button'>
-                <i
-                  className='fa fa-home fa-2x p-0'
-                  style={{ color: '#ffffff' }}
-                ></i>
-              </div>
+              <Link to='/'>
+                  <div className='home-button'>
+                    <i
+                      className='fa fa-home fa-2x'
+                      style={{ color: '#ffffff' }}
+                    ></i>
+                  </div>
+                </Link>
               <div className='home-button'>
                 <i
                   class='fa-brands fa-linkedin fa-2x'
