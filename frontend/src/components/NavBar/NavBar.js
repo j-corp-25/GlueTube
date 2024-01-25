@@ -73,8 +73,8 @@ const NavBar = () => {
                 <div className=' md:hidden relative '>
                   <Link to='/upload' className='upload-container '>
                     <i
-                      className='fa-solid fa-video fa-2x p-0'
-                      style={{ color: '#ffffff' }}
+                      className='fa-solid fa-video fa-2x '
+                      style={{ color: '#ffffff' , padding: "5px"}}
                     ></i>
                     <span className='tooltip-text '>Upload a Video</span>
                   </Link>
@@ -359,11 +359,11 @@ const NavBar = () => {
             <Link to='/login'>
               <div className='home-sign-in'>
                 <figure>
-                  <span className=' hidden md:inline-block md:text-xs'>
+                  <span className=' hidden md:inline-block md:text-xs '>
                     Sign In
                   </span>
                 </figure>
-                <img src={signinIMG} className='' alt='Button' />
+                <img src={signinIMG} className='w-[50px] sm:w-[20px]' alt='Button' />
               </div>
             </Link>
           </div>

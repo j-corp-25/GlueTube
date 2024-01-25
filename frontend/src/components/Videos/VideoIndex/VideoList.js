@@ -21,7 +21,7 @@ const VideoList = ({searchResults}) => {
   return (
     <>
       {videos && (
-        <section className=" ">
+        <section className=" flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 w-[65%] mx-auto md:w-[80%]">
           {items.map((video) => (
             <VideoShowItem key={video.id} video={video} />
           ))}
