@@ -363,7 +363,7 @@ const NavBar = () => {
                     Sign In
                   </span>
                 </figure>
-                <img src={signinIMG} className='w-[50px] sm:w-[20px]' alt='Button' />
+                <img src={signinIMG} className='w-[35px] sm:w-[25px]' alt='Button' />
               </div>
             </Link>
           </div>

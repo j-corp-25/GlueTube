@@ -66,7 +66,7 @@ function VideoShowItem({ video }) {
       <div className=" video-container-feed">
         <Link className="link-wrapper" to={`/videos/${video.id}`}>
           <div
-            className="video-thumbnail-feed"
+            className="video-thumbnail-feed border border-gray-200 shadow-md"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >

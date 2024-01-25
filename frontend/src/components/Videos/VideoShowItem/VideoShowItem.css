@@ -1,124 +1,3 @@
-.main-video-content {
-  /* display: grid;
-  grid-template-columns: 15vw 15vw 15vw 15vw 15vw;
-  column-gap: 1vw;
-  row-gap: 2vh;
-  padding: 50px;
-  margin-left: 145px;
-  margin-top: 45px; */
-  /* flex-flow: wrap; */
-}
-.video-info-container {
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* padding-left: 6px; */
-  /* border-radius: 0px; */
-}
-.img.videoThumbnail {
-  /* width: 350px; */
-  /* border-radius: 15px; */
-  /* padding-left: 2px; */
-}
-
-.videoThumbnail {
-  /* padding-left: 16px; */
-  /* border-radius: 36px; */
-  /* width: 350px; */
-  /* height: 200px; */
-  /* margin-bottom: 20px; */
-}
-.thumb-nail-info {
-  /* color: white; */
-  /* position: relative; */
-  /* padding-left: inherit; */
-  /* margin-top: -20px; */
-}
-
-.video-player-container {
-  /* padding: 20px; */
-  /* width: 60vw; */
-}
-
-.video-player {
-  /* width: -webkit-fill-available; */
-}
-
-.video-player {
-  /* border: red 1px solid; */
-  /* padding: 0vh; */
-  /* height: 69vh; */
-}
-.video-player-container {
-  /* padding: 20px; */
-  /* width: 60vw; */
-}
-.video-container-show {
-  /* border: 1px solid yellow; */
-  /* width: 85vw; */
-  /* height: 80vh; */
-  /* margin-left: 10vw; */
-  /* display: flex; */
-  /* justify-content: space-between; */
-}
-
-.video-information {
-  /* display: flex; */
-  /* flex-direction: column; */
-}
-
-.video-information {
-  /* color: white; */
-}
-
-.video-information {
-  /* display: flex; */
-  /* flex-direction: column; */
-}
-
-.sidebar .video-container {
-  /* display: flex; */
-  /* flex-direction: column; */
-}
-
-.player-wrapper {
-
-}
-
-
-/*
-padding-top: 56.25%; Player ratio: 100 / (1280 / 720) */
-
-/* .react-player {
-  min-width: 100%;
-  min-height: 100%;
-
-} */
-/*
-
-.video-thumbnail-feed {
-  background-color: #fff;
-  border: 1px solid darkgray;
-  border-radius: 12px;
-  overflow: hidden;
-  object-fit: contain;
-  cursor: pointer;
-}
-
-.video-container-feed {
-  margin-right: 7px;
-}
-
-.player-wrapper {
-  position: relative;
-  width: 313px;
-  height: 175px;
-}
-
-.link-wrapper {
-  border-radius: 1px black solid;
-} */
-
-
 
 .video-container-feed {
   color: white;
@@ -130,7 +9,10 @@ padding-top: 56.25%; Player ratio: 100 / (1280 / 720) */
   position: relative;
   overflow: hidden;
   border-radius: 12px;
+  padding-top: 56.25%;
+  width: 100%;
 }
+
 
 
 .video-details {
@@ -188,4 +70,13 @@ padding-top: 56.25%; Player ratio: 100 / (1280 / 720) */
 
 .video-views {
   margin-right: 5px;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
