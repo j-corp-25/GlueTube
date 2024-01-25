@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import "../VideoIndex/VideoList.css";
 import "./VideoShowItem.css";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -63,52 +62,8 @@ function VideoShowItem({ video }) {
 
   return (
     <>
-      {/* <div className="video-container-feed">
-        <div
-          className="video-thumbnail-feed"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-       <Link className="link-wrapper" to={`/videos/${video.id}`}>
-          <div
-            className="video-thumbnail-feed"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <div className="player-wrapper">
-              <ReactPlayer
-                className="react-player'"
-                width="340px"
-                height="190px"
-                controls={isControlsVisible}
-                url={video.videoUrl}
-                muted={true}
-                playing={isPlaying}
-              />
-            </div>
-          </div>
-        </Link>
-        </div>
-        <div className="video-details">
-          <div className="video-channel">
-            <Avatar
-              name={author ? author.username : ""}
-              size="35"
-              round={true}
-              color={Avatar.getRandomColor("sitebase", [
-                "red",
-                "green",
-                "blue",
-              ])}
-            />
-          </div>
-          <h3 className="video-title">
-            <span className="video-title">{video.title}</span>
-            <span className="video-author">{author.username}</span>
-          </h3>
-        </div>
-      </div> */}
-      <div className=" ">
+      {/*  */}
+      <div className=" video-container-feed">
         <Link className="link-wrapper" to={`/videos/${video.id}`}>
           <div
             className="video-thumbnail-feed"

@@ -16,12 +16,12 @@ const VideoList = ({searchResults}) => {
   const videos = useSelector((state) => getVideos(state));
   const items = searchResults || videos;
   useEffect(() => {
-    // dispatch(fetchVideos());
+    dispatch(fetchVideos());
   }, [dispatch]);
   return (
     <>
       {videos && (
-        <section className=" flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 w-[65%] mx-auto md:w-[80%]">
+        <section className=" flex flex-col ml-[25%] md:mx-auto md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 w-[60%] mx-auto md:w-[80%]">
           {items.map((video) => (
             <VideoShowItem key={video.id} video={video} />
           ))}
