@@ -100,11 +100,13 @@ const Comments = ({ videoId }) => {
       {comments && (
         <div className="comment-container-show-page">
           <h1 className="comment-title">Comments</h1>
-          <div className="comment-container-show-page-comments">
-            <div className="comment-container-show-page-comments-comment">
-              <form onSubmit={handleSubmit}>
+          <div className="comment-container-show-page-comments pl-0">
+            <div className="comment-container-show-page-comments-comment ">
+              <form onSubmit={handleSubmit} >
+
                 <input
                   type="text"
+
                   placeholder={
                     sessionUser
                       ? "Write a comment..."
