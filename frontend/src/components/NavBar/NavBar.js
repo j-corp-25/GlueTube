@@ -34,7 +34,7 @@ const NavBar = () => {
     return (
       <>
         <header>
-          <nav className='top-nav-bar normal-color flex '>
+          <nav className='top-nav-bar normal-color flex gap-2 w-[98%] mx-auto'>
             <div className='left-nav-side-container'>
               <div className='home-logo-container'>
                 <figure className='settings-button-side-wrapper'>
@@ -220,7 +220,7 @@ const NavBar = () => {
   return (
     <>
       <header>
-        <nav className='top-nav-bar normal-color'>
+        <nav className='top-nav-bar normal-color gap-2 w-[98%] mx-auto'>
           <div className='left-nav-side-container'>
             <div className='home-logo-container'>
               <figure className='settings-button-side-wrapper'>
@@ -321,9 +321,9 @@ const NavBar = () => {
               </div>
             </div>
           </div> */}
-          <div className=''>
+
             <SearchBar />
-          </div>
+
 
           {/* <div className="nav-search-bar-container">
             <div className="search-bar-sub-container">
@@ -345,7 +345,7 @@ const NavBar = () => {
               </form>
             </div>
           </div> */}
-          <div className='right-nav'>
+          <div className='right-nav md:static'>
             <input
               className='Demouser-button bg-gray-100 hidden md:inline-block px-1 py-1 size-15 text-md mx-3'
               onClick={demoLogin}
@@ -366,9 +366,9 @@ const NavBar = () => {
             <Link to='/login'>
               <div className='home-sign-in'>
                 <figure>
-                  <span>Sign In</span>
+                  <span className=' hidden md:inline-block md:text-xs'>Sign In</span>
                 </figure>
-                <img src={signinIMG} alt='Button' />
+                <img src={signinIMG} className='' alt='Button' />
               </div>
             </Link>
           </div>
