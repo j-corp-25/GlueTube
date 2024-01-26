@@ -1,5 +1,16 @@
 require "open-uri"
-require 'faker'
+require "faker"
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+## This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+## This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
+#   Character.create(name: "Luke", movie: movies.first)
+
 
 ActiveRecord::Base.transaction do
   puts "Destroying tables..."
@@ -14,37 +25,38 @@ ActiveRecord::Base.transaction do
   ActiveRecord::Base.connection.reset_pk_sequence!("videos")
   ActiveRecord::Base.connection.reset_pk_sequence!("users")
 
-  puts "Creating users..."
+  puts "Creating demouser"
 
   demo_user = User.create!(
-    username: 'Demo-lition',
+    username: 'demouser',
     email: 'demo@user.io',
     password: 'password',
-    first_name: 'Demo',
-    last_name: 'User'
+    first_name: 'demo',
+    last_name: 'user'
   )
 
-  puts "Creating video for demo user..."
+  puts "creating video for demo user..."
 
   video = Video.create!({
     title: Faker::Book.title,
     description: Faker::Lorem.paragraph,
     author_id: demo_user.id
   })
+
   video.video.attach(
     io: URI.parse("https://my-gluetube-seeds.s3.amazonaws.com/video_1.mp4").open,
-    filename: "video_1_.mp4"
+    filename: "video_1.mp4"
   )
 
   puts "Creating more users and videos..."
 
   video_index = 2
 
-  8.times do
+  19.times do  # Adjusted from 8 to 19 iterations
     user = User.create!({
       username: Faker::Internet.unique.username(specifier: 3),
       email: Faker::Internet.unique.email,
-      password: 'password',
+      password: 'somepassword',
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name
     })
@@ -54,10 +66,12 @@ ActiveRecord::Base.transaction do
       description: Faker::Lorem.paragraph,
       author_id: user.id
     })
+
     video.video.attach(
       io: URI.parse("https://my-gluetube-seeds.s3.amazonaws.com/video_#{video_index}.mp4").open,
       filename: "video_#{video_index}.mp4"
     )
+
     video_index += 1
   end
 

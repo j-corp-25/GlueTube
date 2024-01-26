@@ -19,7 +19,7 @@ const NavBar = () => {
 
   const demoLogin = () => {
     const demoUser = {
-      credential: 'Demo-lition',
+      credential: 'demouser',
       password: 'password',
     }
     dispatch(sessionActions.login(demoUser))

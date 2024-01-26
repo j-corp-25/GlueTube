@@ -44,15 +44,18 @@ const Comment = ({ comment }) => {
             value={editText}
             onChange={(e) => setEditText(e.target.value)}
           />
+          <div className="gap-2 flex flex-row">
+
           <button onClick={(e) => handleEdit(e)}>Save</button>
           <button onClick={() => setIsEditing(false)}>Cancel</button>
+          </div>
         </>
       ) : (
         <div className="comment-content">
           <div className="comment-author">{comment.author}</div>
           <p className="comment">{comment.body}</p>
           {sessionUser?.id === comment.authorId && (
-            <div className="comment-options">
+            <div className="comment-options inline-block">
               <button onClick={() => setIsEditing(true)}>Edit</button>
               <button onClick={() => handleDelete(comment.id)}>Delete</button>
             </div>
