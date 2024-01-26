@@ -108,20 +108,21 @@ export default function VideoForm() {
     }
   }
   return (
-    <form className='video-upload-form ' onSubmit={handleSubmit}>
+    <form className='video-upload-form' onSubmit={handleSubmit}>
       <div className='video-page-form-container'>
         <div className=''>
-          <h1 className='form-title justify-content-center'>
+          <h1 className='form-title gap-2 justify-content-center'>
             {formType} Video
           </h1>
-          <div className='step-container '> </div>
+          <div className='step-container'> </div>
         </div>
-        <div className='video-form-container flex flex-col '>
-          <div className='thumbnail-upload-section flex-grow-0 flex-shrink-0 '>
-            <div className=' w-48 h-48 align-self-center'>
+        <div className='video-form-container '>
+          <div className='thumbnail-upload-section '>
+            <div className='h-[8em]'>
               <label
-                htmlFor='file-upload '
-                className='custom-file-upload w-[50]% h-[50%]'
+                htmlFor='file-upload'
+                className='custom-file-upload'
+                onDragOver={handleDragOver}
                 onDrop={handleDrop}
               >
                 {videoFile ? (
@@ -163,42 +164,38 @@ export default function VideoForm() {
             </div>
             <br />
           </div>
-          <div className='h-48'>
-            <div className='video-details-section '>
-              <label className='video-upload-form-label'>
-                Title
-                <input
-                  type='text'
-                  value={title}
-                  name='title'
-                  placeholder='Enter Video Title'
-                  onChange={(e) => {
-                    setTitle(e.target.value)
-                    setTitleError(null)
-                  }}
-                  className='video-form-input'
-                />
-                {titleError && (
-                  <div className='error-message'>{titleError}</div>
-                )}
-              </label>
-              <label className='video-upload-form-label'>
-                Description
-                <textarea
-                  value={description}
-                  name='description'
-                  placeholder='Enter Video Description'
-                  onChange={(e) => {
-                    setDescription(e.target.value)
-                    setDescriptionError(null)
-                  }}
-                  className='video-form-textarea'
-                />
-                {descriptionError && (
-                  <div className='error-message'>{descriptionError}</div>
-                )}
-              </label>
-            </div>
+          <div className='video-details-section'>
+            <label className='video-upload-form-label'>
+              Title
+              <input
+                type='text'
+                value={title}
+                name='title'
+                placeholder='Enter Video Title'
+                onChange={(e) => {
+                  setTitle(e.target.value)
+                  setTitleError(null)
+                }}
+                className='video-form-input'
+              />
+              {titleError && <div className='error-message'>{titleError}</div>}
+            </label>
+            <label className='video-upload-form-label'>
+              Description
+              <textarea
+                value={description}
+                name='description'
+                placeholder='Enter Video Description'
+                onChange={(e) => {
+                  setDescription(e.target.value)
+                  setDescriptionError(null)
+                }}
+                className='video-form-textarea'
+              />
+              {descriptionError && (
+                <div className='error-message'>{descriptionError}</div>
+              )}
+            </label>
           </div>
 
           <div className='video-upload-footer'>
