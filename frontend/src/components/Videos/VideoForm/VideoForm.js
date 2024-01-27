@@ -21,7 +21,6 @@ export default function VideoForm() {
   const [description, setDescription] = useState('')
   const [titleError, setTitleError] = useState(null)
   const [descriptionError, setDescriptionError] = useState(null)
-  const [fileError, setFileError] = useState(null)
   const formType = videoId ? 'Update' : 'Upload'
   const [message, setMessage] = useState(null)
   const [videoFile, setVideoFile] = useState(null)
@@ -42,11 +41,11 @@ export default function VideoForm() {
     }
   }
 
-  useEffect(() => {
-    if (videoId) {
-      dispatch(fetchVideo(videoId))
-    }
-  }, [videoId, dispatch])
+  // useEffect(() => {
+  //   if (videoId) {
+  //     dispatch(fetchVideo(videoId))
+  //   }
+  // }, [videoId, dispatch])
 
   useEffect(() => {
     if (video) {
@@ -108,110 +107,113 @@ export default function VideoForm() {
     }
   }
   return (
-    <form className='video-upload-form' onSubmit={handleSubmit}>
-      <div className='video-page-form-container'>
-        <div className=''>
-          <h1 className='form-title gap-2 justify-content-center'>
-            {formType} Video
-          </h1>
-          <div className='step-container'> </div>
-        </div>
-        <div className='video-form-container '>
-          <div className='thumbnail-upload-section '>
-            <div className='h-[8em]'>
-              <label
-                htmlFor='file-upload'
-                className='custom-file-upload'
-                onDragOver={handleDragOver}
-                onDrop={handleDrop}
-              >
-                {videoFile ? (
-                  <img src={URL.createObjectURL(videoFile)} alt='thumbnail' />
-                ) : (
-                  '+ Drag and drop video files to upload'
+
+      <form className='video-upload-form min-h-screen' onSubmit={handleSubmit}>
+        <div className='video-page-form-container min-h-screen'>
+          <div className='flex justify-center text-4xl m-5 '>
+            <h1 className=''>
+              {formType} Video
+            </h1>
+          </div>
+          <div className='video-form-container mx-5'>
+            <div className='thumbnail-upload-section '>
+              <div className='h-[8em]'>
+                <label
+                  htmlFor='file-upload'
+                  className='custom-file-upload'
+                  onDragOver={handleDragOver}
+                  onDrop={handleDrop}
+                >
+                  {videoFile ? (
+                    <img src={URL.createObjectURL(videoFile)} alt='thumbnail' />
+                  ) : (
+                    '+ Drag and drop video files to upload'
+                  )}
+
+                  {message && <div className='error-message'>{message}</div>}
+                </label>
+              </div>
+              <input
+                id='file-upload'
+                type='file'
+                onChange={(e) => setVideoFile(e.target.files[0])}
+                style={{ display: 'none' }}
+              />
+              <div className='supported-formats'>
+                Supported formats: .MP4, .MOV, .AVI, etc.
+              </div>
+              <div> Hey {sessionUser.username}</div>
+              <br />
+              <div>
+                {formType === 'Update' && (
+                  <div>
+                    Your <b>original</b> video file is selected by default. Drag
+                    a new video if you want to change your video
+                  </div>
                 )}
 
-                {message && <div className='error-message'>{message}</div>}
-              </label>
-            </div>
-            <input
-              id='file-upload'
-              type='file'
-              onChange={(e) => setVideoFile(e.target.files[0])}
-              style={{ display: 'none' }}
-            />
-            <div className='supported-formats'>
-              Supported formats: .MP4, .MOV, .AVI, etc.
-            </div>
-            <div> Hey {sessionUser.username}</div>
-            <br />
-            <div>
-              {formType === 'Update' && (
-                <div>
-                  Your <b>original</b> video file is selected by default. Drag a
-                  new video if you want to change your video
-                </div>
-              )}
+                {formType === 'Upload' && (
+                  <div>
+                    Please drag/drop a video file to upload your video and it
+                    will be on its way to the internet! 😮
+                  </div>
+                )}
 
-              {formType === 'Upload' && (
-                <div>
-                  Please drag/drop a video file to upload your video and it will
-                  be on its way to the internet! 😮
-                </div>
-              )}
-
+                <br />
+              </div>
               <br />
             </div>
-            <br />
-          </div>
-          <div className='video-details-section'>
-            <label className='video-upload-form-label'>
-              Title
-              <input
-                type='text'
-                value={title}
-                name='title'
-                placeholder='Enter Video Title'
-                onChange={(e) => {
-                  setTitle(e.target.value)
-                  setTitleError(null)
-                }}
-                className='video-form-input'
-              />
-              {titleError && <div className='error-message'>{titleError}</div>}
-            </label>
-            <label className='video-upload-form-label'>
-              Description
-              <textarea
-                value={description}
-                name='description'
-                placeholder='Enter Video Description'
-                onChange={(e) => {
-                  setDescription(e.target.value)
-                  setDescriptionError(null)
-                }}
-                className='video-form-textarea'
-              />
-              {descriptionError && (
-                <div className='error-message'>{descriptionError}</div>
-              )}
-            </label>
-          </div>
+            <div className='video-details-section'>
+              <label className='video-upload-form-label'>
+                Title
+                <input
+                  type='text'
+                  value={title}
+                  name='title'
+                  placeholder='Enter Video Title'
+                  onChange={(e) => {
+                    setTitle(e.target.value)
+                    setTitleError(null)
+                  }}
+                  className='video-form-input'
+                />
+                {titleError && (
+                  <div className='error-message'>{titleError}</div>
+                )}
+              </label>
+              <label className='video-upload-form-label'>
+                Description
+                <textarea
+                  value={description}
+                  name='description'
+                  placeholder='Enter Video Description'
+                  onChange={(e) => {
+                    setDescription(e.target.value)
+                    setDescriptionError(null)
+                  }}
+                  className='video-form-textarea'
+                />
+                {descriptionError && (
+                  <div className='error-message'>{descriptionError}</div>
+                )}
+              </label>
+            </div>
 
-          <div className='video-upload-footer'>
-            <button
-              className='cancel-button-form'
-              type='button'
-              onClick={() => history.goBack()}
-            >
-              Cancel
-            </button>
-            <button className='submit-button-form' type='submit'>
-              {formType} Video
-            </button>
+            <div className='video-upload-footer'>
+              <button
+                className='cancel-button-form'
+                type='button'
+                onClick={() => history.goBack()}
+              >
+                Cancel
+              </button>
+              <button className='submit-button-form w-[50%]' type='submit'>
+                {formType} Video
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+
   )
 }
