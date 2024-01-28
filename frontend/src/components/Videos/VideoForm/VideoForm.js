@@ -19,7 +19,9 @@ export default function VideoForm() {
   const videoId = useParams().videoId
   const video = useSelector((state) => getVideo(videoId)(state))
   const [title, setTitle] = useState('')
+  const [fileTypeError, setFileTypeError] = useState(null)
   const [description, setDescription] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const [titleError, setTitleError] = useState(null)
   const [descriptionError, setDescriptionError] = useState(null)
   const formType = videoId ? 'Update' : 'Upload'
@@ -27,27 +29,24 @@ export default function VideoForm() {
   const [videoFile, setVideoFile] = useState(null)
   const sessionUser = useSelector((state) => state.session.user)
 
-  const handleDragOver = (e) => {
-    e.preventDefault()
-  }
+  const allowedFileTypes = ['.mp4', '.mov']
 
-  const handleDrop = (e) => {
-    e.preventDefault()
-    if (e.dataTransfer.items) {
-      // If dropped items are files
-      if (e.dataTransfer.items[0].kind === 'file') {
-        const file = e.dataTransfer.items[0].getAsFile()
+  const handleFileChange = (e) => {
+    setMessage(null)
+    const file = e.target.files[0]
+    if (file) {
+      const fileExtension = file.name.split('.').pop().toLowerCase()
+      if (!allowedFileTypes.includes('.' + fileExtension)) {
+        setFileTypeError(
+          'Unsupported file type. Please select a .MP4 or .MOV file.'
+        )
+        setVideoFile(null) 
+      } else {
+        setFileTypeError(null)
         setVideoFile(file)
       }
     }
   }
-
-  // useEffect(() => {
-  //   if (videoId) {
-  //     dispatch(fetchVideo(videoId))
-  //   }
-  // }, [videoId, dispatch])
-
   useEffect(() => {
     if (video) {
       setTitle(video.title)
@@ -73,6 +72,8 @@ export default function VideoForm() {
     if (formType === 'Upload' && videoFile === null) {
       setMessage('Please select a video file.')
       errors = true
+    } else {
+      setMessage(null)
     }
 
     if (description.trim() === '') {
@@ -83,6 +84,7 @@ export default function VideoForm() {
     }
 
     if (!errors) {
+      setIsLoading(true)
       const formData = new FormData()
       formData.append('video[title]', title)
       formData.append('video[description]', description)
@@ -92,8 +94,10 @@ export default function VideoForm() {
 
       try {
         if (formType === 'Update') {
+          isLoading = false
           formData.append('video[id]', videoId)
           await dispatch(updateVideo(formData))
+          isLoading = true
           history.push(`/videos/${videoId}`)
         } else {
           const newVideo = await dispatch(createVideo(formData))
@@ -105,15 +109,16 @@ export default function VideoForm() {
       } catch (err) {
         setMessage(`${formType} Failed!`)
       }
+      setIsLoading(false)
     }
   }
   return (
     <form className='video-upload-form min-h-screen' onSubmit={handleSubmit}>
-      <div className='video-page-form-container min-h-screen'>
+      <div className='video-page-form-container min-h-screen p-3'>
         <div className='flex justify-center text-4xl m-5 '>
           <h1 className=''>{formType} Video</h1>
         </div>
-        <div className='video-form-container mx-5'>
+        <div className='video-form-container mx-5 p-5'>
           <div className='thumbnail-upload-section'>
             <Form>
               <Form.Group controlId='formVideoFile'>
@@ -121,24 +126,16 @@ export default function VideoForm() {
                 <Form.Control
                   type='file'
                   name='videoFile'
-                  onChange={(e) => setVideoFile(e.target.files[0])}
+                  onChange={handleFileChange} // Updated handler
                 />
               </Form.Group>
-
-              {/* {videoFile && (
-                <div className='mt-3'>
-                  <div
-                    src={URL.createObjectURL(videoFile)}
-                    alt='thumbnail'
-                    className='max-w-full h-auto'
-                  />
-                </div>
-              )} */}
-
+              {fileTypeError && (
+                <div className='error-message mt-3'>{fileTypeError}</div>
+              )}
               {message && <div className='error-message mt-3'>{message}</div>}
 
               <div className='supported-formats mt-3'>
-                Supported formats: .MP4, .MOV, .AVI, etc.
+                Supported formats: .MP4, .MOV,
               </div>
 
               <div className='mt-3'> Hey {sessionUser.username}</div>
@@ -192,7 +189,7 @@ export default function VideoForm() {
             </label>
           </div>
 
-          <div className='video-upload-footer'>
+          <div className='video-upload-footer gap-5'>
             <button
               className='cancel-button-form'
               type='button'
@@ -200,7 +197,16 @@ export default function VideoForm() {
             >
               Cancel
             </button>
-            <button className='submit-button-form w-[50%]' type='submit'>
+            {isLoading && (
+              <div className=''>
+                Your Video is being uploaded <DotSpinner />{' '}
+              </div>
+            )}
+
+            <button
+              className='submit-button-form w-[25%] p-1 w-auto'
+              type='submit'
+            >
               {formType} Video
             </button>
           </div>

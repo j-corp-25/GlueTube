@@ -212,7 +212,6 @@
   .thumbnail-upload-section {
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
 
   .custom-file-upload {
