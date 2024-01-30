@@ -12,18 +12,3 @@ require "faker"
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-ActiveRecord::Base.transaction do
-  puts "Destroying tables..."
-  puts "Creating demouser"
-
-  demo_user = User.create!(
-    username: 'demouser',
-    email: 'demo@user.io',
-    password: 'password',
-    first_name: 'demo',
-    last_name: 'user'
-  )
-
-
-  puts "Done!"
-end
