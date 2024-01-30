@@ -26,6 +26,7 @@ export default function VideoForm() {
   const [descriptionError, setDescriptionError] = useState(null)
   const formType = videoId ? 'Update' : 'Upload'
   const [message, setMessage] = useState(null)
+  const [fileName, setFileName] = useState('No file chosen')
   const [videoFile, setVideoFile] = useState(null)
   const sessionUser = useSelector((state) => state.session.user)
 
@@ -35,12 +36,13 @@ export default function VideoForm() {
     setMessage(null)
     const file = e.target.files[0]
     if (file) {
+      setFileName(file.name)
       const fileExtension = file.name.split('.').pop().toLowerCase()
       if (!allowedFileTypes.includes('.' + fileExtension)) {
         setFileTypeError(
           'Unsupported file type. Please select a .MP4 or .MOV file.'
         )
-        setVideoFile(null) 
+        setVideoFile(null)
       } else {
         setFileTypeError(null)
         setVideoFile(file)
@@ -51,8 +53,10 @@ export default function VideoForm() {
     if (video) {
       setTitle(video.title)
       setDescription(video.description)
+    } else {
+      dispatch(fetchVideo(videoId))
     }
-  }, [video])
+  }, [videoId, dispatch, video])
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -94,10 +98,8 @@ export default function VideoForm() {
 
       try {
         if (formType === 'Update') {
-          isLoading = false
           formData.append('video[id]', videoId)
           await dispatch(updateVideo(formData))
-          isLoading = true
           history.push(`/videos/${videoId}`)
         } else {
           const newVideo = await dispatch(createVideo(formData))
@@ -118,16 +120,26 @@ export default function VideoForm() {
         <div className='flex justify-center text-4xl m-5 '>
           <h1 className=''>{formType} Video</h1>
         </div>
-        <div className='video-form-container mx-5 p-5'>
+        <div className='video-form-container mx-5 p-5 gap-4'>
           <div className='thumbnail-upload-section'>
             <Form>
-              <Form.Group controlId='formVideoFile'>
+              <Form.Group controlId='formVideoFile' className='relative'>
                 <Form.Label>Video File:</Form.Label>
                 <Form.Control
                   type='file'
                   name='videoFile'
-                  onChange={handleFileChange} // Updated handler
+                  onChange={handleFileChange}
+                  className='absolute w-0 h-0 opacity-0'
                 />
+                <label
+                  htmlFor='formVideoFile'
+                  className='cursor-pointer border-red-500 text-xs inline-block bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 hover:scale-95 transition-transform duration-300'
+                >
+                  Choose Video File
+                </label>
+                <div className='mt-2 animate-fadeIn'>
+                  <span className='text-sm'>{fileName}</span>
+                </div>
               </Form.Group>
               {fileTypeError && (
                 <div className='error-message mt-3'>{fileTypeError}</div>
@@ -140,10 +152,12 @@ export default function VideoForm() {
 
               <div className='mt-3'> Hey {sessionUser.username}</div>
 
-              {formType === 'Update' && (
-                <div className='mt-3'>
-                  Your <b>original</b> video file is selected by default. Select
-                  a new video file if you want to change your video.
+              {formType === 'Update' && video && (
+                <div className='mt-3 gap-5'>
+                  <b>Current Video:</b> {video.title || 'Your video'}
+                  <br />
+                  Choose a new video file to replace the current one, or leave
+                  this blank to keep the existing video.
                 </div>
               )}
 
@@ -155,7 +169,7 @@ export default function VideoForm() {
               )}
             </Form>
           </div>
-          <div className='video-details-section'>
+          <div className='video-details-section gap-3'>
             <label className='video-upload-form-label'>
               Title
               <input
@@ -197,9 +211,15 @@ export default function VideoForm() {
             >
               Cancel
             </button>
-            {isLoading && (
+            {isLoading && formType === 'Upload' && (
               <div className=''>
-                Your Video is being uploaded <DotSpinner />{' '}
+                Your video is being uploaded <DotSpinner />{' '}
+              </div>
+            )}
+
+            {isLoading && formType === 'Update' && (
+              <div className=''>
+                Your new video is being updated and uploaded <DotSpinner />{' '}
               </div>
             )}
 

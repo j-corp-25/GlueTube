@@ -56,7 +56,7 @@ const NavBar = () => {
                 <div className='home-button'>
                   <a href='https://www.linkedin.com/in/jcorporan/'>
                     <i
-                      class='fa-brands fa-linkedin fa-2x'
+                      className='fa-brands fa-linkedin fa-2x'
                       style={{ color: '#ffffff' }}
                     ></i>
                   </a>
@@ -186,7 +186,7 @@ const NavBar = () => {
               <div className='hidden md:inline-block px-1 py-1 size-15 text-md mx-3'>
                 <Link to='/upload' className='upload-container '>
                   <i
-                    class='fa-solid fa-video fa-2x'
+                    className='fa-solid fa-video fa-2x'
                     style={{ color: '#ffffff' }}
                   ></i>
                   <span className='tooltip-text'>Upload a Video</span>
@@ -232,14 +232,14 @@ const NavBar = () => {
                 </Link>
               <div className='home-button'>
                 <i
-                  class='fa-brands fa-linkedin fa-2x'
+                  className='fa-brands fa-linkedin fa-2x'
                   style={{ color: '#ffffff' }}
                 ></i>
               </div>
               <div className='home-button'>
                 <a href='https://github.com/j-corp-25/GlueTube'>
                   <i
-                    class='fa-brands fa-github fa-2x'
+                    className='fa-brands fa-github fa-2x'
                     style={{ color: '#ffffff' }}
                   ></i>
                 </a>
